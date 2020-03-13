@@ -1,0 +1,20 @@
+M n     move n
+MT x y  move to x,y
+TL      turn left 90
+TR      turn right 90
+TA n    turn clockwise n
+TS, TN, TW, TE
+        turn south, north, west, east
+PD      pen down
+PU      pen up
+DO n ... AGAIN
+
+color:
+    RGB n n n
+    HSV n n n
+    HSL n n n
+
+CANVAS x y color END
+DEFPEN n Size n color END
+SELPEN n
+    0 - black 1 pixel

@@ -35,6 +35,7 @@
 		<Unit filename="list.hpp" />
 		<Unit filename="list_impl.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="node.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

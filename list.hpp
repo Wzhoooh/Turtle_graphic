@@ -11,22 +11,29 @@ namespace dataStructures
 template <class T>
 struct Node
 {
+    Node(T&& source);
+
     T content;
-    Node<T>* prev;
-    Node<T>* next;
+    Node<T>* _prev;
+    Node<T>* _next;
 };
 
 template <class T>
 class BidirectionalIterator//: class std::iterator<std::bidirectional_iterator_tag> /// i just have to learn iterators!!
 {
 public:
+    BidirectionalIterator() = delete;
+    BidirectionalIterator(Node<T>* source);
     BidirectionalIterator(const BidirectionalIterator&);
-    BidirectionalIterator<T>& operator ++(); // prefix
-    BidirectionalIterator<T>& operator --();
-    BidirectionalIterator<T>& operator ++(int); // postfix
-    BidirectionalIterator<T>& operator --(int);
-    bool operator ==(BidirectionalIterator<T>& other) const;
-    bool operator !=(BidirectionalIterator<T>& other) const;
+    BidirectionalIterator(BidirectionalIterator&&) = default;
+    ~BidirectionalIterator();
+
+    BidirectionalIterator<T> operator ++(); // prefix
+    BidirectionalIterator<T> operator --();
+    BidirectionalIterator<T> operator ++(int); // postfix
+    BidirectionalIterator<T> operator --(int);
+    bool operator ==(BidirectionalIterator<T>&& other) const;
+    bool operator !=(BidirectionalIterator<T>&& other) const;
     T* operator ->();
     T& operator *();
     T& get();
@@ -70,8 +77,9 @@ private:
     NodeAllocator _allocNode;
 };
 
-#include "list_impl.hpp"
+#include "node.hpp"
 #include "iterator_impl.hpp"
+#include "list_impl.hpp"
 }
 
 #endif // DATASTRUCTERS_H_INCLUDED

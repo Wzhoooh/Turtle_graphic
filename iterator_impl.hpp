@@ -5,19 +5,31 @@ template <class T>
 BidirectionalIterator<T>::BidirectionalIterator(const BidirectionalIterator& source): content(source.content){}
 
 template <class T>
-BidirectionalIterator<T>& BidirectionalIterator<T>::operator ++()
+BidirectionalIterator<T>::BidirectionalIterator(Node<T>* source)
+{
+    this->content = source;
+}
+
+template <class T>
+BidirectionalIterator<T>::~BidirectionalIterator()
+{
+    delete this->content;
+}
+
+template <class T>
+BidirectionalIterator<T> BidirectionalIterator<T>::operator ++()
 {
     return content = content.next;
 }
 
 template <class T>
-BidirectionalIterator<T>& BidirectionalIterator<T>::operator --()
+BidirectionalIterator<T> BidirectionalIterator<T>::operator --()
 {
     return content = content.prev;
 }
 
 template <class T>
-BidirectionalIterator<T>& BidirectionalIterator<T>::operator ++(int)
+BidirectionalIterator<T> BidirectionalIterator<T>::operator ++(int)
 {
     Node<T>* pointerCopy = content;
     content = content.next;
@@ -25,7 +37,7 @@ BidirectionalIterator<T>& BidirectionalIterator<T>::operator ++(int)
 }
 
 template <class T>
-BidirectionalIterator<T>& BidirectionalIterator<T>::operator --(int)
+BidirectionalIterator<T> BidirectionalIterator<T>::operator --(int)
 {
     Node<T>* pointerCopy = content;
     content = content.prev;
@@ -33,15 +45,15 @@ BidirectionalIterator<T>& BidirectionalIterator<T>::operator --(int)
 }
 
 template <class T>
-bool BidirectionalIterator<T>::operator ==(BidirectionalIterator<T>& other) const
+bool BidirectionalIterator<T>::operator ==(BidirectionalIterator<T>&& other) const
 {
     return this->content == other->content;
 }
 
 template <class T>
-bool BidirectionalIterator<T>::operator !=(BidirectionalIterator<T>& other) const
+bool BidirectionalIterator<T>::operator !=(BidirectionalIterator<T>&& other) const
 {
-    return this->content != other->content;
+    return this->content != other.content;
 }
 
 template <class T>

@@ -36,5 +36,11 @@ std::ostream& operator <<(std::ostream& os, A source)
 
 int main()
 {
-
+    dataStructures::list<A> list_1;
+    list_1.push_back(A(33));
+    list_1.push_back(A(34));
+    list_1.push_back(A(35));
+    dataStructures::list<A>::iterator it_1 = list_1.begin();
+    for (; it_1 != list_1.end(); ++it_1)
+        std::cout << *it_1->val << " ";
 }

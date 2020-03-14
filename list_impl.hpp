@@ -2,6 +2,7 @@
 #define LIST_IMPL_HPP_INCLUDED
 
 #include <memory>
+#include <utility>
 
 template<class T, class Allocator>
 dataStructures::list<T, Allocator>::list(){}
@@ -12,7 +13,7 @@ dataStructures::list<T, Allocator>::list(const list& source)
     for (typename dataStructures::list<T>::iterator i = source.begin(); i != source.end(); i++)
     {
         this->push_back(*i);
-        this->size++;
+        this->_size++;
     }
 }
 
@@ -21,74 +22,74 @@ dataStructures::list<T, Allocator>::list(list&& source)
 {
     for (typename dataStructures::list<T>::iterator i = source.begin(); i != source.end(); i++)
     {
-        this->push_back(std::move(*i));
-        this->size++;
+        push_back(std::move(*i));
+        _size++;
     }
 }
 
 template<class T, class Allocator>
 list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& source)
 {
-    for (typename dataStructures::list<T, Allocator>::iterator i = this->begin(); i != this->end();)
+    for (typename dataStructures::list<T, Allocator>::iterator i = begin(); i != end();)
     {
-        std::allocator_traits<NodeAllocator>::destroy(this->_allocNode, &(*i++));
-        std::allocator_traits<NodeAllocator>::deallocate(this->_allocNode, &(*i++));
+        std::allocator_traits<Allocator>::destroy(_allocT, &(*i++));
+//        std::allocator_traits<Allocator>::deallocate(_allocT, &(*i++));
     }
 
-    this->size = 0;
+    _size = 0;
 
     for (typename dataStructures::list<T, Allocator>::iterator i = source.begin(); i != source.end(); i++)
     {
-        this->push_back(*i);
-        this->size++;
+        push_back(*i);
+        _size++;
     }
 }
 
 template<class T, class Allocator>
 list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(list&& source)
 {
-    for (typename dataStructures::list<T, Allocator>::iterator i = this->begin(); i != this->end();)
+    for (typename dataStructures::list<T, Allocator>::iterator i = begin(); i != end();)
     {
-        std::allocator_traits<NodeAllocator>::destroy(this->_allocNode, &(*i++));
-        std::allocator_traits<NodeAllocator>::deallocate(this->_allocNode, &(*i++));
+        std::allocator_traits<Allocator>::destroy(_allocT, &(*i++));
+//        std::allocator_traits<Allocator>::deallocate(_allocT, &(*i++));
     }
 
-    this->size = 0;
+    _size = 0;
 
     for (dataStructures::list<T, Allocator>::iterator i = source.begin(); i != source.end(); i++)
     {
-        this->push_back(std::move(*i));
-        this->size++;
+        push_back(std::move(*i));
+        _size++;
     }
 }
 
 template<class T, class Allocator>
 dataStructures::list<T, Allocator>::~list()
 {
-    for (typename dataStructures::list<T, Allocator>::iterator i = this->begin(); i != this->end();)
+    for (typename dataStructures::list<T, Allocator>::iterator i = begin(); i != end();)
     {
-        std::allocator_traits<NodeAllocator>::destroy(this->_allocNode, &(*i++));
-        std::allocator_traits<NodeAllocator>::deallocate(this->_allocNode, &(*i++), 1);
+        std::allocator_traits<Allocator>::destroy(_allocT, &(*i++));
+//        std::allocator_traits<Allocator>::deallocate(_allocT, &(*i++));
     }
 }
 
 template<class T, class Allocator>
 void dataStructures::list<T, Allocator>::push_back(T&& newElem)
 {
-    Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(this->_allocNode, sizeof(newElem));
-    std::allocator_traits<NodeAllocator>::construct(this->_allocNode, newNodePointer, std::forward(newElem));
+    Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
+    std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, std::forward<T>(newElem));
 
-    if (this->_size == 0)
+    if (_size == 0)
     {
-        this->_first = newNodePointer;
-        this->_last = newNodePointer;
+        _first = newNodePointer;
+        _last = newNodePointer;
         _size++;
     }
     else
     {
-        this->_last->_next = newNodePointer;
-        newNodePointer->_prev = this->_last;
-        this->_last = newNodePointer;
+        _last->_next = newNodePointer;
+        newNodePointer->_prev = _last;
+        _last = newNodePointer;
         _size++;
     }
 }

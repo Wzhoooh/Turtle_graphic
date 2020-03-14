@@ -14,8 +14,8 @@ struct Node
     Node(T&& source);
 
     T content;
-    Node<T>* _prev;
-    Node<T>* _next;
+    Node<T>* _prev = nullptr;
+    Node<T>* _next = nullptr;
 };
 
 template <class T>
@@ -24,7 +24,7 @@ class BidirectionalIterator//: class std::iterator<std::bidirectional_iterator_t
 public:
     BidirectionalIterator() = delete;
     BidirectionalIterator(Node<T>* source);
-    BidirectionalIterator(const BidirectionalIterator&);
+    BidirectionalIterator(const BidirectionalIterator&) = default;
     BidirectionalIterator(BidirectionalIterator&&) = default;
     ~BidirectionalIterator();
 
@@ -39,7 +39,7 @@ public:
     T& get();
 
 private:
-    Node<T>* content = nullptr;
+    Node<T>* node = nullptr;
 };
 
 template<class T, class Allocator = std::allocator<T>>
@@ -75,6 +75,7 @@ private:
     pNode _first = nullptr;
     pNode _last = nullptr;
     NodeAllocator _allocNode;
+    Allocator _allocT;
 };
 
 #include "node.hpp"

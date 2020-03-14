@@ -2,76 +2,72 @@
 #define ITERATOR_IMPL_HPP_INCLUDED
 
 template <class T>
-BidirectionalIterator<T>::BidirectionalIterator(const BidirectionalIterator& source): content(source.content){}
-
-template <class T>
 BidirectionalIterator<T>::BidirectionalIterator(Node<T>* source)
 {
-    this->content = source;
+    this->node = source;
 }
 
 template <class T>
-BidirectionalIterator<T>::~BidirectionalIterator()
-{
-    delete this->content;
-}
+BidirectionalIterator<T>::~BidirectionalIterator(){}
 
 template <class T>
 BidirectionalIterator<T> BidirectionalIterator<T>::operator ++()
 {
-    return content = content.next;
+    node = node->_next;
+    return *this;
 }
 
 template <class T>
 BidirectionalIterator<T> BidirectionalIterator<T>::operator --()
 {
-    return content = content.prev;
+    node = node->_prev;
+    return *this;
 }
 
 template <class T>
 BidirectionalIterator<T> BidirectionalIterator<T>::operator ++(int)
 {
-    Node<T>* pointerCopy = content;
-    content = content.next;
-    return pointerCopy;
+    BidirectionalIterator<T> iteratorCopy = *this;
+    node = node->_next;
+    return iteratorCopy;
 }
 
 template <class T>
 BidirectionalIterator<T> BidirectionalIterator<T>::operator --(int)
 {
-    Node<T>* pointerCopy = content;
-    content = content.prev;
-    return pointerCopy;
+    BidirectionalIterator<T> iteratorCopy = *this;
+    node = node->_prev;
+    return iteratorCopy;
 }
 
 template <class T>
 bool BidirectionalIterator<T>::operator ==(BidirectionalIterator<T>&& other) const
 {
-    return this->content == other->content;
+    return this->node == other.node;
 }
 
 template <class T>
 bool BidirectionalIterator<T>::operator !=(BidirectionalIterator<T>&& other) const
 {
-    return this->content != other.content;
+    return this->node != other.node;
 }
 
 template <class T>
 T* BidirectionalIterator<T>::operator ->()
 {
-    return content;
+    return &(node->content);
 }
 
 template <class T>
 T& BidirectionalIterator<T>::operator *()
 {
-    return *content;
+    return node->content;
 }
 
 template <class T>
 T& BidirectionalIterator<T>::get()
 {
-    return *content;
+    return node->content;
 }
 
 

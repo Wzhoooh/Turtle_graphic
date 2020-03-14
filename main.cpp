@@ -43,4 +43,7 @@ int main()
     dataStructures::list<A>::iterator it_1 = list_1.begin();
     for (; it_1 != list_1.end(); ++it_1)
         std::cout << *it_1->val << " ";
+
+    std::cout << "\n";
+
 }

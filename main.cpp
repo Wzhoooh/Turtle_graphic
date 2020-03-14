@@ -39,11 +39,18 @@ int main()
     dataStructures::list<A> list_1;
     list_1.push_back(A(33));
     list_1.push_back(A(34));
+    list_1.push_front(A(0));
     list_1.push_back(A(35));
+    list_1.push_front(A(1));
+    list_1.push_back(A(36));
     dataStructures::list<A>::iterator it_1 = list_1.begin();
     for (; it_1 != list_1.end(); ++it_1)
         std::cout << *it_1->val << " ";
 
-    std::cout << "\n";
+    std::cout << "\n-----------------------\n";
+    dataStructures::list<A>::iterator it_2 = list_1.begin();
+    it_1 = list_1.begin();
+    std::cout << list_1.size() << "\n";
+
 
 }

@@ -30,10 +30,12 @@ dataStructures::list<T, Allocator>::list(list&& source)
 template<class T, class Allocator>
 list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& source)
 {
-    for (typename dataStructures::list<T, Allocator>::iterator i = begin(); i != end();)
+    for (Node<T>* n = _first; n->_next != nullptr;)
     {
-        std::allocator_traits<Allocator>::destroy(_allocT, &(*i++));
-//        std::allocator_traits<Allocator>::deallocate(_allocT, &(*i++));
+        Node<T>* nextNode = n;
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n);
+        n = nextNode;
     }
 
     _size = 0;
@@ -48,10 +50,12 @@ list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& s
 template<class T, class Allocator>
 list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(list&& source)
 {
-    for (typename dataStructures::list<T, Allocator>::iterator i = begin(); i != end();)
+    for (Node<T>* n = _first; n->_next != nullptr;)
     {
-        std::allocator_traits<Allocator>::destroy(_allocT, &(*i++));
-//        std::allocator_traits<Allocator>::deallocate(_allocT, &(*i++));
+        Node<T>* nextNode = n;
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n);
+        n = nextNode;
     }
 
     _size = 0;
@@ -66,10 +70,12 @@ list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(list&& source
 template<class T, class Allocator>
 dataStructures::list<T, Allocator>::~list()
 {
-    for (typename dataStructures::list<T, Allocator>::iterator i = begin(); i != end();)
+    for (Node<T>* n = _first; n != nullptr;)
     {
-        std::allocator_traits<Allocator>::destroy(_allocT, &(*i++));
-//        std::allocator_traits<Allocator>::deallocate(_allocT, &(*i++));
+        Node<T>* nextNode = n->_next;
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n);
+        n = nextNode;
     }
 }
 
@@ -97,7 +103,22 @@ void dataStructures::list<T, Allocator>::push_back(T&& newElem)
 template<class T, class Allocator>
 void dataStructures::list<T, Allocator>::push_front(T&& newElem)
 {
+    Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
+    std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, std::forward<T>(newElem));
 
+    if (_size == 0)
+    {
+        _first = newNodePointer;
+        _last = newNodePointer;
+        _size++;
+    }
+    else
+    {
+        _first->_prev = newNodePointer;
+        newNodePointer->_next = _first;
+        _first = newNodePointer;
+        _size++;
+    }
 }
 
 template<class T, class Allocator>

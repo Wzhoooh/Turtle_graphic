@@ -25,6 +25,7 @@ public:
     BidirectionalIterator() = delete;
     BidirectionalIterator(Node<T>* source);
     BidirectionalIterator(const BidirectionalIterator&) = default;
+    BidirectionalIterator<T>& operator =(const BidirectionalIterator<T>&) = default;
     BidirectionalIterator(BidirectionalIterator&&) = default;
     ~BidirectionalIterator();
 
@@ -32,8 +33,8 @@ public:
     BidirectionalIterator<T> operator --();
     BidirectionalIterator<T> operator ++(int); // postfix
     BidirectionalIterator<T> operator --(int);
-    bool operator ==(BidirectionalIterator<T>&& other) const;
-    bool operator !=(BidirectionalIterator<T>&& other) const;
+    bool operator ==(const BidirectionalIterator<T>& other) const;
+    bool operator !=(const BidirectionalIterator<T>& other) const;
     T* operator ->();
     T& operator *();
     T& get();

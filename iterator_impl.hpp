@@ -41,13 +41,13 @@ BidirectionalIterator<T> BidirectionalIterator<T>::operator --(int)
 }
 
 template <class T>
-bool BidirectionalIterator<T>::operator ==(BidirectionalIterator<T>&& other) const
+bool BidirectionalIterator<T>::operator ==(const BidirectionalIterator<T>& other) const
 {
     return this->node == other.node;
 }
 
 template <class T>
-bool BidirectionalIterator<T>::operator !=(BidirectionalIterator<T>&& other) const
+bool BidirectionalIterator<T>::operator !=(const BidirectionalIterator<T>& other) const
 {
     return this->node != other.node;
 }

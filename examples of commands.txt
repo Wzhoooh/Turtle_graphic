@@ -1,20 +1,33 @@
-M n     move n
-MT x y  move to x,y
-TL      turn left 90
-TR      turn right 90
-TA n    turn clockwise n
-TS, TN, TW, TE
-        turn south, north, west, east
-PD      pen down
-PU      pen up
-DO n ... AGAIN
+Types of data:
+n       unsigned integer
+xN, yN  unsigned integer
+a       double
+x, y    double
+x1, y1  double
+x2, y2  double
 
 color:
     RGB n n n
     HSV n n n
     HSL n n n
 
-CANVAS x y color END
-DEFPEN n Size n color END
+Commands:
+M a     move a
+MT x y  move to x,y
+TL      turn left 90
+TR      turn right 90
+TA a    turn clockwise a
+TS, TN, TW, TE
+        turn south, north, west, east
+PD      pen down
+PU      pen up
 SELPEN n
+        select pen n
+DO n ... AGAIN
+
+Position independent commands (single command per programm only):
+CANVAS xN yN color [VIEW x1 y1 x2 y2] END
+DEFPEN n SIZE a color END
     0 - black 1 pixel
+
+/* ... */

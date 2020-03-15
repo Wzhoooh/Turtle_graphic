@@ -124,13 +124,53 @@ void dataStructures::list<T, Allocator>::push_front(T&& newElem)
 template<class T, class Allocator>
 void dataStructures::list<T, Allocator>::pop_back()
 {
-
+    if (_size == 0)
+    {
+        return;
+    }
+    else if (_size == 1)
+    {
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, _first);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, _first);
+        _size--;
+        _first = nullptr;
+        _last = nullptr;
+    }
+    else
+    {
+        Node<T>* deleteNode = _last;
+        _last->_prev->_next == nullptr;
+        _last = _last->_prev;
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, deleteNode);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode);
+        _size--;
+    }
 }
 
 template<class T, class Allocator>
 void dataStructures::list<T, Allocator>::pop_front()
 {
-
+    if (_size == 0)
+    {
+        return;
+    }
+    else if (_size == 1)
+    {
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, _first);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, _first);
+        _size--;
+        _first = nullptr;
+        _last = nullptr;
+    }
+    else
+    {
+        Node<T>* deleteNode = _first;
+        _first->_next->_prev == nullptr;
+        _first = _first->_next;
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, deleteNode);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode);
+        _size--;
+    }
 }
 
 template<class T, class Allocator>

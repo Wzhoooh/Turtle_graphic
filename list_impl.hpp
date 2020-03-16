@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <utility>
+#include <iostream>
 
 template<class T, class Allocator>
 dataStructures::list<T, Allocator>::list(){}

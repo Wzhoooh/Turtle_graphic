@@ -47,18 +47,24 @@ template<class T, class Allocator = std::allocator<T>>
 class list
 {
 public:
-    typedef T type;
-    typedef BidirectionalIterator<T> iterator;
+    typedef T                           type;
+    typedef T*                          pointer;
+    typedef const T*                    const_pointer;
+    typedef T&                          reference;
+    typedef const T&                    const_reference;
+    typedef BidirectionalIterator<T>    iterator;
 
     list();
     list(const list&);
     list(list&&);
-    list& operator =(const list&);
-    list& operator =(list&&);
+    list& operator =(const list&); // нужно исправить, удаление - не оптимальный путь
+    list& operator =(list&&); // нужно исправить, удаление - не оптимальный путь
     virtual ~list();
 
     void push_back(T&&);
+    //void push_back(const T&);
     void push_front(T&&);
+    //void push_front(const T&);
     void pop_back();
     void pop_front();
     iterator insert(iterator pos, const T& value);
@@ -69,8 +75,8 @@ public:
     iterator end() const noexcept(true);
 
 private:
-    typedef typename Allocator::template rebind<Node<T>>::other NodeAllocator;
     typedef Node<T>* pNode;
+    typedef typename Allocator::template rebind<Node<T>>::other NodeAllocator;
 
     size_t _size = 0;
     pNode _first = nullptr;

@@ -12,6 +12,7 @@ template <class T>
 struct Node
 {
     Node(T&& source);
+    Node(const T& source);
 
     T content;
     Node<T>* _prev = nullptr;
@@ -21,6 +22,9 @@ struct Node
 template <class T>
 class BidirectionalIterator//: class std::iterator<std::bidirectional_iterator_tag> /// i just have to learn iterators!!
 {
+    template<class U, class Allocator>
+    friend class list;
+
 public:
     BidirectionalIterator() = delete;
     BidirectionalIterator(Node<T>* source);
@@ -62,17 +66,19 @@ public:
     virtual ~list();
 
     void push_back(T&&);
-    //void push_back(const T&);
+    void push_back(const T&);
     void push_front(T&&);
-    //void push_front(const T&);
+    void push_front(const T&);
     void pop_back();
     void pop_front();
+    iterator insert(iterator pos, T&& value);
     iterator insert(iterator pos, const T& value);
     iterator erase(iterator pos);
     size_t size() const noexcept(true);
 
     iterator begin() const noexcept(true);
     iterator end() const noexcept(true);
+    iterator front() const noexcept(true);
 
 private:
     typedef Node<T>* pNode;

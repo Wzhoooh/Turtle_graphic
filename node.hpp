@@ -4,7 +4,11 @@
 #include <utility>
 
 template <class T>
-Node<T>::Node(T&& source): content(source)
+Node<T>::Node(T&& source): content(std::move(source))
+{}
+
+template <class T>
+Node<T>::Node(const T& source): content(source)
 {}
 
 #endif // NODE_HPP_INCLUDED

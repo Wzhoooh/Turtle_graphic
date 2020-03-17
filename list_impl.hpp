@@ -102,10 +102,53 @@ void dataStructures::list<T, Allocator>::push_back(T&& newElem)
 }
 
 template<class T, class Allocator>
+void dataStructures::list<T, Allocator>::push_back(const T& newElem)
+{
+    Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
+    std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, newElem);
+
+    if (_size == 0)
+    {
+        _first = newNodePointer;
+        _last = newNodePointer;
+        _size++;
+    }
+    else
+    {
+        _last->_next = newNodePointer;
+        newNodePointer->_prev = _last;
+        _last = newNodePointer;
+        _size++;
+    }
+}
+
+
+template<class T, class Allocator>
 void dataStructures::list<T, Allocator>::push_front(T&& newElem)
 {
     Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
     std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, std::forward<T>(newElem));
+
+    if (_size == 0)
+    {
+        _first = newNodePointer;
+        _last = newNodePointer;
+        _size++;
+    }
+    else
+    {
+        _first->_prev = newNodePointer;
+        newNodePointer->_next = _first;
+        _first = newNodePointer;
+        _size++;
+    }
+}
+
+template<class T, class Allocator>
+void dataStructures::list<T, Allocator>::push_front(const T& newElem)
+{
+    Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
+    std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, newElem);
 
     if (_size == 0)
     {
@@ -175,6 +218,85 @@ void dataStructures::list<T, Allocator>::pop_front()
 }
 
 template<class T, class Allocator>
+typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::insert
+(typename dataStructures::list<T, Allocator>::iterator pos, T&& newElem)
+{
+    if(pos.node->_next == nullptr)
+    {
+        push_back(newElem);
+    }
+    else if(pos.node->_prev == nullptr)
+    {
+        push_front(newElem);
+    }
+    else
+    {
+        Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
+        std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, std::forward<T>(newElem));
+
+        newNodePointer->_prev = pos.node;
+        newNodePointer->_next = pos.node->_next;
+        pos.node->_next->_prev = newNodePointer;
+        pos.node->_next = newNodePointer;
+        _size++;
+    }
+    return ++pos;
+}
+
+template<class T, class Allocator>
+typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::insert
+(typename dataStructures::list<T, Allocator>::iterator pos, const T& newElem)
+{
+    if(pos.node->_next == nullptr)
+    {
+        push_back(newElem);
+    }
+    else if(pos.node->_prev == nullptr)
+    {
+        push_front(newElem);
+    }
+    else
+    {
+        Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
+        std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, newElem);
+
+        newNodePointer->_prev = pos.node;
+        newNodePointer->_next = pos.node->_next;
+        pos.node->_next->_prev = newNodePointer;
+        pos.node->_next = newNodePointer;
+        _size++;
+    }
+    return ++pos;
+}
+
+template<class T, class Allocator>
+typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::erase
+(dataStructures::list<T, Allocator>::iterator pos)
+{
+    if(pos.node->_next == nullptr)
+    {
+        pop_back();
+        return front();
+    }
+    else if(pos.node->_prev == nullptr)
+    {
+        pop_front();
+        return begin();
+    }
+    else
+    {
+        iterator rIter = --pos;
+        ++pos;
+        pos.node->_prev->_next = pos.node->_next;
+        pos.node->_next->_prev = pos.node->_prev;
+        std::allocator_traits<NodeAllocator>::destroy(_allocNode, pos.node);
+        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, pos.node);
+        _size--;
+        return rIter;
+    }
+}
+
+template<class T, class Allocator>
 size_t dataStructures::list<T, Allocator>::size() const noexcept(true)
 {
     return _size;
@@ -190,6 +312,12 @@ template<class T, class Allocator>
 typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::end() const noexcept(true)
 {
     return iterator(nullptr);
+}
+
+template<class T, class Allocator>
+typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::front() const noexcept(true)
+{
+    return iterator(_last);
 }
 
 

@@ -21,11 +21,9 @@ dataStructures::list<T, Allocator>::list(const list& source)
 template<class T, class Allocator>
 dataStructures::list<T, Allocator>::list(list&& source)
 {
-    for (typename dataStructures::list<T>::iterator i = source.begin(); i != source.end(); i++)
-    {
-        push_back(std::move(*i));
-        _size++;
-    }
+    std::swap(_first, source._first);
+    std::swap(_last, source._last);
+    std::swap(_size, source._size);
 }
 
 template<class T, class Allocator>
@@ -51,21 +49,14 @@ list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& s
 template<class T, class Allocator>
 list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(list&& source)
 {
-    for (Node<T>* n = _first; n->_next != nullptr;)
-    {
-        Node<T>* nextNode = n;
-        std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n);
-        n = nextNode;
-    }
+    std::swap(_first, source._first);
+    std::swap(_last, source._last);
+    std::swap(_size, source._size);
+    source._first = nullptr;
+    source._last = nullptr;
+    source._size = 0;
 
-    _size = 0;
-
-    for (dataStructures::list<T, Allocator>::iterator i = source.begin(); i != source.end(); i++)
-    {
-        push_back(std::move(*i));
-        _size++;
-    }
+    return *this;
 }
 
 template<class T, class Allocator>
@@ -210,7 +201,7 @@ typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Al
     if(pos.node->_next == nullptr)
     {
         pop_back();
-        return front();
+        return back();
     }
     else if(pos.node->_prev == nullptr)
     {
@@ -249,11 +240,22 @@ typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Al
 }
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::front() const noexcept(true)
+typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::back() const noexcept(true)
 {
     return iterator(_last);
 }
 
 
+template<class T, class Allocator>
+typename dataStructures::list<T, Allocator>::iterator begin(const dataStructures::list<T, Allocator>& l)
+{
+    return l.begin();
+}
+
+template<class T, class Allocator>
+typename dataStructures::list<T, Allocator>::iterator end(const dataStructures::list<T, Allocator>& l)
+{
+    return l.end();
+}
 
 #endif // LIST_IMPL_HPP_INCLUDED

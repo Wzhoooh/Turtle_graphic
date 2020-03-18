@@ -108,8 +108,12 @@ int main()
         it_3++;
         it_3 = list_2.erase(it_3);
 
-        for (dataStructures::list<A>::iterator it_2 = list_2.begin(); it_2 != list_2.end(); ++it_2)
-            std::cout << *it_2 << " ";
+        for (auto&& i : list_2)
+            std::cout << i << " ";
+
+        std::cout << "\n-----------------------\n";
+//        for (dataStructures::list<A>::iterator it_2 = list_2.begin(); it_2 != list_2.end(); ++it_2)
+//            std::cout << *it_2 << " ";
 
         std::cout << "\n";
         std::cout << "\nlast iterator: " << *it_3 << "\n";

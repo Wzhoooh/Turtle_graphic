@@ -22,12 +22,14 @@ struct Node
 template <class T>
 class BidirectionalIterator//: class std::iterator<std::bidirectional_iterator_tag> /// i just have to learn iterators!!
 {
-    template<class U, class Allocator>
+template<class U, class Allocator>
     friend class list;
+
+private:
+    BidirectionalIterator(Node<T>* source);
 
 public:
     BidirectionalIterator() = delete;
-    BidirectionalIterator(Node<T>* source);
     BidirectionalIterator(const BidirectionalIterator&) = default;
     BidirectionalIterator<T>& operator =(const BidirectionalIterator<T>&) = default;
     BidirectionalIterator(BidirectionalIterator&&) = default;
@@ -78,15 +80,14 @@ template<class T1>
 
     iterator begin() const noexcept(true);
     iterator end() const noexcept(true);
-    iterator front() const noexcept(true);
+    iterator back() const noexcept(true);
 
 private:
-    typedef Node<T>* pNode;
     typedef typename Allocator::template rebind<Node<T>>::other NodeAllocator;
 
     size_t _size = 0;
-    pNode _first = nullptr;
-    pNode _last = nullptr;
+    Node<T>* _first = nullptr;
+    Node<T>* _last = nullptr;
     NodeAllocator _allocNode;
     Allocator _allocT;
 };
@@ -95,5 +96,11 @@ private:
 #include "iterator_impl.hpp"
 #include "list_impl.hpp"
 }
+
+template<class T, class Allocator>
+    typename dataStructures::list<T, Allocator>::iterator begin(const dataStructures::list<T, Allocator>&);
+
+template<class T, class Allocator>
+    typename dataStructures::list<T, Allocator>::iterator end(const dataStructures::list<T, Allocator>&);
 
 #endif // DATASTRUCTERS_H_INCLUDED

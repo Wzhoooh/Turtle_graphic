@@ -60,7 +60,7 @@ size_t GetHeapSize(void)
     return total;
 }
 
-int main()
+int t_main()
 {
     size_t size1 = GetHeapSize();
     {

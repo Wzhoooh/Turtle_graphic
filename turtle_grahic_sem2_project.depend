@@ -14,19 +14,17 @@
 	"iterator_impl.hpp"
 	"list_impl.hpp"
 
-1584537268 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_impl.hpp
+1584537460 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_impl.hpp
 	<memory>
 	<utility>
-	<iostream>
 
 1584211936 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\iterator_impl.hpp
 
 1584472497 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\node.hpp
 	<utility>
 
-1584536810 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_tester.cpp
+1584539603 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_tester.cpp
 	<iostream>
-	<fstream>
 	<list>
 	<vector>
 	<string>

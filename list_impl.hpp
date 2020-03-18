@@ -3,7 +3,6 @@
 
 #include <memory>
 #include <utility>
-#include <iostream>
 
 template<class T, class Allocator>
 dataStructures::list<T, Allocator>::list(){}
@@ -29,21 +28,29 @@ dataStructures::list<T, Allocator>::list(list&& source)
 template<class T, class Allocator>
 list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& source)
 {
-    for (Node<T>* n = _first; n->_next != nullptr;)
-    {
-        Node<T>* nextNode = n;
-        std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
-        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n, sizeof(Node<T>));
-        n = nextNode;
-    }
+    auto itThis = this->begin();
+    auto itSource = source.begin();
+    for (; itThis != this->end() && itSource != source.end(); ++itThis, ++itSource)
+        *itThis = *itSource;
 
-    _size = 0;
-
-    for (typename dataStructures::list<T, Allocator>::iterator i = source.begin(); i != source.end(); i++)
+    if (itThis == this->end() && itSource == source.end())
+        ;
+    else if(itThis == this->end() && itSource != source.end())
+        for (; itSource != source.end(); ++itSource)
+            push_back(*itSource);
+    else if(itThis != this->end() && itSource == source.end())
     {
-        push_back(*i);
-        _size++;
+        itThis.node->_prev->_next = nullptr;
+        _size = source.size();
+        for (Node<T>* n = itThis.node; n != nullptr;)
+        {
+            Node<T>* nextNode = n->_next;
+            std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
+            std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n, sizeof(Node<T>));
+            n = nextNode;
+        }
     }
+    return *this;
 }
 
 template<class T, class Allocator>

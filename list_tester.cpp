@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <list>
 #include <vector>
 #include <string>
@@ -89,7 +88,7 @@ int main()
 
         std::cout << "\n---2--------------------\n";
 
-        dataStructures::list<A> list_2(std::move(list_1));
+        dataStructures::list<A> list_2((list_1));
         list_2.push_front(A("90"));
         list_2.push_back(A("100"));
         for (auto&& i : list_2)
@@ -117,12 +116,21 @@ int main()
         std::cout << "\nlast iterator: " << *it_3 << "\n";
         it_3 = list_2.erase(it_3);
         std::cout << "\nlast iterator: " << *it_3 << "\n";
-        it_3 = list_2.erase(it_3);
-        std::cout << "\nlast iterator: " << *it_3 << "\n";
-        it_3 = list_2.erase(it_3);
-        std::cout << "\nlast iterator: " << *it_3 << "\n";
-        it_3 = list_2.erase(it_3);
-        std::cout << "\nlast iterator: " << *it_3 << "\n";
+        for (auto&& i : list_2)
+            std::cout << i << " ";
+
+        std::cout << "\n---5--------------------\n";
+        dataStructures::list<A> list_3;
+        list_3 = list_2;
+        for (auto&& i : list_3)
+            std::cout << i << " ";
+
+        std::cout << "\n";
+        list_3 = list_1;
+        for (auto&& i : list_3)
+            std::cout << i << " ";
+
+        std::cout << "\n-----------------------\n";
     }
     std::cout << "\nMEMORY LEAK: " << GetHeapSize() - size1 << "\n";
 }

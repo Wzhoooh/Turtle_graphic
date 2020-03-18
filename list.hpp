@@ -2,8 +2,6 @@
 #define DATASTRUCTERS_H_INCLUDED
 
 #include <memory>
-#include <iterator>
-#include <algorithm>
 
 namespace dataStructures
 {

@@ -65,14 +65,14 @@ public:
     list& operator =(list&&); // нужно исправить, удаление - не оптимальный путь
     virtual ~list();
 
-    void push_back(T&&);
-    void push_back(const T&);
-    void push_front(T&&);
-    void push_front(const T&);
+template<class T1>
+    void push_back(T1&&);
+template<class T1>
+    void push_front(T1&&);
     void pop_back();
     void pop_front();
-    iterator insert(iterator pos, T&& value);
-    iterator insert(iterator pos, const T& value);
+template<class T1>
+    iterator insert(iterator pos, T1&& value);
     iterator erase(iterator pos);
     size_t size() const noexcept(true);
 

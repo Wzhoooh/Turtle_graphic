@@ -78,31 +78,31 @@ int main()
         for (; it_1 != list_1.end(); ++it_1)
             std::cout << *it_1 << " ";
 
-        std::cout << "\n-----------------------\n";
+        std::cout << "\n---1--------------------\n";
         it_1 = list_1.begin();
         list_1.pop_back();
         list_1.pop_back();
         list_1.pop_front();
         it_1 = list_1.begin();
-        for (; it_1 != list_1.end(); ++it_1)
-            std::cout << *it_1 << " ";
+        for (auto&& i : list_1)
+            std::cout << i << " ";
 
-        std::cout << "\n-----------------------\nlist_2:\n";
+        std::cout << "\n---2--------------------\n";
 
         dataStructures::list<A> list_2(std::move(list_1));
         list_2.push_front(A("90"));
         list_2.push_back(A("100"));
-        for (dataStructures::list<A>::iterator it_2 = list_2.begin(); it_2 != list_2.end(); ++it_2)
-            std::cout << *it_2 << " ";
+        for (auto&& i : list_2)
+            std::cout << i << " ";
 
-        std::cout << "\n-----------------------\n";
+        std::cout << "\n---3--------------------\n";
         dataStructures::list<A>::iterator it_3 = list_2.begin();
         it_3++;it_3++;
         it_3 = list_2.insert(it_3, A("0000"));
         A ob_2("1111");
         it_3 = list_2.insert(it_3, ob_2);
-        for (dataStructures::list<A>::iterator it_2 = list_2.begin(); it_2 != list_2.end(); ++it_2)
-            std::cout << *it_2 << " ";
+        for (auto&& i : list_2)
+            std::cout << i << " ";
 
         std::cout << "\nlast iterator: " << *it_3 << "\n";
         it_3++;
@@ -111,11 +111,7 @@ int main()
         for (auto&& i : list_2)
             std::cout << i << " ";
 
-        std::cout << "\n-----------------------\n";
-//        for (dataStructures::list<A>::iterator it_2 = list_2.begin(); it_2 != list_2.end(); ++it_2)
-//            std::cout << *it_2 << " ";
-
-        std::cout << "\n";
+        std::cout << "\n---4--------------------\n";
         std::cout << "\nlast iterator: " << *it_3 << "\n";
         it_3 = list_2.erase(it_3);
         std::cout << "\nlast iterator: " << *it_3 << "\n";
@@ -128,5 +124,5 @@ int main()
         it_3 = list_2.erase(it_3);
         std::cout << "\nlast iterator: " << *it_3 << "\n";
     }
-    std::cout << GetHeapSize() - size1;
+    std::cout << "\nMEMORY LEAK: " << GetHeapSize() - size1 << "\n";
 }

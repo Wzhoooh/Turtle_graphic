@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1584476084 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\main.cpp
+1584534186 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\main.cpp
 	<iostream>
 	<fstream>
 	<list>
@@ -8,7 +8,7 @@
 	<malloc.h>
 	"list.hpp"
 
-1584520896 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list.hpp
+1584521261 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list.hpp
 	<memory>
 	<iterator>
 	<algorithm>
@@ -16,7 +16,7 @@
 	"iterator_impl.hpp"
 	"list_impl.hpp"
 
-1584520855 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_impl.hpp
+1584534389 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_impl.hpp
 	<memory>
 	<utility>
 	<iostream>

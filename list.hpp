@@ -64,7 +64,7 @@ public:
     list(const list&);
     list(list&&);
     list& operator =(const list&); // нужно исправить, удаление - не оптимальный путь
-    list& operator =(list&&); // нужно исправить, удаление - не оптимальный путь
+    list& operator =(list&&);
     virtual ~list();
 
 template<class T1>

@@ -33,7 +33,7 @@ list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& s
     {
         Node<T>* nextNode = n;
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n);
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n, sizeof(Node<T>));
         n = nextNode;
     }
 
@@ -66,7 +66,7 @@ dataStructures::list<T, Allocator>::~list()
     {
         Node<T>* nextNode = n->_next;
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, n);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n);
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, n, sizeof(Node<T>));
         n = nextNode;
     }
 }
@@ -125,18 +125,18 @@ void dataStructures::list<T, Allocator>::pop_back()
     else if (_size == 1)
     {
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, _first);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, _first);
-        _size--;
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, _first, sizeof(Node<T>));
+        _size = 0;
         _first = nullptr;
         _last = nullptr;
     }
     else
     {
         Node<T>* deleteNode = _last;
-        _last->_prev->_next == nullptr;
         _last = _last->_prev;
+        _last->_next = nullptr;
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, deleteNode);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode);
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode, sizeof(Node<T>));
         _size--;
     }
 }
@@ -151,7 +151,7 @@ void dataStructures::list<T, Allocator>::pop_front()
     else if (_size == 1)
     {
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, _first);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, _first);
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, _first, sizeof(Node<T>));
         _size--;
         _first = nullptr;
         _last = nullptr;
@@ -162,7 +162,7 @@ void dataStructures::list<T, Allocator>::pop_front()
         _first->_next->_prev == nullptr;
         _first = _first->_next;
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, deleteNode);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode);
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode, sizeof(Node<T>));
         _size--;
     }
 }
@@ -215,7 +215,7 @@ typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Al
         pos.node->_prev->_next = pos.node->_next;
         pos.node->_next->_prev = pos.node->_prev;
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, pos.node);
-        //std::allocator_traits<NodeAllocator>::deallocate(_allocNode, pos.node);
+        std::allocator_traits<NodeAllocator>::deallocate(_allocNode, pos.node, sizeof(Node<T>));
         _size--;
         return rIter;
     }

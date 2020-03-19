@@ -1,8 +1,6 @@
 #ifndef DATASTRUCTERS_H_INCLUDED
 #define DATASTRUCTERS_H_INCLUDED
 
-#include <memory>
-
 namespace dataStructures
 {
 

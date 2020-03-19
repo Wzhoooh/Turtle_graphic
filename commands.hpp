@@ -6,6 +6,7 @@
 #include "list.hpp"
 
 class Turtle;
+class Canvas;
 
 class Command
 {
@@ -16,7 +17,6 @@ public:
     {
         throw std::runtime_error("not \"Do\" command");
     }
-//    virtual ~Command() = 0;
 };
 
 class Move: public Command

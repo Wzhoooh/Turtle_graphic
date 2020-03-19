@@ -59,7 +59,7 @@ public:
     list();
     list(const list&);
     list(list&&);
-    list& operator =(const list&); // нужно исправить, удаление - не оптимальный путь
+    list& operator =(const list&);
     list& operator =(list&&);
     virtual ~list();
 

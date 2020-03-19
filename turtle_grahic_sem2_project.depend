@@ -7,7 +7,7 @@
 	"commands.hpp"
 	"turtle.h"
 
-1584624997 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list.hpp
+1584643269 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list.hpp
 	"node.hpp"
 	"iterator_impl.hpp"
 	"list_impl.hpp"
@@ -29,11 +29,11 @@
 	<malloc.h>
 	"list.hpp"
 
-1584625278 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.cpp
+1584641925 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.cpp
 	<iostream>
 	"commands.hpp"
 
-1584625502 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.hpp
+1584641925 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.hpp
 	<exception>
 	<memory>
 	"list.hpp"

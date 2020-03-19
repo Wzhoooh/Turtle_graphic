@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="canvas.hpp" />
 		<Unit filename="commands.cpp" />
 		<Unit filename="commands.hpp" />
 		<Unit filename="iterator_impl.hpp" />
@@ -38,7 +39,8 @@
 		<Unit filename="list_impl.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="node.hpp" />
-		<Unit filename="turtle.h" />
+		<Unit filename="turtle.cpp" />
+		<Unit filename="turtle.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -88,7 +88,7 @@ private:
     Allocator _allocT;
 };
 
-#include "node.hpp"
+#include "node_impl.hpp"
 #include "iterator_impl.hpp"
 #include "list_impl.hpp"
 }

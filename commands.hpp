@@ -153,7 +153,7 @@ public:
 
 private:
     std::shared_ptr<Turtle> _turtle;
-    dataStructures::list<Command> _commands;
+    dataStructures::list<Command*> _commands;
     unsigned int _numReplays;
 };
 

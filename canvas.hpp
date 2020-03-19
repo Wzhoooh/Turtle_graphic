@@ -4,8 +4,8 @@
 class Canvas
 {
 public:
-    Canvas(long long LenVertical, long long lenGorisontal);
-    void printLine(long long x1, long long y1, long long x2, long long y2);
+    Canvas(long long LenVertical, long long lenGorisontal); // all coordinates in pixels
+    void printLine(long long x1, long long y1, long long x2, long long y2); // all coordinates in pixels
     ~Canvas();
 
 private:

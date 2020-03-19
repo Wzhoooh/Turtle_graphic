@@ -22,7 +22,7 @@ int main()
     std::shared_ptr<Command_Fabric> fabric = std::make_shared<Command_Fabric>(turtle); // Command Fabric: will be create commands
     std::shared_ptr<Command_Handler> handler = std::make_shared<Command_Handler>(commandTree); // behaviour class, will be parse an input strings and push commands to the Composite
     Parser parser(input);
-    parser->handle(); // commandTree has a tree of commands now
+    parser.handle(); // commandTree has a tree of commands now
 
     commandTree->execute()
 

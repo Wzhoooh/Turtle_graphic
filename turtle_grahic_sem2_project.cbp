@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="canvas.cpp" />
 		<Unit filename="canvas.hpp" />
 		<Unit filename="commands.cpp" />
 		<Unit filename="commands.hpp" />
@@ -38,7 +39,7 @@
 		<Unit filename="list.hpp" />
 		<Unit filename="list_impl.hpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="node.hpp" />
+		<Unit filename="node_impl.hpp" />
 		<Unit filename="turtle.cpp" />
 		<Unit filename="turtle.hpp" />
 		<Extensions>

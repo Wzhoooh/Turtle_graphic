@@ -4,17 +4,17 @@
 #include <memory>
 
 class Canvas;
+class Define_List;
 
 class Turtle
 {
 public:
-    Turtle(std::shared_ptr<Canvas> canvas);
+    Turtle(std::shared_ptr<Canvas> canvas, std::shared_ptr<Define_List> defineList);
     void move(long double distance);
     void moveTo(long double x, long double y);
-    void changeDirection(long double anglePlus);
+    void changeDirection(long double addAngle);
     void setDirection(long double angle);
     void setPenStatus(bool newStatus);
-    void setWiew(long double x1, long double y1, long double x2, long double y2);
 
 private:
     std::shared_ptr<Canvas> _canvas;

@@ -35,6 +35,10 @@
 		<Unit filename="canvas.hpp" />
 		<Unit filename="commands.cpp" />
 		<Unit filename="commands.hpp" />
+		<Unit filename="composite.cpp" />
+		<Unit filename="composite.hpp" />
+		<Unit filename="define_list.cpp" />
+		<Unit filename="define_list.hpp" />
 		<Unit filename="iterator_impl.hpp" />
 		<Unit filename="list.hpp" />
 		<Unit filename="list_impl.hpp" />

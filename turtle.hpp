@@ -15,14 +15,23 @@ public:
     void changeDirection(long double addAngle);
     void setDirection(long double angle);
     void setPenStatus(bool newStatus);
+    void setPen(int penNumber);
+    void setPenWidth(unsigned width);
+    void setPenColor(char color);
+    void setCanvasParameters(long double x1, long double y1, long double x2, long double y2, char canvasColor);
 
 private:
     std::shared_ptr<Canvas> _canvas;
-    long double _xPos;
-    long double _yPos;
-    long double _direction;
-    bool _penStatus;
-    long double _x1, _y1, _x2, _y2;
+    std::shared_ptr<Define_List> _defineList;
+    long double _xPos = 0;
+    long double _yPos = 0;
+    long double _direction = 0;
+    bool _penStatus = true;
+    unsigned _width = 1;
+    char _color = 0;
+
+    long double _x1 = 0, _y1 = 0, _x2 = 1, _y2 = 1; // coordinates of regading grid of canvas
+    char _canvasColor = 0;
 };
 
 #endif // TURTLE_H_INCLUDED

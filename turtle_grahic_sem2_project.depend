@@ -30,11 +30,12 @@
 	<malloc.h>
 	"list.hpp"
 
-1584641925 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.cpp
+1584899554 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.cpp
 	<iostream>
 	"commands.hpp"
+	"turtle.hpp"
 
-1584643935 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.hpp
+1584898962 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.hpp
 	<exception>
 	<memory>
 	"list.hpp"
@@ -49,7 +50,7 @@
 1584472497 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\node_impl.hpp
 	<utility>
 
-1584874981 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.hpp
+1584899965 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.hpp
 	<memory>
 
 1584644862 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.cpp
@@ -65,14 +66,14 @@
 1584875849 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.cpp
 	"define_list.hpp"
 
-1584877244 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.hpp
+1584896250 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.hpp
 	<memory>
 	"list.hpp"
 
 1584877842 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_factory.cpp
 	"command_factory.hpp"
 
-1584878427 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_factory.hpp
+1584899261 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_factory.hpp
 	<memory>
 
 1584879457 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_handler.cpp

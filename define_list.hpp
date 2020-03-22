@@ -26,7 +26,7 @@ public:
     void applyDefinitioin(int numberOfDefinition);
 
 private:
-    dataStructures::list<std::shared_ptr<Definition>> _definitions;
+    std::shared_ptr<dataStructures::list<std::shared_ptr<Definition>>> _definitions;
 
 };
 

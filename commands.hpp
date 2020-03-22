@@ -13,7 +13,7 @@ class Command
 public:
     virtual void execute() = 0;
     virtual const char* getName() = 0;
-    virtual addCommand(Command&&)
+    virtual void addCommand(std::shared_ptr<Command> newCommand)
     {
         throw std::runtime_error("not \"Do\" command");
     }
@@ -23,7 +23,6 @@ class Move: public Command
 {
 public:
     Move(std::shared_ptr<Turtle> turtle, long double distance);
-    Move(const Move&);
     void execute();
     const char* getName();
 
@@ -36,7 +35,6 @@ class Move_To: public Command
 {
 public:
     Move_To(std::shared_ptr<Turtle> turtle, long double x, long double y);
-    Move_To(const Move_To&);
     void execute();
     const char* getName();
 
@@ -50,7 +48,6 @@ class Turn_Left: public Command
 {
 public:
     Turn_Left(std::shared_ptr<Turtle> turtle);
-    Turn_Left(const Turn_Left&);
     void execute();
     const char* getName();
 
@@ -62,7 +59,6 @@ class Turn_Right: public Command
 {
 public:
     Turn_Right(std::shared_ptr<Turtle> turtle);
-    Turn_Right(const Turn_Right&);
     void execute();
     const char* getName();
 
@@ -74,7 +70,6 @@ class Turn_South: public Command
 {
 public:
     Turn_South(std::shared_ptr<Turtle> turtle);
-    Turn_South(const Turn_South&);
     void execute();
     const char* getName();
 
@@ -86,7 +81,6 @@ class Turn_North: public Command
 {
 public:
     Turn_North(std::shared_ptr<Turtle> turtle);
-    Turn_North(const Turn_North&);
     void execute();
     const char* getName();
 
@@ -98,7 +92,6 @@ class Turn_West: public Command
 {
 public:
     Turn_West(std::shared_ptr<Turtle> turtle);
-    Turn_West(const Turn_West&);
     void execute();
     const char* getName();
 
@@ -110,7 +103,6 @@ class Turn_East: public Command
 {
 public:
     Turn_East(std::shared_ptr<Turtle> turtle);
-    Turn_East(const Turn_East&);
     void execute();
     const char* getName();
 
@@ -122,7 +114,6 @@ class Pen_Down: public Command
 {
 public:
     Pen_Down(std::shared_ptr<Turtle> turtle);
-    Pen_Down(const Pen_Down&);
     void execute();
     const char* getName();
 
@@ -134,7 +125,6 @@ class Pen_Up: public Command
 {
 public:
     Pen_Up(std::shared_ptr<Turtle> turtle);
-    Pen_Up(const Pen_Up&);
     void execute();
     const char* getName();
 
@@ -146,15 +136,39 @@ class Do: public Command
 {
 public:
     Do(std::shared_ptr<Turtle> turtle, unsigned int numReplays);
-    Do(const Do&);
     void execute();
     const char* getName();
-    virtual addCommand(Command&&);
+    void addCommand(std::shared_ptr<Command> newCommand) override;
 
 private:
     std::shared_ptr<Turtle> _turtle;
-    dataStructures::list<Command*> _commands;
+    std::shared_ptr<dataStructures::list<std::shared_ptr<Command>>> _commands;
     unsigned int _numReplays;
+};
+
+class Pen_Definition: public Command
+{
+public:
+    Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, char color);
+    void execute();
+    const char* getName();
+
+private:
+    std::shared_ptr<Turtle> _turtle;
+    unsigned _width;
+    char _color;
+};
+
+class Pen_Selection: public Command
+{
+public:
+    Pen_Selection(std::shared_ptr<Turtle> turtle, int number);
+    void execute();
+    const char* getName();
+
+private:
+    std::shared_ptr<Turtle> _turtle;
+    int _number;
 };
 
 #endif // COMMANDS_HPP_INCLUDED

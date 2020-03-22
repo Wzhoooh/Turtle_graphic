@@ -7,6 +7,11 @@
 #include "canvas.hpp"
 #include "turtle.hpp"
 #include "composite.hpp"
+#include "define_list.hpp"
+#include "command_factory.hpp"
+#include "command_handler.hpp"
+#include "parser.hpp"
+
 
 int main()
 {
@@ -20,13 +25,13 @@ int main()
     std::shared_ptr<Turtle> turtle = std::make_shared<Turtle>(canvas);
 
     std::shared_ptr<Composite> commandTree = std::make_shared<Composite>(); // contains a tree of Commands
-    std::shared_ptr<Define_List> defineList = std::make_shared<Define_List>(turtle); // list of defines
-    std::shared_ptr<Command_Fabric> fabric = std::make_shared<Command_Fabric>(turtle); // Command Fabric: will be create commands
-    std::shared_ptr<Command_Handler> handler = std::make_shared<Command_Handler>(commandTree, defineList); // behaviour class, will be parse an input strings and push commands to the Composite and definitions to the defineList
-    Parser parser(input);
+    std::shared_ptr<Define_List> defineList = std::make_shared<Define_List>(); // list of defines
+    std::shared_ptr<Command_Factory> factory = std::make_shared<Command_Factory>(turtle); // Command Fabric: will be create commands
+    std::shared_ptr<Command_Handler> handler = std::make_shared<Command_Handler>(commandTree, defineList, factory); // behaviour class, will be parse an input strings and push commands to the Composite and definitions to the defineList
+    Parser parser(input, handler);
     parser.handle(); // commandTree has a tree of commands now
 
-    commandTree->execute()
+    commandTree->execute();
 
     std::ofstream os("pattern.bmp");
     Uploader upl(c, os);

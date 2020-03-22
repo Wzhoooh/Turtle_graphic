@@ -44,7 +44,7 @@
 1584643584 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\canvas.cpp
 	"canvas.hpp"
 
-1584876433 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\canvas.hpp
+1584881597 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\canvas.hpp
 
 1584472497 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\node_impl.hpp
 	<utility>
@@ -68,4 +68,24 @@
 1584877244 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.hpp
 	<memory>
 	"list.hpp"
+
+1584877842 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_factory.cpp
+	"command_factory.hpp"
+
+1584878427 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_factory.hpp
+	<memory>
+
+1584879457 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_handler.cpp
+	"command_handler.hpp"
+
+1584881212 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_handler.hpp
+	<memory>
+	"list.hpp"
+	"command_identifiers.hpp"
+
+1584882045 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_identifiers.hpp
+	<memory>
+
+1584881274 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\command_identifiers.cpp
+	"command_identifiers.hpp"
 

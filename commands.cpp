@@ -1,6 +1,8 @@
 #include <iostream>
 #include "commands.hpp"
 #include "turtle.hpp"
+#include "define_list.hpp"
+#include "canvas.hpp"
 
 Move::Move(std::shared_ptr<Turtle> turtle, long double distance): _turtle(turtle), _distance(distance)
 {}
@@ -129,7 +131,7 @@ void Do::addCommand(std::shared_ptr<Command> newCommand)
     _commands->push_back(newCommand);
 }
 
-Pen_Definition::Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, char color):
+Pen_Definition::Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, rgb color):
 _turtle(turtle), _width(width), _color(color)
 {}
 void Pen_Definition::execute()
@@ -142,16 +144,31 @@ const char* Pen_Definition::getName()
     return "Pen_Definition";
 }
 
-Pen_Selection::Pen_Selection(std::shared_ptr<Turtle> turtle, int number): _number(number)
+Pen_Selection::Pen_Selection(std::shared_ptr<Define_List> defList, int number): _defList(defList), _number(number)
 {}
 void Pen_Selection::execute()
 {
-    _turtle->setPen(_number);
+    _defList->applyDefinition(_number);
 }
 const char* Pen_Selection::getName()
 {
     return "Pen_Selection";
 }
 
-
+Canvas_Definition::Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
+    rgb color): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _p1({0, 0}), _p2({1, 1})
+{}
+Canvas_Definition::Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
+    rgb color, point_LD p1, point_LD p2): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _p1(p1), _p2(p2)
+{}
+void Canvas_Definition::execute()
+{
+    _canvas->setSizeBitMap(_sizeBitMap);
+    _canvas->setCanvasColor(_color);
+    _turtle->setCanvasParameters(_p1, _p2);
+}
+const char* Canvas_Definition::getName()
+{
+    return "Canvas_Definition";
+}
 

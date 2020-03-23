@@ -21,13 +21,14 @@ private:
 class Define_List
 {
 public:
-    Define_List();
-    void addDefinition(std::shared_ptr<Definition> definition);
-    void applyDefinitioin(int numberOfDefinition);
+    void addPenDefinition(std::shared_ptr<Definition> penDefinition);
+    void addCanvasDefinition(std::shared_ptr<Command> canvasDefinition);
+    void applyDefinition(int numberOfDefinition);
+    void applyCanvasDefinition();
 
 private:
-    std::shared_ptr<dataStructures::list<std::shared_ptr<Definition>>> _definitions;
-
+    std::shared_ptr<dataStructures::list<std::shared_ptr<Definition>>> _penDefinitions;
+    std::shared_ptr<Command> _canvasDefinition;
 };
 
 #endif // DEFINE_LIST_HPP_INCLUDED

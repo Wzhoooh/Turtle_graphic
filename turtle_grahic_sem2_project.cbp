@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="add_structures.hpp" />
 		<Unit filename="canvas.cpp" />
 		<Unit filename="canvas.hpp" />
 		<Unit filename="command_factory.cpp" />

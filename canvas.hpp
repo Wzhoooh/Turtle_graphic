@@ -1,19 +1,21 @@
 #ifndef CANVAS_HPP_INCLUDED
 #define CANVAS_HPP_INCLUDED
 
-class Canvas
+#include "add_structures.hpp"
+
+class Canvas // all coordinates in pixels
 {
 public:
-    Canvas(long long LenVertical, long long lenGorisontal); // all coordinates in pixels
-    void printLine(long long x1, long long y1, long long x2, long long y2, char color, int width); // all coordinates in pixels
-    long long getLenVertical();
-    long long getlenGorisontal();
+    void printLine(point_LL point1, point_LL point2, rgb color, unsigned width); // all coordinates in pixels
+    point_LL getSizeBitMap() const;
+    void setSizeBitMap(point_LL sizeBitMap);
+    void setCanvasColor(rgb canvasColor);
     ~Canvas();
 
 private:
     char* _bitMap;
-    long long _LenVertical;
-    long long _lenGorisontal;
+    point_LL _sizeBitMap;
+    rgb _canvasColor;
 };
 
 #endif // CANVAS_HPP_INCLUDED

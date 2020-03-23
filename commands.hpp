@@ -4,9 +4,11 @@
 #include <exception>
 #include <memory>
 #include "list.hpp"
+#include "add_structures.hpp"
 
 class Turtle;
 class Canvas;
+class Define_List;
 
 class Command
 {
@@ -149,26 +151,44 @@ private:
 class Pen_Definition: public Command
 {
 public:
-    Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, char color);
+    Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, rgb color);
     void execute();
     const char* getName();
 
 private:
     std::shared_ptr<Turtle> _turtle;
     unsigned _width;
-    char _color;
+    rgb _color;
 };
 
 class Pen_Selection: public Command
 {
 public:
-    Pen_Selection(std::shared_ptr<Turtle> turtle, int number);
+    Pen_Selection(std::shared_ptr<Define_List> defList, int number);
+    void execute();
+    const char* getName();
+
+private:
+    std::shared_ptr<Define_List> _defList;
+    int _number;
+};
+
+class Canvas_Definition: public Command
+{
+public:
+    Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
+                      rgb color);
+    Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
+                      rgb color, point_LD p1, point_LD p2);
     void execute();
     const char* getName();
 
 private:
     std::shared_ptr<Turtle> _turtle;
-    int _number;
+    std::shared_ptr<Canvas> _canvas;
+    point_LL _sizeBitMap;
+    rgb _color;
+    point_LD _p1, _p2;
 };
 
 #endif // COMMANDS_HPP_INCLUDED

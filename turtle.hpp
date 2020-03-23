@@ -2,6 +2,7 @@
 #define TURTLE_H_INCLUDED
 
 #include <memory>
+#include "add_structures.hpp"
 
 class Canvas;
 class Define_List;
@@ -15,23 +16,21 @@ public:
     void changeDirection(long double addAngle);
     void setDirection(long double angle);
     void setPenStatus(bool newStatus);
-    void setPen(int penNumber);
     void setPenWidth(unsigned width);
-    void setPenColor(char color);
-    void setCanvasParameters(long double x1, long double y1, long double x2, long double y2, char canvasColor);
+    void setPenColor(rgb color);
+    void setCanvasParameters(point_LD p1, point_LD p2);
 
 private:
     std::shared_ptr<Canvas> _canvas;
     std::shared_ptr<Define_List> _defineList;
-    long double _xPos = 0;
-    long double _yPos = 0;
+    point_LD _pos;
     long double _direction = 0;
-    bool _penStatus = true;
+    bool _penStatus = false;
     unsigned _width = 1;
-    char _color = 0;
+    rgb _color;
 
-    long double _x1 = 0, _y1 = 0, _x2 = 1, _y2 = 1; // coordinates of regading grid of canvas
-    char _canvasColor = 0;
+    point_LD _leftDownCorner;
+    point_LD _rigtUpCorner; // coordinates of regading grid of canvas
 };
 
 #endif // TURTLE_H_INCLUDED

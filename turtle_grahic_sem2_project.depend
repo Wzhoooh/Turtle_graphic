@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1584951548 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\main.cpp
+1584971869 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\main.cpp
 	<iostream>
 	<fstream>
 	<memory>
@@ -13,12 +13,13 @@
 	"command_handler.hpp"
 	"parser.hpp"
 
-1584643947 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list.hpp
+1584970622 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list.hpp
 	"node_impl.hpp"
 	"iterator_impl.hpp"
 	"list_impl.hpp"
 
-1584537460 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_impl.hpp
+1584971618 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\list_impl.hpp
+	<stdio.h>
 	<memory>
 	<utility>
 
@@ -35,7 +36,7 @@
 	<malloc.h>
 	"list.hpp"
 
-1584955266 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.cpp
+1584972491 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\commands.cpp
 	<iostream>
 	"commands.hpp"
 	"turtle.hpp"
@@ -50,21 +51,21 @@
 
 1584625384 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.h
 
-1584953332 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\canvas.cpp
+1584972013 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\canvas.cpp
 	<iostream>
 	"canvas.hpp"
 
 1584953332 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\canvas.hpp
 	"add_structures.hpp"
 
-1584472497 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\node_impl.hpp
+1584964335 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\node_impl.hpp
 	<utility>
 
 1584953110 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.hpp
 	<memory>
 	"add_structures.hpp"
 
-1584953656 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.cpp
+1584955013 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\turtle.cpp
 	<math.h>
 	"turtle.hpp"
 	"canvas.hpp"
@@ -76,11 +77,11 @@
 	<memory>
 	"list.hpp"
 
-1584954310 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.cpp
+1584971892 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.cpp
 	"define_list.hpp"
 	"commands.hpp"
 
-1584954289 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.hpp
+1584971869 c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\define_list.hpp
 	<memory>
 	"list.hpp"
 

@@ -114,7 +114,8 @@ const char* Pen_Up::getName()
     return "Pen_Up";
 }
 
-Do::Do(std::shared_ptr<Turtle> turtle, unsigned int numReplays): _turtle(turtle), _numReplays(numReplays)
+Do::Do(std::shared_ptr<Turtle> turtle, unsigned int numReplays): _turtle(turtle), _numReplays(numReplays),
+    _commands(std::make_shared<dataStructures::list<std::shared_ptr<Command>>>())
 {}
 void Do::execute()
 {
@@ -156,10 +157,10 @@ const char* Pen_Selection::getName()
 }
 
 Canvas_Definition::Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
-    rgb color): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _p1({0, 0}), _p2({1, 1})
+    rgb color): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _color(color), _p1({0, 0}), _p2({1, 1})
 {}
 Canvas_Definition::Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
-    rgb color, point_LD p1, point_LD p2): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _p1(p1), _p2(p2)
+    rgb color, point_LD p1, point_LD p2): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _color(color), _p1(p1), _p2(p2)
 {}
 void Canvas_Definition::execute()
 {

@@ -21,6 +21,7 @@ private:
 class Define_List
 {
 public:
+    Define_List();
     void addPenDefinition(std::shared_ptr<Definition> penDefinition);
     void addCanvasDefinition(std::shared_ptr<Command> canvasDefinition);
     void applyDefinition(int numberOfDefinition);

@@ -1,6 +1,7 @@
 #ifndef LIST_IMPL_HPP_INCLUDED
 #define LIST_IMPL_HPP_INCLUDED
 
+#include <stdio.h>
 #include <memory>
 #include <utility>
 

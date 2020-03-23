@@ -7,8 +7,9 @@ namespace dataStructures
 template <class T>
 struct Node
 {
-    Node(T&& source);
     Node(const T& source);
+template <class T1>
+    Node(T1&& source);
 
     T content;
     Node<T>* _prev = nullptr;

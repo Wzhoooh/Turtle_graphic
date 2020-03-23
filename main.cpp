@@ -12,7 +12,6 @@
 #include "command_handler.hpp"
 #include "parser.hpp"
 
-
 int main()
 {
 //    std::ifstream is;
@@ -41,11 +40,15 @@ int main()
     std::shared_ptr<Define_List> defineList = std::make_shared<Define_List>();
     std::shared_ptr<Turtle> turtle = std::make_shared<Turtle>(canvas, defineList);
 
-    //std::shared_ptr<Command> def = std::make_shared<Canvas_Definition>( canvas, turtle, {100, 100}, {4, 2, 1}, {-5.3, 3}, {10, 10} );
-    //defineList->addCanvasDefinition(def);
-    //defineList->applyCanvasDefinition();
-    std::shared_ptr<Command> c = std::make_shared<Do>(turtle, 5);
-    c->addCommand(std::make_shared<Move>(turtle, 3));
+    point_LL size = {100, 200};
+    rgb color = {4, 2, 1};
+    std::shared_ptr<Command> def = std::make_shared<Canvas_Definition>( canvas, turtle, size, color);
+    defineList->addCanvasDefinition(def);
+    defineList->applyCanvasDefinition();
+    std::shared_ptr<Command> c = std::make_shared<Do>(turtle, 1);
+    c->addCommand(std::make_shared<Move>(turtle, .21));
+    c->addCommand(std::make_shared<Turn_East>(turtle));
+    c->addCommand(std::make_shared<Move>(turtle, .33));
+    c->addCommand(std::make_shared<Move_To>(turtle, .9, .8));
     c->execute();
-
 }

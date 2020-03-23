@@ -13,6 +13,8 @@ void Definition::apply()
     _command->execute();
 }
 
+Define_List::Define_List(): _penDefinitions(std::make_shared<dataStructures::list<std::shared_ptr<Definition>>>())
+{}
 void Define_List::addPenDefinition(std::shared_ptr<Definition> penDefinition)
 {
     _penDefinitions->push_back(penDefinition);

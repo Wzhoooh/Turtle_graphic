@@ -1,7 +1,7 @@
 #ifndef CANVAS_HPP_INCLUDED
 #define CANVAS_HPP_INCLUDED
 
-#include "add_structures.hpp"
+#include "primitives.hpp"
 
 class Canvas // all coordinates in pixels
 {

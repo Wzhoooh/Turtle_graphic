@@ -4,7 +4,7 @@
 #include <exception>
 #include <memory>
 #include "list.hpp"
-#include "add_structures.hpp"
+#include "primitives.hpp"
 
 class Turtle;
 class Canvas;
@@ -24,26 +24,25 @@ public:
 class Move: public Command
 {
 public:
-    Move(std::shared_ptr<Turtle> turtle, long double distance);
+    Move(std::shared_ptr<Turtle> turtle, double distance);
     void execute();
     const char* getName();
 
 private:
     std::shared_ptr<Turtle> _turtle;
-    long double _distance;
+    double _distance;
 };
 
 class Move_To: public Command
 {
 public:
-    Move_To(std::shared_ptr<Turtle> turtle, long double x, long double y);
+    Move_To(std::shared_ptr<Turtle> turtle, point_D newPoint);
     void execute();
     const char* getName();
 
 private:
     std::shared_ptr<Turtle> _turtle;
-    long double _x;
-    long double _y;
+    point_D _newPoint;
 };
 
 class Turn_Left: public Command
@@ -179,7 +178,7 @@ public:
     Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
                       rgb color);
     Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
-                      rgb color, point_LD p1, point_LD p2);
+                      rgb color, point_D p1, point_D p2);
     void execute();
     const char* getName();
 
@@ -188,7 +187,7 @@ private:
     std::shared_ptr<Canvas> _canvas;
     point_LL _sizeBitMap;
     rgb _color;
-    point_LD _p1, _p2;
+    point_D _p1, _p2;
 };
 
 #endif // COMMANDS_HPP_INCLUDED

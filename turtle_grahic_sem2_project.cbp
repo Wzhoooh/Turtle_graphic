@@ -31,7 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="add_structures.hpp" />
 		<Unit filename="canvas.cpp" />
 		<Unit filename="canvas.hpp" />
 		<Unit filename="command_factory.cpp" />
@@ -53,6 +52,7 @@
 		<Unit filename="node_impl.hpp" />
 		<Unit filename="parser.cpp" />
 		<Unit filename="parser.hpp" />
+		<Unit filename="primitives.hpp" />
 		<Unit filename="turtle.cpp" />
 		<Unit filename="turtle.hpp" />
 		<Extensions>

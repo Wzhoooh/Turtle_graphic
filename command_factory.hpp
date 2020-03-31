@@ -10,8 +10,8 @@ class Command_Factory
 {
 public:
     Command_Factory(std::shared_ptr<Turtle> turtle);
-    std::shared_ptr<Command> createMove(long double distance);
-    std::shared_ptr<Command> createMove_To(long double x, long double y);
+    std::shared_ptr<Command> createMove(double distance);
+    std::shared_ptr<Command> createMove_To(double x, double y);
     std::shared_ptr<Command> createTurn_Left();
     std::shared_ptr<Command> createTurn_Right();
     std::shared_ptr<Command> createTurn_South();

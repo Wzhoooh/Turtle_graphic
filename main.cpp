@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
-#include <math.h>
+#include <cmath>
 
 #include "list.hpp"
 #include "commands.hpp"
@@ -37,23 +37,23 @@ int main()
 ////    Uploader upl(c, os);
 ////    upl.upload();
 
-    long double n = 3.1415 / 2;
-std::cout << sinl(n) << "\n";
     std::shared_ptr<Canvas> canvas = std::make_shared<Canvas>();
     std::shared_ptr<Define_List> defineList = std::make_shared<Define_List>();
     std::shared_ptr<Turtle> turtle = std::make_shared<Turtle>(canvas, defineList);
 
     point_LL size = {10, 10};
     rgb color = {4, 2, 1};
-    point_LD p1 = {0, 0};
-    point_LD p2 = {10, 10};
-    std::shared_ptr<Command> def = std::make_shared<Canvas_Definition>( canvas, turtle, size, color);
+    point_D p1 = {0, 0};
+    point_D p2 = {10, 10};
+    std::shared_ptr<Command> def = std::make_shared<Canvas_Definition>
+                ( canvas, turtle, size, color, p1, p2);
     defineList->addCanvasDefinition(def);
     defineList->applyCanvasDefinition();
     std::shared_ptr<Command> c = std::make_shared<Do>(turtle, 1);
     c->addCommand(std::make_shared<Move>(turtle, 2));
-    c->addCommand(std::make_shared<Turn_East>(turtle));
+    c->addCommand(std::make_shared<Turn_North>(turtle));
     c->addCommand(std::make_shared<Move>(turtle, 5));
-    c->addCommand(std::make_shared<Move_To>(turtle, 9, 8));
+    point_D moveTo = {9, 8};
+    c->addCommand(std::make_shared<Move_To>(turtle, moveTo));
     c->execute();
 }

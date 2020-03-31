@@ -4,7 +4,7 @@
 #include "define_list.hpp"
 #include "canvas.hpp"
 
-Move::Move(std::shared_ptr<Turtle> turtle, long double distance): _turtle(turtle), _distance(distance)
+Move::Move(std::shared_ptr<Turtle> turtle, double distance): _turtle(turtle), _distance(distance)
 {}
 void Move::execute()
 {
@@ -15,11 +15,11 @@ const char* Move::getName()
     return "Move";
 }
 
-Move_To::Move_To(std::shared_ptr<Turtle> turtle, long double x, long double y): _turtle(turtle), _x(x), _y(y)
+Move_To::Move_To(std::shared_ptr<Turtle> turtle, point_D newPoint): _turtle(turtle), _newPoint(newPoint)
 {}
 void Move_To::execute()
 {
-    _turtle->moveTo(_x, _y);
+    _turtle->moveTo(_newPoint);
 }
 const char* Move_To::getName()
 {
@@ -52,7 +52,7 @@ Turn_South::Turn_South(std::shared_ptr<Turtle> turtle): _turtle(turtle)
 {}
 void Turn_South::execute()
 {
-    _turtle->setDirection(180);
+    _turtle->setDirection(270);
 }
 const char* Turn_South::getName()
 {
@@ -63,7 +63,7 @@ Turn_North::Turn_North(std::shared_ptr<Turtle> turtle): _turtle(turtle)
 {}
 void Turn_North::execute()
 {
-    _turtle->setDirection(0);
+    _turtle->setDirection(90);
 }
 const char* Turn_North::getName()
 {
@@ -74,7 +74,7 @@ Turn_West::Turn_West(std::shared_ptr<Turtle> turtle): _turtle(turtle)
 {}
 void Turn_West::execute()
 {
-    _turtle->setDirection(270);
+    _turtle->setDirection(180);
 }
 const char* Turn_West::getName()
 {
@@ -85,7 +85,7 @@ Turn_East::Turn_East(std::shared_ptr<Turtle> turtle): _turtle(turtle)
 {}
 void Turn_East::execute()
 {
-    _turtle->setDirection(90);
+    _turtle->setDirection(0);
 }
 const char* Turn_East::getName()
 {
@@ -160,7 +160,7 @@ Canvas_Definition::Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared
     rgb color): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _color(color), _p1({0, 0}), _p2({1, 1})
 {}
 Canvas_Definition::Canvas_Definition(std::shared_ptr<Canvas> canvas, std::shared_ptr<Turtle> turtle, point_LL sizeBitMap,
-    rgb color, point_LD p1, point_LD p2): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _color(color), _p1(p1), _p2(p2)
+    rgb color, point_D p1, point_D p2): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap), _color(color), _p1(p1), _p2(p2)
 {}
 void Canvas_Definition::execute()
 {

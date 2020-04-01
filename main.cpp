@@ -43,10 +43,10 @@ int main()
     std::shared_ptr<Command_Factory> factory = std::make_shared<Command_Factory>(turtle, canvas,
                                                                                  defineList);
 
-    point_LL size = {10, 10};
+    point_LL size = {13, 13};
     rgb color = {4, 2, 1};
     point_D p1 = {0, 0};
-    point_D p2 = {10, 10};
+    point_D p2 = {4, 4};
     std::shared_ptr<Command> def = factory->crCanvas_Definition(size, color, p1, p2);
 
     defineList->addCanvasDefinition(def);
@@ -57,13 +57,25 @@ int main()
     defineList->addPenDefinition(factory->crPen_Definition(3, color1), 2);
     defineList->addPenDefinition(factory->crPen_Definition(4, color2), 5);
 
+    std::shared_ptr<Composite> algo = std::make_shared<Composite>(factory);
+    algo->addCommand(factory->crPen_Selection(5));
+    algo->addCommand(factory->crDo(1));
+    algo->addCommand(factory->crMove(std::sqrt((2.0/3)*(2.0/3) + (2.0/3)*(2.0/3))));
+    algo->addCommand(factory->crTurn(-90));
+    algo->addCommand(factory->crMove(std::sqrt((1.0/3)*(1.0/3) + (1.0/3)*(1.0/3))));
+    algo->addCommand(factory->crTurn(45));
+    algo->addCommand(factory->crPen_Selection(2));
+    algo->addCommand(factory->crMove(1));
+    algo->execute();
 
-    std::shared_ptr<Command> c = factory->crDo(1);
-    c->addCommand(factory->crPen_Selection(5));
-    c->addCommand(factory->crMove(2));
-    c->addCommand(factory->crTurn(45));
-    c->addCommand(factory->crMove(std::sqrt(8)));
-    point_D moveTo = {9, 8};
-    c->addCommand(factory->crMove_To(moveTo));
-    c->execute();
+//    std::shared_ptr<Command> c = factory->crDo(1);
+//    c->addCommand(factory->crPen_Selection(5));
+//    c->addCommand(factory->crTurn(45));
+//    c->addCommand(factory->crMove(std::sqrt((2.0/3)*(2.0/3) + (2.0/3)*(2.0/3))));
+//    c->addCommand(factory->crTurn(-90));
+//    c->addCommand(factory->crMove(std::sqrt((1.0/3)*(1.0/3) + (1.0/3)*(1.0/3))));
+//    c->addCommand(factory->crTurn(45));
+//    c->addCommand(factory->crMove(2));
+//
+//    c->execute();
 }

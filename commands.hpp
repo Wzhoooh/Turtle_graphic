@@ -162,13 +162,13 @@ private:
 class Pen_Definition: public Command
 {
 public:
-    Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, rgb color);
+    Pen_Definition(std::shared_ptr<Turtle> turtle, double width, rgb color);
     void execute();
     const char* getName();
 
 private:
     std::shared_ptr<Turtle> _turtle;
-    unsigned _width;
+    double _width;
     rgb _color;
 };
 

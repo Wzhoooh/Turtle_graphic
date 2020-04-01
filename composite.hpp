@@ -5,19 +5,19 @@
 #include "list.hpp"
 
 class Command;
+class Command_Factory;
 
 class Composite
 {
 public:
-    Composite();
-    void addSimleCommand(std::shared_ptr<Command> command);
-    void addCycle(std::shared_ptr<Command> command);
-    void goUp();
+    Composite(std::shared_ptr<Command_Factory> factory);
+    void addCommand(std::shared_ptr<Command> command);
+    void finishBlok();
     void execute();
 
 private:
     std::shared_ptr<Command> _commands;
-    dataStructures::list<std::shared_ptr<Command>> _commandsStack;
+    std::shared_ptr<dataStructures::list<std::shared_ptr<Command>>> _commandsStack;
 };
 
 #endif // COMPOSITE_HPP_INCLUDED

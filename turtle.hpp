@@ -16,7 +16,7 @@ public:
     void changeDirection(double addAngle);
     void setDirection(double angle);
     void setPenStatus(bool newStatus);
-    void setPenWidth(unsigned width);
+    void setPenWidth(double width);
     void setPenColor(rgb color);
     void setCanvasParameters(point_D p1, point_D p2);
 
@@ -29,7 +29,7 @@ private:
     point_D _pos;
     double _direction;
     bool _penStatus = false;
-    unsigned _width = 1;
+    double _width = 1;
     rgb _color;
 
     point_D _leftDownCorner;

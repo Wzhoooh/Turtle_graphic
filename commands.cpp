@@ -141,9 +141,10 @@ const char* Do::getName()
 void Do::addCommand(std::shared_ptr<Command> newCommand)
 {
     _commands->push_back(newCommand);
+std::cout << "add to cycle\n";
 }
 
-Pen_Definition::Pen_Definition(std::shared_ptr<Turtle> turtle, unsigned width, rgb color):
+Pen_Definition::Pen_Definition(std::shared_ptr<Turtle> turtle, double width, rgb color):
 _turtle(turtle), _width(width), _color(color)
 {}
 void Pen_Definition::execute()

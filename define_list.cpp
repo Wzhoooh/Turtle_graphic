@@ -1,23 +1,12 @@
 #include "define_list.hpp"
 #include "commands.hpp"
 
-Definition::Definition(int numberOfDefinition, std::shared_ptr<Command> command): _numberOfDefinition(numberOfDefinition),
-_command(command)
+Define_List::Define_List():
+    _penDefinitions(std::make_shared<dataStructures::list<std::pair<std::shared_ptr<Command>, int>>>())
 {}
-int Definition::getNumber()
+void Define_List::addPenDefinition(std::shared_ptr<Command> penDefinition, int number)
 {
-    return _numberOfDefinition;
-}
-void Definition::apply()
-{
-    _command->execute();
-}
-
-Define_List::Define_List(): _penDefinitions(std::make_shared<dataStructures::list<std::shared_ptr<Definition>>>())
-{}
-void Define_List::addPenDefinition(std::shared_ptr<Definition> penDefinition)
-{
-    _penDefinitions->push_back(penDefinition);
+    _penDefinitions->push_back(std::make_pair(penDefinition, number));
 }
 void Define_List::addCanvasDefinition(std::shared_ptr<Command> canvasDefinition)
 {
@@ -26,9 +15,9 @@ void Define_List::addCanvasDefinition(std::shared_ptr<Command> canvasDefinition)
 void Define_List::applyDefinition(int numberOfDefinition)
 {
     for (auto&& i : *_penDefinitions)
-        if (i->getNumber() == numberOfDefinition)
+        if (i.second == numberOfDefinition)
         {
-            i->apply();
+            i.first->execute();
             return;
         }
 

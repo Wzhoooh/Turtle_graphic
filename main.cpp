@@ -47,12 +47,21 @@ int main()
     point_D p2 = {10, 10};
     std::shared_ptr<Command> def = std::make_shared<Canvas_Definition>
                 ( canvas, turtle, size, color, p1, p2);
+
     defineList->addCanvasDefinition(def);
     defineList->applyCanvasDefinition();
+
+    rgb color1 = {0, 2, 6};
+    rgb color2 = {1, 3, 5};
+    defineList->addPenDefinition(std::make_shared<Pen_Definition>(turtle, 3, color1), 2);
+    defineList->addPenDefinition(std::make_shared<Pen_Definition>(turtle, 4, color2), 5);
+
+
     std::shared_ptr<Command> c = std::make_shared<Do>(turtle, 1);
+    c->addCommand(std::make_shared<Pen_Selection>(defineList, 5));
     c->addCommand(std::make_shared<Move>(turtle, 2));
-    c->addCommand(std::make_shared<Turn_North>(turtle));
-    c->addCommand(std::make_shared<Move>(turtle, 5));
+    c->addCommand(std::make_shared<Turn>(turtle, 45));
+    c->addCommand(std::make_shared<Move>(turtle, std::sqrt(8)));
     point_D moveTo = {9, 8};
     c->addCommand(std::make_shared<Move_To>(turtle, moveTo));
     c->execute();

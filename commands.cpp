@@ -26,6 +26,17 @@ const char* Move_To::getName()
     return "Move_To";
 }
 
+Turn::Turn(std::shared_ptr<Turtle> turtle, double angle): _turtle(turtle), _angle(angle)
+{}
+void Turn::execute()
+{
+    _turtle->changeDirection(_angle);
+}
+const char* Turn::getName()
+{
+    return "Turn";
+}
+
 Turn_Left::Turn_Left(std::shared_ptr<Turtle> turtle): _turtle(turtle)
 {}
 void Turn_Left::execute()

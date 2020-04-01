@@ -45,6 +45,18 @@ private:
     point_D _newPoint;
 };
 
+class Turn: public Command
+{
+public:
+    Turn(std::shared_ptr<Turtle> turtle, double angle);
+    void execute();
+    const char* getName();
+
+private:
+    std::shared_ptr<Turtle> _turtle;
+    double _angle;
+};
+
 class Turn_Left: public Command
 {
 public:

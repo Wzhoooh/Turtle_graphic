@@ -2,28 +2,41 @@
 #define COMMAND_FACTORY_HPP_INCLUDED
 
 #include <memory>
+#include "primitives.hpp"
 
 class Turtle;
+class Canvas;
+class Define_List;
 class Command;
 
 class Command_Factory
 {
 public:
-    Command_Factory(std::shared_ptr<Turtle> turtle);
-    std::shared_ptr<Command> createMove(double distance);
-    std::shared_ptr<Command> createMove_To(double x, double y);
-    std::shared_ptr<Command> createTurn_Left();
-    std::shared_ptr<Command> createTurn_Right();
-    std::shared_ptr<Command> createTurn_South();
-    std::shared_ptr<Command> createTurn_North();
-    std::shared_ptr<Command> createTurn_West();
-    std::shared_ptr<Command> createTurn_East();
-    std::shared_ptr<Command> createPen_Down();
-    std::shared_ptr<Command> createPen_Up();
-    std::shared_ptr<Command> createDo(unsigned int numReplays);
-    std::shared_ptr<Command> createPen_Definition(int number, unsigned width, char color);
+    Command_Factory(std::shared_ptr<Turtle> turtle, std::shared_ptr<Canvas> canvas,
+                    std::shared_ptr<Define_List> defList);
+    std::shared_ptr<Command> crMove(double distance);
+    std::shared_ptr<Command> crMove_To(point_D newPoint);
+    std::shared_ptr<Command> crTurn(double angle);
+    std::shared_ptr<Command> crTurn_Left();
+    std::shared_ptr<Command> crTurn_Right();
+    std::shared_ptr<Command> crTurn_South();
+    std::shared_ptr<Command> crTurn_North();
+    std::shared_ptr<Command> crTurn_West();
+    std::shared_ptr<Command> crTurn_East();
+    std::shared_ptr<Command> crPen_Down();
+    std::shared_ptr<Command> crPen_Up();
+    std::shared_ptr<Command> crDo(unsigned int numReplays);
+    std::shared_ptr<Command> crPen_Definition(unsigned width, rgb color);
+    std::shared_ptr<Command> crPen_Selection(int number);
+    std::shared_ptr<Command> crCanvas_Definition(point_LL sizeBitMap, rgb color);
+    std::shared_ptr<Command> crCanvas_Definition(point_LL sizeBitMap, rgb color,
+                                                     point_D p1, point_D p2);
 
 private:
+    std::shared_ptr<Turtle> _turtle;
+    std::shared_ptr<Canvas> _canvas;
+    std::shared_ptr<Define_List> _defList;
+
     std::shared_ptr<Command> _turnSouth;
     std::shared_ptr<Command> _turnNorth;
     std::shared_ptr<Command> _turnWest;

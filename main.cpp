@@ -40,29 +40,30 @@ int main()
     std::shared_ptr<Canvas> canvas = std::make_shared<Canvas>();
     std::shared_ptr<Define_List> defineList = std::make_shared<Define_List>();
     std::shared_ptr<Turtle> turtle = std::make_shared<Turtle>(canvas, defineList);
+    std::shared_ptr<Command_Factory> factory = std::make_shared<Command_Factory>(turtle, canvas,
+                                                                                 defineList);
 
     point_LL size = {10, 10};
     rgb color = {4, 2, 1};
     point_D p1 = {0, 0};
     point_D p2 = {10, 10};
-    std::shared_ptr<Command> def = std::make_shared<Canvas_Definition>
-                ( canvas, turtle, size, color, p1, p2);
+    std::shared_ptr<Command> def = factory->crCanvas_Definition(size, color, p1, p2);
 
     defineList->addCanvasDefinition(def);
     defineList->applyCanvasDefinition();
 
     rgb color1 = {0, 2, 6};
     rgb color2 = {1, 3, 5};
-    defineList->addPenDefinition(std::make_shared<Pen_Definition>(turtle, 3, color1), 2);
-    defineList->addPenDefinition(std::make_shared<Pen_Definition>(turtle, 4, color2), 5);
+    defineList->addPenDefinition(factory->crPen_Definition(3, color1), 2);
+    defineList->addPenDefinition(factory->crPen_Definition(4, color2), 5);
 
 
-    std::shared_ptr<Command> c = std::make_shared<Do>(turtle, 1);
-    c->addCommand(std::make_shared<Pen_Selection>(defineList, 5));
-    c->addCommand(std::make_shared<Move>(turtle, 2));
-    c->addCommand(std::make_shared<Turn>(turtle, 45));
-    c->addCommand(std::make_shared<Move>(turtle, std::sqrt(8)));
+    std::shared_ptr<Command> c = factory->crDo(1);
+    c->addCommand(factory->crPen_Selection(5));
+    c->addCommand(factory->crMove(2));
+    c->addCommand(factory->crTurn(45));
+    c->addCommand(factory->crMove(std::sqrt(8)));
     point_D moveTo = {9, 8};
-    c->addCommand(std::make_shared<Move_To>(turtle, moveTo));
+    c->addCommand(factory->crMove_To(moveTo));
     c->execute();
 }

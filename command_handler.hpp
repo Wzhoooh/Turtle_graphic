@@ -13,8 +13,8 @@ class Command_Identifier;
 class Command_Handler
 {
 public:
-    Command_Handler(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-                    std::shared_ptr<Command_Factory> factory);
+    Command_Handler(std::shared_ptr<Composite> composite,
+        std::shared_ptr<Define_List> defineList, std::shared_ptr<Command_Factory> factory);
     void handleStr(const char* s);
 
 private:

@@ -11,6 +11,7 @@
 #include "define_list.hpp"
 #include "command_factory.hpp"
 #include "command_handler.hpp"
+#include "command_identifiers.hpp"
 #include "parser.hpp"
 
 int main()
@@ -59,23 +60,20 @@ int main()
 
     std::shared_ptr<Composite> algo = std::make_shared<Composite>(factory);
     algo->addCommand(factory->crPen_Selection(5));
-    algo->addCommand(factory->crDo(1));
-    algo->addCommand(factory->crMove(std::sqrt((2.0/3)*(2.0/3) + (2.0/3)*(2.0/3))));
-    algo->addCommand(factory->crTurn(-90));
-    algo->addCommand(factory->crMove(std::sqrt((1.0/3)*(1.0/3) + (1.0/3)*(1.0/3))));
+    algo->addCommand(factory->crDo(3));
+    algo->addCommand(factory->crMove(2));
+    algo->addCommand(factory->crTurn(90));
+    algo->finishBlok();
+    algo->addCommand(factory->crTurn_East());
     algo->addCommand(factory->crTurn(45));
-    algo->addCommand(factory->crPen_Selection(2));
-    algo->addCommand(factory->crMove(1));
+    algo->addCommand(factory->crMove(std::sqrt(2)));
+    algo->addCommand(factory->crTurn(-45));
+    algo->addCommand(factory->crMove(2));
+    point_D p = {3.3333334, 0.666666667};
+    algo->addCommand(factory->crMove_To(p));
+
     algo->execute();
 
-//    std::shared_ptr<Command> c = factory->crDo(1);
-//    c->addCommand(factory->crPen_Selection(5));
-//    c->addCommand(factory->crTurn(45));
-//    c->addCommand(factory->crMove(std::sqrt((2.0/3)*(2.0/3) + (2.0/3)*(2.0/3))));
-//    c->addCommand(factory->crTurn(-90));
-//    c->addCommand(factory->crMove(std::sqrt((1.0/3)*(1.0/3) + (1.0/3)*(1.0/3))));
-//    c->addCommand(factory->crTurn(45));
-//    c->addCommand(factory->crMove(2));
-//
-//    c->execute();
+    Command_Identifier* md = new Move_Id(algo, defineList, factory);
+
 }

@@ -131,10 +131,13 @@
 	<memory>
 	"primitives.hpp"
 
-1585661123 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.cpp
+1585754436 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.cpp
 	"command_handler.hpp"
+	"define_list.hpp"
+	"composite.hpp"
+	"command_factory.hpp"
 
-1585670970 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.hpp
+1585754436 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.hpp
 	<memory>
 	"list.hpp"
 	"primitives.hpp"
@@ -154,10 +157,13 @@
 	<memory>
 	<utility>
 
-1585661123 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.hpp
+1585758438 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.hpp
 	<memory>
+	<exception>
 
-1585661123 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
+1585758438 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
+	<string.h>
+	<cstdlib>
 	"command_identifiers.hpp"
 
 1585747125 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
@@ -182,7 +188,7 @@
 	<utility>
 	"list.hpp"
 
-1585746901 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
+1585749032 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
 	<string.h>
 	<iostream>
 	"composite.hpp"
@@ -197,7 +203,7 @@
 	"define_list.hpp"
 	"commands.hpp"
 
-1585746565 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1585757820 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
 	<memory>
@@ -210,6 +216,7 @@
 	"define_list.hpp"
 	"command_factory.hpp"
 	"command_handler.hpp"
+	"command_identifiers.hpp"
 	"parser.hpp"
 
 1585661123 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.hpp

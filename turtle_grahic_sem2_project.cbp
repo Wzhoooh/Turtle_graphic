@@ -53,6 +53,8 @@
 		<Unit filename="parser.cpp" />
 		<Unit filename="parser.hpp" />
 		<Unit filename="primitives.hpp" />
+		<Unit filename="string.cpp" />
+		<Unit filename="string.hpp" />
 		<Unit filename="turtle.cpp" />
 		<Unit filename="turtle.hpp" />
 		<Extensions>

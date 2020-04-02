@@ -28,14 +28,6 @@ void copyWord(char* strFrom, char* strTo)
 
 bool Move_Id::pushCommand(const char* str)
 {
-    size_t bufferSize = 100;
-    char buffer[bufferSize] = { 0 };
-    for (int i = 0; str[i] != '\n'; i++)
-    {
-        int sizeWord = getSizeOfWord(str + i);
-        copyWord(str + i, buffer);
-
-    }
 
 }
 bool Move_To_Id::pushCommand(const char* str)

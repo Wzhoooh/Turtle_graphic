@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "list.hpp"
+#include "string.hpp"
 #include "commands.hpp"
 #include "canvas.hpp"
 #include "turtle.hpp"

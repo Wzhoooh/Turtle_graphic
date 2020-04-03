@@ -11,6 +11,7 @@ namespace dataStructures
     public:
         string();
         string(const char* s);
+        string(const char* s, size_t n);
         string(const string&);
         string(string&&);
         string& operator =(const string&);
@@ -18,6 +19,7 @@ namespace dataStructures
         ~string();
 
         size_t size() const noexcept;
+        size_t capacity() const noexcept;
         void clear() noexcept;
         const char* c_str() const noexcept;
         const char* data() const noexcept;
@@ -31,12 +33,12 @@ namespace dataStructures
 
     private:
         size_t _size;
-        size_t _capasity;
+        size_t _capacity;
         char* _buffer;
     };
 
-    std::ostream& operator <<(std::ostream& os, const string& str);
-
 };
+
+std::ostream& operator <<(std::ostream& os, const dataStructures::string& str);
 
 #endif // STRING_HPP_INCLUDED

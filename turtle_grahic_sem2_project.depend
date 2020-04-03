@@ -203,11 +203,12 @@
 	"define_list.hpp"
 	"commands.hpp"
 
-1585837284 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1585924561 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
 	<memory>
 	<cmath>
+	<string>
 	"list.hpp"
 	"string.hpp"
 	"commands.hpp"
@@ -234,9 +235,11 @@
 
 1585670802 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
 
-1585837267 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
+1585924013 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
+	<iostream>
+	<string.h>
 	"string.hpp"
 
-1585842188 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
+1585924561 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
 	<iostream>
 

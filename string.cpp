@@ -1,50 +1,72 @@
+#include <iostream>
 #include <string.h>
 #include "string.hpp"
 
 using namespace dataStructures;
 
-string::string(): _size(0), _capasity(0), _buffer(nullptr){}
-string::string(const char* s): _size(0), _capasity(0)
-{
-    for (size_t i = 0; s[i] != '\0'; i++)
-        _size++;
+const size_t SIZE_NULL_CAPACITY = 15;
 
-    _capasity = _size * 2;
-    _buffer = new char(_capasity);
-    for (size_t i = 0; i < _size; i++)
-        _buffer[i] = s[i];
-}
-string::string(const string& s): _size(s._size), _capasity(s._capasity)
+size_t getCapacity(size_t size)
 {
-    _buffer = new char(_capasity);
+    return size * 3 / 2;
+}
+
+string::string(): _size(0), _capacity(SIZE_NULL_CAPACITY), _buffer(nullptr)
+{
+    _buffer = new char[_capacity];
+}
+string::string(const char* s): _size(strlen(s)), _capacity(SIZE_NULL_CAPACITY)
+{
+    if (_size > SIZE_NULL_CAPACITY)
+        _capacity = getCapacity(_size);
+
+    _buffer = new char[_capacity];
     for (size_t i = 0; i < _size; i++)
         _buffer[i] = s[i];
 }
-string::string(string&& s): _size(s._size), _capasity(s._capasity)
+string::string(const char* s, size_t n): _size(n), _capacity(SIZE_NULL_CAPACITY)
+{
+    if (_size > SIZE_NULL_CAPACITY)
+        _capacity = getCapacity(_size);
+
+    _buffer = new char[_capacity];
+    for (size_t i = 0; i < _size; i++)
+        _buffer[i] = s[i];
+}
+string::string(const string& s): _size(s._size), _capacity(s._capacity)
+{
+    _buffer = new char[_capacity];
+    for (size_t i = 0; i < _size; i++)
+        _buffer[i] = s[i];
+}
+string::string(string&& s): _size(s._size), _capacity(s._capacity)
 {
     _buffer = s._buffer;
-    delete [] s._buffer;
     s._size = 0;
-    s._capasity = 0;
+    s._capacity = 0;
 }
 string& string::operator =(const string& s)
 {
+    if (_capacity < s._size)
+    {
+        delete [] _buffer;
+        _capacity = getCapacity(s._size);
+        _buffer = new char[_capacity];
+    }
+
     _size = s._size;
-    _capasity = s._capasity;
-    delete [] _buffer;
-    _buffer = new char(_capasity);
     for (size_t i = 0; i < _size; i++)
         _buffer[i] = s[i];
 }
 string& string::operator =(string&& s)
 {
     _size = s._size;
-    _capasity = s._capasity;
+    _capacity = s._capacity;
     delete [] _buffer;
     _buffer = s._buffer;
-    delete [] s._buffer;
+
     s._size = 0;
-    s._capasity = 0;
+    s._capacity = 0;
 }
 string::~string()
 {
@@ -55,19 +77,23 @@ size_t string::size() const noexcept
 {
     return _size;
 }
+size_t string::capacity() const noexcept
+{
+    return _capacity;
+}
 void string::clear() noexcept
 {
     delete [] _buffer;
     _size = 0;
-    _capasity = 0;
+    _capacity = 0;
 }
 const char* string::c_str() const noexcept
 {
-    char* str = new char(_size+1);
+    char* str = new char[_size+1];
     for (size_t i = 0; i < _size; i++)
         str[i] = _buffer[i];
 
-    str[_size+1] = '\0';
+    str[_size] = '\0';
     return str;
 }
 const char* string::data() const noexcept
@@ -86,12 +112,12 @@ char string::operator[] (size_t pos) const
 
 string& string::operator +=(const string& s)
 {
-    if (_size + s.size() >= _capasity)
+    if (_size + s.size() > _capacity)
     {
         string copy(*this);
         delete [] _buffer;
-        _capasity = (_size + s.size()) * 2;
-        _buffer = new char(_capasity);
+        _capacity = getCapacity(_size + s.size());
+        _buffer = new char[_capacity];
 
         for (size_t i = 0; i < _size; i++)
             _buffer[i] = copy[i];
@@ -105,12 +131,12 @@ string& string::operator +=(const string& s)
 }
 string& string::operator +=(char c)
 {
-     if (_size + 1 >= _capasity)
+    if (_size + 1 > _capacity)
     {
         string copy(*this);
         delete [] _buffer;
-        _capasity = (_size + 1) * 2;
-        _buffer = new char(_capasity);
+        _capacity = getCapacity(_size + 1);
+        _buffer = new char[_capacity];
 
         for (size_t i = 0; i < _size; i++)
             _buffer[i] = copy[i];
@@ -123,16 +149,14 @@ string& string::operator +=(char c)
 }
 string& string::operator +=(const char* s)
 {
-    size_t sizeS = 0;
-    for (; s[sizeS] != '\0'; sizeS++)
-        ;
+    size_t sizeS = strlen(s);
 
-    if (_size + sizeS >= _capasity)
+    if (_size + sizeS > _capacity)
     {
         string copy(*this);
         delete [] _buffer;
-        _capasity = (_size + sizeS) * 2;
-        _buffer = new char(_capasity);
+        _capacity = getCapacity(_size + sizeS);
+        _buffer = new char[_capacity];
 
         for (size_t i = 0; i < _size; i++)
             _buffer[i] = copy[i];

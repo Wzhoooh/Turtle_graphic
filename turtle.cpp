@@ -30,7 +30,7 @@ std::cout << "new y : " << std::setprecision(20) << newY << "\n";
     point_LL pointTo = {(newX - _leftDownCorner.x) * xAbsoluteInRegard,  (newY - _leftDownCorner.y) * yAbsoluteInRegard};
 
     unsigned newWith = unsigned((xAbsoluteInRegard + yAbsoluteInRegard) / 2 * _width);
-    _canvas->printLine(pointFrom, pointTo, _color, newWith);
+    _canvas->draw(pointFrom, pointTo, _color, newWith);
 
     _pos.x = newX;
     _pos.y = newY;
@@ -44,7 +44,7 @@ void Turtle::moveTo(point_D newPoint)
     point_LL pointTo = {(newPoint.x - _leftDownCorner.x) * xAbsoluteInRegard,  (newPoint.y - _leftDownCorner.y) * yAbsoluteInRegard};
 
     unsigned newWith = unsigned((xAbsoluteInRegard + yAbsoluteInRegard) / 2 * _width);
-    _canvas->printLine(pointFrom, pointTo, _color, newWith);
+    _canvas->draw(pointFrom, pointTo, _color, newWith);
 
     _pos.x = newPoint.x;
     _pos.y = newPoint.y;

@@ -53,19 +53,15 @@ int main()
     std::shared_ptr<Command_Factory> factory = std::make_shared<Command_Factory>(turtle, canvas,
                                                                                  defineList);
 
-    point_LL size = {13, 13};
-    rgb color = {4, 2, 1};
-    point_D p1 = {0, 0};
-    point_D p2 = {4, 4};
-    std::shared_ptr<Command> def = factory->crCanvas_Definition(size, color, p1, p2);
+    // ( size_of_canvas, canvas_color, left_down_point, right_up_point )
+    std::shared_ptr<Command> def = factory->crCanvas_Definition({13, 13}, {4, 2, 1},
+                                                                {0, 0}, {4, 4});
 
     defineList->addCanvasDefinition(def);
     defineList->applyCanvasDefinition();
 
-    rgb color1 = {0, 2, 6};
-    rgb color2 = {1, 3, 5};
-    defineList->addPenDefinition(factory->crPen_Definition(3, color1), 2);
-    defineList->addPenDefinition(factory->crPen_Definition(4, color2), 5);
+    defineList->addPenDefinition(factory->crPen_Definition(3, {0, 2, 6}), 2);
+    defineList->addPenDefinition(factory->crPen_Definition(4, {1, 3, 5}), 5);
 
     std::shared_ptr<Composite> algo = std::make_shared<Composite>(factory);
     algo->addCommand(factory->crPen_Selection(5));

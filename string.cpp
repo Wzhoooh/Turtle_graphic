@@ -2,7 +2,7 @@
 #include <string.h>
 #include "string.hpp"
 
-using namespace dataStructures;
+using namespace DS;
 
 const size_t SIZE_NULL_CAPACITY = 15;
 

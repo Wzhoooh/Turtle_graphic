@@ -10,17 +10,17 @@ class Bit_Map;
 class Canvas // all coordinates in pixels
 {
 public:
-    Canvas(std::shared_ptr<Drawer> drawer);
+    Canvas(Drawer&& drawer);
     void draw(point_LL point1, point_LL point2, rgb color, unsigned width); // all coordinates in pixels
     point_LL getSizeBitMap() const;
-    void setSizeBitMap(point_LL sizeBitMap);
+    void createBitMap(point_LL sizeBitMap);
     void setCanvasColor(rgb canvasColor);
 
     ~Canvas();
 
 private:
-    std::shared_ptr<Drawer> _drawer;
-    std::shared_ptr<Bit_Map> _bitMap;
+    Drawer& _drawer;
+    Bit_Map* _bitMap;
     point_LL _sizeBitMap;
     rgb _canvasColor;
 };
@@ -30,7 +30,8 @@ class Bit_Map
 public:
     Bit_Map(point_LL size);
     ~Bit_Map();
-    void printPoint(point_LL point);
+    void drawPoint(point_LL point);
+    point_LL getSize() const;
 
 private:
     char* _data;
@@ -40,14 +41,14 @@ private:
 class Drawer
 {
 public:
-    virtual void draw(std::shared_ptr<Bit_Map> bitMap, point_LL point1, point_LL point2,
+    virtual void draw(Bit_Map& bitMap, point_LL point1, point_LL point2,
                       rgb color, unsigned width) const = 0;
 };
 
 class Loger: public Drawer
 {
 public:
-    void draw(std::shared_ptr<Bit_Map> bitMap, point_LL point1, point_LL point2,
+    void draw(Bit_Map& bitMap, point_LL point1, point_LL point2,
               rgb color, unsigned width) const override;
 };
 

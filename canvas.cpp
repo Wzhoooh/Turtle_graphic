@@ -10,23 +10,27 @@ Bit_Map::~Bit_Map()
 {
     delete [] _data;
 }
-void printPoint(point_LL point)
+void Bit_Map::drawPoint(point_LL point)
 {
     throw std::runtime_error("not realised featch");
 }
+point_LL Bit_Map::getSize() const
+{
+    return _size;
+}
 
-Canvas::Canvas(std::shared_ptr<Drawer> drawer): _drawer(drawer){}
+Canvas::Canvas(Drawer&& drawer): _drawer(drawer){}
 void Canvas::draw(point_LL point1, point_LL point2, rgb color, unsigned width)
 {
-    _drawer->draw(_bitMap, point1, point2, color, width);
+    _drawer.draw(*_bitMap, point1, point2, color, width);
 }
 point_LL Canvas::getSizeBitMap() const
 {
-    return _sizeBitMap;
+    return _bitMap->getSize();
 }
-void Canvas::setSizeBitMap(point_LL sizeBitMap)
+void Canvas::createBitMap(point_LL sizeBitMap)
 {
-    _sizeBitMap = sizeBitMap;
+    _bitMap = new Bit_Map(sizeBitMap);
 }
 void Canvas::setCanvasColor(rgb canvasColor)
 {
@@ -34,10 +38,10 @@ void Canvas::setCanvasColor(rgb canvasColor)
 }
 Canvas::~Canvas()
 {
-    std::cout << "Destructor canvas\n";
+    delete _bitMap;
 }
 
-void Loger::draw(std::shared_ptr<Bit_Map> bitMap, point_LL point1, point_LL point2,
+void Loger::draw(Bit_Map& bitMap, point_LL point1, point_LL point2,
                  rgb color, unsigned width) const
 {
     std::cout << "line: from (" << point1.x << ", " << point1.y << ") to (";

@@ -112,24 +112,24 @@
 
 1584881429 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\parser.cpp
 
-1586152496 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
+1587843304 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
 	<iostream>
 	<exception>
 	"canvas.hpp"
 
-1586105982 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
+1587840004 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
 	<memory>
 	"primitives.hpp"
 
 1585664901 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\add_structures.hpp
 
-1585731660 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_factory.cpp
+1587841284 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_factory.cpp
 	"command_factory.hpp"
 	"commands.hpp"
 	"turtle.hpp"
 	"canvas.hpp"
 
-1585731660 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_factory.hpp
+1587841247 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_factory.hpp
 	<memory>
 	"primitives.hpp"
 
@@ -139,12 +139,12 @@
 	"composite.hpp"
 	"command_factory.hpp"
 
-1585754436 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.hpp
+1587838366 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.hpp
 	<memory>
 	"list.hpp"
 	"primitives.hpp"
 
-1585661123 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list.hpp
+1587838366 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list.hpp
 	"node_impl.hpp"
 	"iterator_impl.hpp"
 	"list_impl.hpp"
@@ -154,7 +154,7 @@
 
 1585661123 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\iterator_impl.hpp
 
-1585661123 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list_impl.hpp
+1587838366 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list_impl.hpp
 	<stdio.h>
 	<memory>
 	<utility>
@@ -168,44 +168,44 @@
 	<cstdlib>
 	"command_identifiers.hpp"
 
-1585747125 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
+1587842168 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
 	<iostream>
 	"commands.hpp"
 	"turtle.hpp"
 	"define_list.hpp"
 	"canvas.hpp"
 
-1585747338 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.hpp
+1587842097 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.hpp
 	<exception>
 	<memory>
 	"list.hpp"
 	"primitives.hpp"
 
-1585739885 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.hpp
+1587841026 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.hpp
 	<memory>
 	"primitives.hpp"
 
-1585722680 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.hpp
+1587838366 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.hpp
 	<memory>
 	<utility>
 	"list.hpp"
 
-1585749032 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
+1587842787 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
 	<string.h>
 	<iostream>
 	"composite.hpp"
 	"command_factory.hpp"
 	"commands.hpp"
 
-1585745817 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.hpp
+1587842410 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.hpp
 	<memory>
 	"list.hpp"
 
-1585722732 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.cpp
+1587838366 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.cpp
 	"define_list.hpp"
 	"commands.hpp"
 
-1586106013 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1587843171 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
 	<memory>
@@ -228,7 +228,7 @@
 
 1585661123 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
 
-1586106044 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
+1587842887 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
 	<cmath>
 	<iostream>
 	<iomanip>
@@ -237,11 +237,11 @@
 
 1586152484 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
 
-1585924871 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
+1587838366 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
 	<iostream>
 	<string.h>
 	"string.hpp"
 
-1585924561 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
+1587838366 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
 	<iostream>
 

@@ -1,7 +1,7 @@
 #ifndef DATASTRUCTERS_H_INCLUDED
 #define DATASTRUCTERS_H_INCLUDED
 
-namespace dataStructures
+namespace DS
 {
 
 template <class T>
@@ -95,9 +95,9 @@ private:
 }
 
 template<class T, class Allocator>
-    typename dataStructures::list<T, Allocator>::iterator begin(const dataStructures::list<T, Allocator>&);
+    typename DS::list<T, Allocator>::iterator begin(const DS::list<T, Allocator>&);
 
 template<class T, class Allocator>
-    typename dataStructures::list<T, Allocator>::iterator end(const dataStructures::list<T, Allocator>&);
+    typename DS::list<T, Allocator>::iterator end(const DS::list<T, Allocator>&);
 
 #endif // DATASTRUCTERS_H_INCLUDED

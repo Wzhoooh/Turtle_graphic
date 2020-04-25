@@ -17,7 +17,7 @@ public:
     void applyCanvasDefinition();
 
 private:
-    std::shared_ptr<dataStructures::list<std::pair<std::shared_ptr<Command>, int>>> _penDefinitions;
+    std::shared_ptr<DS::list<std::pair<std::shared_ptr<Command>, int>>> _penDefinitions;
     std::shared_ptr<Command> _canvasDefinition;
 };
 

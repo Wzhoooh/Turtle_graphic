@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-namespace dataStructures
+namespace DS
 {
 
     class string
@@ -39,6 +39,6 @@ namespace dataStructures
 
 };
 
-std::ostream& operator <<(std::ostream& os, const dataStructures::string& str);
+std::ostream& operator <<(std::ostream& os, const DS::string& str);
 
 #endif // STRING_HPP_INCLUDED

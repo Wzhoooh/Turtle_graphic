@@ -2,7 +2,7 @@
 #include "commands.hpp"
 
 Define_List::Define_List():
-    _penDefinitions(std::make_shared<dataStructures::list<std::pair<std::shared_ptr<Command>, int>>>())
+    _penDefinitions(std::make_shared<DS::list<std::pair<std::shared_ptr<Command>, int>>>())
 {}
 void Define_List::addPenDefinition(std::shared_ptr<Command> penDefinition, int number)
 {

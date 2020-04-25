@@ -6,12 +6,12 @@
 #include <utility>
 
 template<class T, class Allocator>
-dataStructures::list<T, Allocator>::list(){}
+DS::list<T, Allocator>::list(){}
 
 template<class T, class Allocator>
-dataStructures::list<T, Allocator>::list(const list& source)
+DS::list<T, Allocator>::list(const list& source)
 {
-    for (typename dataStructures::list<T>::iterator i = source.begin(); i != source.end(); i++)
+    for (typename DS::list<T>::iterator i = source.begin(); i != source.end(); i++)
     {
         this->push_back(*i);
         this->_size++;
@@ -19,7 +19,7 @@ dataStructures::list<T, Allocator>::list(const list& source)
 }
 
 template<class T, class Allocator>
-dataStructures::list<T, Allocator>::list(list&& source)
+DS::list<T, Allocator>::list(list&& source)
 {
     std::swap(_first, source._first);
     std::swap(_last, source._last);
@@ -27,7 +27,7 @@ dataStructures::list<T, Allocator>::list(list&& source)
 }
 
 template<class T, class Allocator>
-list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& source)
+list<T, Allocator>& DS::list<T, Allocator>::operator =(const list& source)
 {
     auto itThis = this->begin();
     auto itSource = source.begin();
@@ -55,7 +55,7 @@ list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(const list& s
 }
 
 template<class T, class Allocator>
-list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(list&& source)
+list<T, Allocator>& DS::list<T, Allocator>::operator =(list&& source)
 {
     std::swap(_first, source._first);
     std::swap(_last, source._last);
@@ -68,7 +68,7 @@ list<T, Allocator>& dataStructures::list<T, Allocator>::operator =(list&& source
 }
 
 template<class T, class Allocator>
-dataStructures::list<T, Allocator>::~list()
+DS::list<T, Allocator>::~list()
 {
     for (Node<T>* n = _first; n != nullptr;)
     {
@@ -81,7 +81,7 @@ dataStructures::list<T, Allocator>::~list()
 
 template<class T, class Allocator>
 template<class T1>
-void dataStructures::list<T, Allocator>::push_back(T1&& newElem)
+void DS::list<T, Allocator>::push_back(T1&& newElem)
 {
     Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
     std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, std::forward<T1>(newElem));
@@ -103,7 +103,7 @@ void dataStructures::list<T, Allocator>::push_back(T1&& newElem)
 
 template<class T, class Allocator>
 template<class T1>
-void dataStructures::list<T, Allocator>::push_front(T1&& newElem)
+void DS::list<T, Allocator>::push_front(T1&& newElem)
 {
     Node<T>* newNodePointer = std::allocator_traits<NodeAllocator>::allocate(_allocNode, sizeof(newElem));
     std::allocator_traits<NodeAllocator>::construct(_allocNode, newNodePointer, std::forward<T1>(newElem));
@@ -124,7 +124,7 @@ void dataStructures::list<T, Allocator>::push_front(T1&& newElem)
 }
 
 template<class T, class Allocator>
-void dataStructures::list<T, Allocator>::pop_back()
+void DS::list<T, Allocator>::pop_back()
 {
     if (_size == 0)
     {
@@ -150,7 +150,7 @@ void dataStructures::list<T, Allocator>::pop_back()
 }
 
 template<class T, class Allocator>
-void dataStructures::list<T, Allocator>::pop_front()
+void DS::list<T, Allocator>::pop_front()
 {
     if (_size == 0)
     {
@@ -177,8 +177,8 @@ void dataStructures::list<T, Allocator>::pop_front()
 
 template<class T, class Allocator>
 template<class T1>
-typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::insert
-(typename dataStructures::list<T, Allocator>::iterator pos, T1&& newElem)
+typename DS::list<T, Allocator>::iterator DS::list<T, Allocator>::insert
+(typename DS::list<T, Allocator>::iterator pos, T1&& newElem)
 {
     if(pos.node->_next == nullptr)
     {
@@ -203,8 +203,8 @@ typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Al
 }
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::erase
-(dataStructures::list<T, Allocator>::iterator pos)
+typename DS::list<T, Allocator>::iterator DS::list<T, Allocator>::erase
+(DS::list<T, Allocator>::iterator pos)
 {
     if(pos.node->_next == nullptr)
     {
@@ -230,38 +230,38 @@ typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Al
 }
 
 template<class T, class Allocator>
-size_t dataStructures::list<T, Allocator>::size() const noexcept(true)
+size_t DS::list<T, Allocator>::size() const noexcept(true)
 {
     return _size;
 }
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::begin() const noexcept(true)
+typename DS::list<T, Allocator>::iterator DS::list<T, Allocator>::begin() const noexcept(true)
 {
     return iterator(_first);
 }
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::end() const noexcept(true)
+typename DS::list<T, Allocator>::iterator DS::list<T, Allocator>::end() const noexcept(true)
 {
     return iterator(nullptr);
 }
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator dataStructures::list<T, Allocator>::back() const noexcept(true)
+typename DS::list<T, Allocator>::iterator DS::list<T, Allocator>::back() const noexcept(true)
 {
     return iterator(_last);
 }
 
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator begin(const dataStructures::list<T, Allocator>& l)
+typename DS::list<T, Allocator>::iterator begin(const DS::list<T, Allocator>& l)
 {
     return l.begin();
 }
 
 template<class T, class Allocator>
-typename dataStructures::list<T, Allocator>::iterator end(const dataStructures::list<T, Allocator>& l)
+typename DS::list<T, Allocator>::iterator end(const DS::list<T, Allocator>& l)
 {
     return l.end();
 }

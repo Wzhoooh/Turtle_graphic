@@ -21,7 +21,7 @@ private:
     std::shared_ptr<Composite> _composite;
     std::shared_ptr<Define_List> _defineList;
     std::shared_ptr<Command_Factory> _factory;
-    dataStructures::list<std::shared_ptr<Command_Identifier>> _identifiers;
+    DS::list<std::shared_ptr<Command_Identifier>> _identifiers;
 };
 
 #endif // COMMAND_HANDLER_HPP_INCLUDED

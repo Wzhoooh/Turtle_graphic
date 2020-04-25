@@ -12,8 +12,7 @@ class Command;
 class Command_Factory
 {
 public:
-    Command_Factory(std::shared_ptr<Turtle> turtle, std::shared_ptr<Canvas> canvas,
-                    std::shared_ptr<Define_List> defList);
+    Command_Factory(Turtle* turtle, Canvas* canvas, Define_List* defList);
     std::shared_ptr<Command> crMove(double distance);
     std::shared_ptr<Command> crMove_To(point_D newPoint);
     std::shared_ptr<Command> crTurn(double angle);
@@ -33,9 +32,9 @@ public:
                                                      point_D p1, point_D p2);
 
 private:
-    std::shared_ptr<Turtle> _turtle;
-    std::shared_ptr<Canvas> _canvas;
-    std::shared_ptr<Define_List> _defList;
+    Turtle* _turtle;
+    Canvas* _canvas;
+    Define_List* _defList;
 
     std::shared_ptr<Command> _turnSouth;
     std::shared_ptr<Command> _turnNorth;

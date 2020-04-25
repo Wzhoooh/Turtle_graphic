@@ -3,8 +3,8 @@
 #include "turtle.hpp"
 #include "canvas.hpp"
 
-Command_Factory::Command_Factory(std::shared_ptr<Turtle> turtle, std::shared_ptr<Canvas> canvas,
-std::shared_ptr<Define_List> defList): _turtle(turtle), _canvas(canvas), _defList(defList)
+Command_Factory::Command_Factory(Turtle* turtle, Canvas* canvas, Define_List* defList):
+    _turtle(turtle), _canvas(canvas), _defList(defList)
 {
     _turnSouth  = std::make_shared<Turn_South>(_turtle);
     _turnNorth  = std::make_shared<Turn_North>(_turtle);

@@ -70,5 +70,10 @@ T& BidirectionalIterator<T>::get()
     return node->content;
 }
 
+template <class T>
+bool BidirectionalIterator<T>::isEnd()
+{
+    return node == nullptr;
+}
 
 #endif // ITERATOR_IMPL_HPP_INCLUDED

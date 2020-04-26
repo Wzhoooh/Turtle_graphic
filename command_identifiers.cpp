@@ -6,33 +6,59 @@
 #include "composite.hpp"
 #include "define_list.hpp"
 #include "command_factory.hpp"
+#include "primitives.hpp"
 
 bool Move_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
-    if (*wordIt != DS::string("Move_Id"))
+    if (*wordIt != DS::string("M"))
         return false;
     else
         wordIt++;
 
+    if (wordIt.isEnd())
+        throw std::runtime_error("ERROR: not enough arguments for command Move");
+
     char* index = nullptr;
-    double n = std::strtod(wordIt->c_str(), &index);
-    if (index[0] == '\0')
-    {
-        _composite->addCommand(_factory->crMove(n));
-        wordIt++;
-    }
-    else
+    double param = std::strtod(wordIt->c_str(), &index);
+    if (*index != '\0')
     {
         DS::string errorMessage("ERROR: syntax error: ");
         errorMessage += wordIt->c_str();
         throw std::runtime_error(errorMessage.c_str());
     }
+    wordIt++;
+
+    _composite->addCommand(_factory->crMove(param));
+    return true;
 }
 int Move_Id::getNumArguments() const { return 1; }
 
 bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
+    if (*wordIt != DS::string("MT"))
+        return false;
+    else
+        wordIt++;
 
+    if (wordIt.isEnd())
+        throw std::runtime_error("ERROR: not enough arguments for command Move_To");
+
+    char* index = nullptr;
+    double param[2];
+    for (size_t i = 0; i < 2; i++)
+    {
+        param[i] = std::strtod(wordIt->c_str(), &index);
+        if (*index != '\0')
+        {
+            DS::string errorMessage("ERROR: syntax error: ");
+            errorMessage += wordIt->c_str();
+            throw std::runtime_error(errorMessage.c_str());
+        }
+        wordIt++;
+    }
+
+    _composite->addCommand(_factory->crMove_To(point_D(param[0], param[1])));
+    return true;
 }
 int Move_To_Id::getNumArguments() const { return 2; }
 

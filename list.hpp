@@ -41,6 +41,7 @@ public:
     T* operator ->();
     T& operator *();
     T& get();
+    bool isEnd();
 
 private:
     Node<T>* node = nullptr;

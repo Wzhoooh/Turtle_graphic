@@ -47,26 +47,31 @@ int main()
 
 
 
-    Canvas canvas(std::move(*(new Loger)));
+    Canvas canvas(std::move(Loger()));
     Define_List defineList;
     Turtle turtle(&canvas, &defineList);
     Command_Factory factory(&turtle, &canvas, &defineList);
     Composite algo(&factory);
     // ( size_of_canvas, canvas_color, left_down_point, right_up_point )
-    Command* def = factory.crCanvas_Definition({13, 13}, {4, 2, 1}, {0, 0}, {4, 4});
+    Command* def = factory.crCanvas_Definition({13, 13}, {4, 2, 1}, {0, 0}, {13, 13});
 
     defineList.addCanvasDefinition(def);
     defineList.applyCanvasDefinition();
 
     DS::list<DS::string> list;
-    list.push_back("Move_Id");
+    list.push_back("M");
     list.push_back("1");
-    list.push_back("Move_Id");
-    list.push_back("-2,3");
-    Command_Identifier* c = new Move_Id(&algo, &defineList, &factory);
+    list.push_back("M");
+    list.push_back("-2.3");
+    list.push_back("MT");
+    list.push_back("5.4");
+    list.push_back("6.4");
+    Command_Identifier* m = new Move_Id(&algo, &defineList, &factory);
+    Command_Identifier* mt = new Move_To_Id(&algo, &defineList, &factory);
     auto it = list.begin();
-    c->pushCommand(it);
-    c->pushCommand(it);
+    std::cout << m->pushCommand(it) << "\n";
+    std::cout << m->pushCommand(it) << "\n";
+    std::cout << mt->pushCommand(it) << "\n";
     algo.execute();
 //
 //    defineList.addPenDefinition(factory.crPen_Definition(3, {0, 2, 6}), 2);

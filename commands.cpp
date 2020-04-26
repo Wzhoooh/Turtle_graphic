@@ -56,7 +56,7 @@ void Do::execute()
             i->execute();
 }
 const char* Do::getName(){ return "Do"; }
-void Do::addCommand(std::shared_ptr<Command> newCommand){ _commands.push_back(newCommand); }
+void Do::addCommand(Command* newCommand){ _commands.push_back(newCommand); }
 
 Pen_Definition::Pen_Definition(Turtle* turtle, double width, rgb color):
     _turtle(turtle), _width(width), _color(color){}
@@ -88,4 +88,3 @@ void Canvas_Definition::execute()
     _turtle->setCanvasParameters(_p1, _p2);
 }
 const char* Canvas_Definition::getName(){ return "Canvas_Definition"; }
-

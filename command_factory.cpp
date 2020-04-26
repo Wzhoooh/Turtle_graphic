@@ -4,78 +4,70 @@
 #include "canvas.hpp"
 
 Command_Factory::Command_Factory(Turtle* turtle, Canvas* canvas, Define_List* defList):
-    _turtle(turtle), _canvas(canvas), _defList(defList)
-{
-    _turnSouth  = std::make_shared<Turn_South>(_turtle);
-    _turnNorth  = std::make_shared<Turn_North>(_turtle);
-    _turnWest   = std::make_shared<Turn_West>(_turtle);
-    _turnEast   = std::make_shared<Turn_East>(_turtle);
-    _penDown    = std::make_shared<Pen_Down>(_turtle);
-    _penUp      = std::make_shared<Pen_Up>(_turtle);
-}
+    _turtle(turtle), _canvas(canvas), _defList(defList){}
 
-std::shared_ptr<Command> Command_Factory::crMove(double distance)
+Command* Command_Factory::crMove(double distance)
 {
-    return std::make_shared<Move>(_turtle, distance);
+    return new Move(_turtle, distance);
 }
-std::shared_ptr<Command> Command_Factory::crMove_To(point_D newPoint)
+Command* Command_Factory::crMove_To(point_D newPoint)
 {
-    return std::make_shared<Move_To>(_turtle, newPoint);
+    return new Move_To(_turtle, newPoint);
 }
-std::shared_ptr<Command> Command_Factory::crTurn(double angle)
+Command* Command_Factory::crTurn(double angle)
 {
-    return std::make_shared<Turn>(_turtle, angle);
+    return new Turn(_turtle, angle);
 }
-std::shared_ptr<Command> Command_Factory::crTurn_Left()
+Command* Command_Factory::crTurn_Left()
 {
-    return std::make_shared<Turn_Left>(_turtle);
+    return new Turn_Left(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crTurn_Right()
+Command* Command_Factory::crTurn_Right()
 {
-    return std::make_shared<Turn_Right>(_turtle);
+    return new Turn_Right(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crTurn_South()
+Command* Command_Factory::crTurn_South()
 {
-    return _turnSouth;
+    return new Turn_South(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crTurn_North()
+Command* Command_Factory::crTurn_North()
 {
-    return _turnNorth;
+    return new Turn_North(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crTurn_West()
+Command* Command_Factory::crTurn_West()
 {
-    return _turnWest;
+    return new Turn_West(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crTurn_East()
+Command* Command_Factory::crTurn_East()
 {
-    return _turnEast;
+    return new Turn_East(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crPen_Down()
+Command* Command_Factory::crPen_Down()
 {
-    return _penDown;
+    return new Pen_Down(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crPen_Up()
+Command* Command_Factory::crPen_Up()
 {
-    return _penUp;
+    return new Pen_Up(_turtle);
 }
-std::shared_ptr<Command> Command_Factory::crDo(unsigned int numReplays)
+Command* Command_Factory::crDo(unsigned int numReplays)
 {
-    return std::make_shared<Do>(_turtle, numReplays);
+    return new Do(_turtle, numReplays);
 }
-std::shared_ptr<Command> Command_Factory::crPen_Definition(unsigned width, rgb color)
+Command* Command_Factory::crPen_Definition(unsigned width, rgb color)
 {
-    return std::make_shared<Pen_Definition>(_turtle, width, color);
+    return new Pen_Definition(_turtle, width, color);
 }
-std::shared_ptr<Command> Command_Factory::crPen_Selection(int number)
+Command* Command_Factory::crPen_Selection(int number)
 {
-    return std::make_shared<Pen_Selection>(_defList, number);
+    return new Pen_Selection(_defList, number);
 }
-std::shared_ptr<Command> Command_Factory::crCanvas_Definition(point_LL sizeBitMap, rgb color)
+Command* Command_Factory::crCanvas_Definition(point_LL sizeBitMap, rgb color)
 {
-    return std::make_shared<Canvas_Definition>(_canvas, _turtle, sizeBitMap, color);
+    return new Canvas_Definition(_canvas, _turtle, sizeBitMap, color);
 }
-std::shared_ptr<Command> Command_Factory::crCanvas_Definition(point_LL sizeBitMap, rgb color,
-point_D p1, point_D p2)
+Command* Command_Factory::crCanvas_Definition(point_LL sizeBitMap, rgb color,
+    point_D p1, point_D p2)
 {
-    return std::make_shared<Canvas_Definition>(_canvas, _turtle, sizeBitMap, color, p1, p2);
+    return new Canvas_Definition(_canvas, _turtle, sizeBitMap, color, p1, p2);
 }

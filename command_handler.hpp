@@ -13,15 +13,14 @@ class Command_Identifier;
 class Command_Handler
 {
 public:
-    Command_Handler(std::shared_ptr<Composite> composite,
-        std::shared_ptr<Define_List> defineList, std::shared_ptr<Command_Factory> factory);
+    Command_Handler(Composite* composite, Define_List* defineList, Command_Factory* factory);
     void handleStr(const char* s);
 
 private:
-    std::shared_ptr<Composite> _composite;
-    std::shared_ptr<Define_List> _defineList;
-    std::shared_ptr<Command_Factory> _factory;
-    DS::list<std::shared_ptr<Command_Identifier>> _identifiers;
+    Composite* _composite;
+    Define_List* _defineList;
+    Command_Factory* _factory;
+    DS::list<Command_Identifier*> _identifiers;
 };
 
 #endif // COMMAND_HANDLER_HPP_INCLUDED

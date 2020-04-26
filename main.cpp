@@ -53,8 +53,8 @@ int main()
     Command_Factory factory(&turtle, &canvas, &defineList);
 
     // ( size_of_canvas, canvas_color, left_down_point, right_up_point )
-    std::shared_ptr<Command> def = factory.crCanvas_Definition({13, 13}, {4, 2, 1},
-                                                                {0, 0}, {4, 4});
+    Command* def = factory.crCanvas_Definition({13, 13}, {4, 2, 1},
+                                                               {0, 0}, {4, 4});
 
     defineList.addCanvasDefinition(def);
     defineList.applyCanvasDefinition();
@@ -73,9 +73,7 @@ int main()
     algo.addCommand(factory.crMove(std::sqrt(2)));
     algo.addCommand(factory.crTurn(-45));
     algo.addCommand(factory.crMove(2));
-    point_D p = {3.3333334, 0.666666667};
-    algo.addCommand(factory.crMove_To(p));
-
+    algo.addCommand(factory.crMove_To({3.3333334, 0.666666667}));
     algo.execute();
 
     //Command_Identifier* md = new Move_Id(algo, defineList, factory);

@@ -15,7 +15,7 @@ class Command
 public:
     virtual void execute() = 0;
     virtual const char* getName() = 0;
-    virtual void addCommand(std::shared_ptr<Command> newCommand)
+    virtual void addCommand(Command* newCommand)
     {
         throw std::runtime_error("not \"Do\" command");
     }
@@ -151,11 +151,11 @@ public:
     Do(Turtle* turtle, unsigned int numReplays);
     void execute();
     const char* getName();
-    void addCommand(std::shared_ptr<Command> newCommand) override;
+    void addCommand(Command* newCommand) override;
 
 private:
     Turtle* _turtle;
-    DS::list<std::shared_ptr<Command>> _commands;
+    DS::list<Command*> _commands;
     unsigned int _numReplays;
 };
 

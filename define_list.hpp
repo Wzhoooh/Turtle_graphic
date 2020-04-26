@@ -10,15 +10,15 @@ class Command;
 class Define_List
 {
 public:
-    Define_List();
-    void addPenDefinition(std::shared_ptr<Command> penDefinition, int number);
-    void addCanvasDefinition(std::shared_ptr<Command> canvasDefinition);
+    Define_List() = default;
+    void addPenDefinition(Command* penDefinition, int number);
+    void addCanvasDefinition(Command* canvasDefinition);
     void applyDefinition(int numberOfDefinition);
     void applyCanvasDefinition();
 
 private:
-    std::shared_ptr<DS::list<std::pair<std::shared_ptr<Command>, int>>> _penDefinitions;
-    std::shared_ptr<Command> _canvasDefinition;
+    DS::list<std::pair<Command*, int>> _penDefinitions;
+    Command* _canvasDefinition;
 };
 
 #endif // DEFINE_LIST_HPP_INCLUDED

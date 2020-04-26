@@ -9,7 +9,7 @@ Composite::Composite(Command_Factory* factory): _commands(factory->crDo(1))
     _commandsStack.push_back(_commands);
 }
 
-void Composite::addCommand(std::shared_ptr<Command> command)
+void Composite::addCommand(Command* command)
 {
 std::cout << "add: " << command->getName() << "\n";
     if (!strcmp(command->getName(), "Do")) // add cycle

@@ -3,9 +3,8 @@
 
 #include <iostream>
 
-namespace DS
+namespace DS // DataStructures
 {
-
     class string
     {
     public:

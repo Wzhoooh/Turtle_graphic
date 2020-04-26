@@ -28,8 +28,8 @@ private:
     Define_List* _defineList;
     point_D _pos;
     double _direction;
-    bool _penStatus = false;
-    double _width = 1;
+    bool _penStatus;
+    double _width;
     rgb _color;
 
     point_D _leftDownCorner;

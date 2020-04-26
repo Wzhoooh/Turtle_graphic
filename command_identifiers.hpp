@@ -11,9 +11,9 @@ class Command_Factory;
 class Command_Identifier
 {
 public:
-    Command_Identifier(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-    std::shared_ptr<Command_Factory> factory): _composite(composite), _defineList(defineList),
-    _factory(factory){}
+    Command_Identifier(Composite* composite, Define_List* defineList,
+        Command_Factory* factory): _composite(composite), _defineList(defineList),
+        _factory(factory){}
 
     virtual bool pushCommand(const char*) // pushes command to composite or defineList from factory if command is correct
     {
@@ -21,128 +21,128 @@ public:
     }
 
 private:
-    std::shared_ptr<Composite> _composite;
-    std::shared_ptr<Define_List> _defineList;
-    std::shared_ptr<Command_Factory> _factory;
+    Composite* _composite;
+    Define_List* _defineList;
+    Command_Factory* _factory;
 };
 
 class Move_Id: public Command_Identifier
 {
 public:
-    Move_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Move_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Move_To_Id: public Command_Identifier
 {
 public:
-    Move_To_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Move_To_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_Id: public Command_Identifier
 {
 public:
-    Turn_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_Left_Id: public Command_Identifier
 {
 public:
-    Turn_Left_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_Left_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_Right_Id: public Command_Identifier
 {
 public:
-    Turn_Right_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_Right_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_South_Id: public Command_Identifier
 {
 public:
-    Turn_South_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_South_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_North_Id: public Command_Identifier
 {
 public:
-    Turn_North_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_North_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_West_Id: public Command_Identifier
 {
 public:
-    Turn_West_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_West_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Turn_East_Id: public Command_Identifier
 {
 public:
-    Turn_East_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Turn_East_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Pen_Down_Id: public Command_Identifier
 {
 public:
-    Pen_Down_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Pen_Down_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Pen_Up_Id: public Command_Identifier
 {
 public:
-    Pen_Up_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Pen_Up_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Do_Id: public Command_Identifier
 {
 public:
-    Do_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Do_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Pen_Definition_Id: public Command_Identifier
 {
 public:
-    Pen_Definition_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Pen_Definition_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Pen_Selection_Id: public Command_Identifier
 {
 public:
-    Pen_Selection_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Pen_Selection_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 
 class Canvas_Definition_Id: public Command_Identifier
 {
 public:
-    Canvas_Definition_Id(std::shared_ptr<Composite> composite, std::shared_ptr<Define_List> defineList,
-        std::shared_ptr<Command_Factory> factory): Command_Identifier(composite, defineList, factory){}
+    Canvas_Definition_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+        Command_Identifier(composite, defineList, factory){}
     bool pushCommand(const char*) override;
 };
 

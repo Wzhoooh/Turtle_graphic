@@ -1,7 +1,7 @@
-#ifndef DATASTRUCTERS_H_INCLUDED
-#define DATASTRUCTERS_H_INCLUDED
+#ifndef LIST_HPP_INCLUDED
+#define LIST_HPP_INCLUDED
 
-namespace DS
+namespace DS // DataStructures
 {
 
 template <class T>
@@ -17,7 +17,7 @@ template <class T1>
 };
 
 template <class T>
-class BidirectionalIterator//: class std::iterator<std::bidirectional_iterator_tag> /// i just have to learn iterators!!
+class BidirectionalIterator
 {
 template<class U, class Allocator>
     friend class list;
@@ -100,4 +100,4 @@ template<class T, class Allocator>
 template<class T, class Allocator>
     typename DS::list<T, Allocator>::iterator end(const DS::list<T, Allocator>&);
 
-#endif // DATASTRUCTERS_H_INCLUDED
+#endif // LIST_HPP_INCLUDED

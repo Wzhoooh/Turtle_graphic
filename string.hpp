@@ -28,7 +28,8 @@ namespace DS // DataStructures
         string& operator +=(const string&);
         string& operator +=(char);
         string& operator +=(const char*);
-        bool operator ==(const string&);
+        bool operator ==(const string&) const;
+        bool operator !=(const string&) const;
 
     private:
         size_t _size;

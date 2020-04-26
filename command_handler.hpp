@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "list.hpp"
+#include "string.hpp"
 #include "primitives.hpp"
 
 class Composite;
@@ -17,10 +18,14 @@ public:
     void handleStr(const char* s);
 
 private:
+    void parse(const char* s);
+
+private:
     Composite* _composite;
     Define_List* _defineList;
     Command_Factory* _factory;
     DS::list<Command_Identifier*> _identifiers;
+    DS::list<DS::string> _words;
 };
 
 #endif // COMMAND_HANDLER_HPP_INCLUDED

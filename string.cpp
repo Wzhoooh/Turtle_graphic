@@ -168,7 +168,7 @@ string& string::operator +=(const char* s)
     _size += sizeS;
     return *this;
 }
-bool string::operator ==(const string& s)
+bool string::operator ==(const string& s) const
 {
     if (_size != s.size())
         return false;
@@ -178,6 +178,11 @@ bool string::operator ==(const string& s)
             return false;
 
     return true;
+}
+
+bool string::operator !=(const string& s) const
+{
+    return !(*this == s);
 }
 
 std::ostream& operator <<(std::ostream& os, const string& str)

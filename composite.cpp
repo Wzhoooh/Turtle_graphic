@@ -11,7 +11,7 @@ Composite::Composite(Command_Factory* factory): _commands(factory->crDo(1))
 
 void Composite::addCommand(Command* command)
 {
-std::cout << "add: " << command->getName() << "\n";
+std::cout << "Composite add: " << command->getName() << "\n";
     if (!strcmp(command->getName(), "Do")) // add cycle
     {
         (*_commandsStack.back())->addCommand(command);

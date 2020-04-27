@@ -30,15 +30,15 @@ namespace DS // DataStructures
         string& operator +=(const char*);
         bool operator ==(const string&) const;
         bool operator !=(const string&) const;
+        operator const char*() const;
 
     private:
         size_t _size;
         size_t _capacity;
         char* _buffer;
     };
-
 };
-
+DS::string operator +(DS::string str, const char* buf);
 std::ostream& operator <<(std::ostream& os, const DS::string& str);
 
 #endif // STRING_HPP_INCLUDED

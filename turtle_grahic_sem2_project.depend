@@ -166,7 +166,7 @@
 	"list.hpp"
 	"string.hpp"
 
-1587927936 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
+1587972163 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
 	<string.h>
 	<cstdlib>
 	<iostream>
@@ -199,7 +199,7 @@
 	<utility>
 	"list.hpp"
 
-1587885066 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
+1587971854 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
 	<string.h>
 	<iostream>
 	"composite.hpp"
@@ -214,7 +214,7 @@
 	"define_list.hpp"
 	"commands.hpp"
 
-1587927607 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1587971960 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
 	<memory>
@@ -246,11 +246,11 @@
 
 1587927104 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
 
-1587905962 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
+1587970508 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
 	<iostream>
 	<string.h>
 	"string.hpp"
 
-1587905773 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
+1587970748 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
 	<iostream>
 

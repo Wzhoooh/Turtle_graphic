@@ -13,20 +13,18 @@ bool Move_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     if (*wordIt != DS::string("M"))
         return false;
     else
-        wordIt++;
+        ++wordIt;
 
     if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command Move");
+        throw std::runtime_error("ERROR: not enough arguments for command M");
 
     char* index = nullptr;
     double param = std::strtod(wordIt->c_str(), &index);
     if (*index != '\0')
     {
-        DS::string errorMessage("ERROR: syntax error: ");
-        errorMessage += wordIt->c_str();
-        throw std::runtime_error(errorMessage.c_str());
+        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
     }
-    wordIt++;
+    ++wordIt;
 
     _composite->addCommand(_factory->crMove(param));
     return true;
@@ -37,11 +35,11 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
     if (*wordIt != DS::string("MT"))
         return false;
-    else
-        wordIt++;
+
+    ++wordIt;
 
     if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command Move_To");
+        throw std::runtime_error("ERROR: not enough arguments for command MT");
 
     char* index = nullptr;
     double param[2];
@@ -50,11 +48,9 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         param[i] = std::strtod(wordIt->c_str(), &index);
         if (*index != '\0')
         {
-            DS::string errorMessage("ERROR: syntax error: ");
-            errorMessage += wordIt->c_str();
-            throw std::runtime_error(errorMessage.c_str());
+            throw std::runtime_error("ERROR: syntax error: " + *wordIt);
         }
-        wordIt++;
+        ++wordIt;
     }
 
     _composite->addCommand(_factory->crMove_To(point_D(param[0], param[1])));
@@ -64,13 +60,37 @@ int Move_To_Id::getNumArguments() const { return 2; }
 
 bool Turn_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
+    if (*wordIt != DS::string("T"))
+        return false;
 
+    ++wordIt;
+
+    if (wordIt.isEnd())
+        throw std::runtime_error("ERROR: not enough arguments for command T");
+
+    char* index = nullptr;
+    double param;
+    param = std::strtod(wordIt->c_str(), &index);
+    if (*index != '\0')
+    {
+        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+    }
+    ++wordIt;
+
+    _composite->addCommand(_factory->crTurn(param));
+    return true;
 }
 int Turn_Id::getNumArguments() const { return 1; }
 
 bool Turn_Left_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
+    if (*wordIt != DS::string("TL"))
+        return false;
 
+    ++wordIt;
+
+    _composite->addCommand(_factory->crTurn_Left());
+    return true;
 }
 int Turn_Left_Id::getNumArguments() const { return 0; }
 

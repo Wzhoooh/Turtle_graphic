@@ -180,9 +180,19 @@ bool string::operator ==(const string& s) const
     return true;
 }
 
+string::operator const char*() const
+{
+    return data();
+}
+
 bool string::operator !=(const string& s) const
 {
     return !(*this == s);
+}
+
+string operator +(string str, const char* buf)
+{
+    return str += buf;
 }
 
 std::ostream& operator <<(std::ostream& os, const string& str)

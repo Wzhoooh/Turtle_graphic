@@ -62,16 +62,29 @@ int main()
     list.push_back("M");
     list.push_back("1");
     list.push_back("M");
-    list.push_back("-2.3");
+    list.push_back("-2");
     list.push_back("MT");
-    list.push_back("5.4");
-    list.push_back("6.4");
+    list.push_back("2.5");
+    list.push_back("3.5");
+    list.push_back("T");
+    list.push_back("90");
+    list.push_back("M");
+    list.push_back("2");
     Command_Identifier* m = new Move_Id(&algo, &defineList, &factory);
     Command_Identifier* mt = new Move_To_Id(&algo, &defineList, &factory);
-    auto it = list.begin();
-    std::cout << m->pushCommand(it) << "\n";
-    std::cout << m->pushCommand(it) << "\n";
-    std::cout << mt->pushCommand(it) << "\n";
+    Command_Identifier* t = new Turn_Id(&algo, &defineList, &factory);
+    Command_Identifier* tl = new Turn_Left_Id(&algo, &defineList, &factory);
+    for (auto it = list.begin(); it != list.end();)
+    {
+        bool isCorrect = false;
+        if (isCorrect = m->pushCommand(it)) continue;
+        if (isCorrect = mt->pushCommand(it)) continue;
+        if (isCorrect = t->pushCommand(it)) continue;
+        if (isCorrect = tl->pushCommand(it)) continue;
+        if (!isCorrect)
+            throw std::runtime_error("ERROR: I dont know this command - " + *it);
+    }
+
     algo.execute();
 //
 //    defineList.addPenDefinition(factory.crPen_Definition(3, {0, 2, 6}), 2);

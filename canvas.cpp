@@ -44,7 +44,7 @@ Canvas::~Canvas()
 void Loger::draw(Bit_Map& bitMap, point_LL point1, point_LL point2,
                  rgb color, unsigned width) const
 {
-    std::cout << "line: from (" << point1.x << ", " << point1.y << ") to (";
+    std::cout << "Loger: from (" << point1.x << ", " << point1.y << ") to (";
     std::cout << point2.x << ", " << point2.y;
     std::cout << "); width: " << width << "; color: " << (int)color.red;
     std::cout << " " << (int)color.green << " " << (int)color.blue << "\n";

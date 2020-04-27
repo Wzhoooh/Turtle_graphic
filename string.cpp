@@ -96,8 +96,19 @@ const char* string::c_str() const noexcept
     str[_size] = '\0';
     return str;
 }
-const char* string::data() const noexcept
+const char* string::data() noexcept
 {
+    if (_size == _capacity && _buffer[_size-1] != '\0')
+    {
+        string copy(*this);
+        delete [] _buffer;
+        _capacity = getCapacity(_size);
+        _buffer = new char[_capacity];
+
+        for (size_t i = 0; i < _size; i++)
+            _buffer[i] = copy[i];
+    }
+    _buffer[_size] = '\0';
     return _buffer;
 }
 
@@ -179,20 +190,33 @@ bool string::operator ==(const string& s) const
 
     return true;
 }
-
-string::operator const char*() const
-{
-    return data();
-}
-
 bool string::operator !=(const string& s) const
 {
     return !(*this == s);
 }
+bool string::operator ==(const char* s) const
+{
+    size_t sizeS = strlen(s);
+    if (_size != sizeS)
+        return false;
 
+    for (size_t i = 0; i < _size; i++)
+        if (_buffer[i] != s[i])
+            return false;
+
+    return true;
+}
+bool string::operator !=(const char* s) const
+{
+    return !(*this == s);
+}
 string operator +(string str, const char* buf)
 {
     return str += buf;
+}
+string::operator const char*()
+{
+    return data();
 }
 
 std::ostream& operator <<(std::ostream& os, const string& str)

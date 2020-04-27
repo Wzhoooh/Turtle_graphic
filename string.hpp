@@ -21,7 +21,7 @@ namespace DS // DataStructures
         size_t capacity() const noexcept;
         void clear() noexcept;
         const char* c_str() const noexcept;
-        const char* data() const noexcept;
+        const char* data() noexcept;
 
         char& operator[] (size_t pos);
         char operator[] (size_t pos) const;
@@ -30,7 +30,9 @@ namespace DS // DataStructures
         string& operator +=(const char*);
         bool operator ==(const string&) const;
         bool operator !=(const string&) const;
-        operator const char*() const;
+        bool operator ==(const char*) const;
+        bool operator !=(const char*) const;
+        operator const char*();
 
     private:
         size_t _size;

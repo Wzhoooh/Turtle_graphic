@@ -59,28 +59,82 @@ int main()
     defineList.applyCanvasDefinition();
 
     DS::list<DS::string> list;
+    list.push_back("CANVAS");
+    list.push_back("5");
+    list.push_back("5");
+    list.push_back("10");
+    list.push_back("11");
+    list.push_back("12");
+    list.push_back("100");
+    list.push_back("100");
+    list.push_back("26");
+    list.push_back("26");
+    list.push_back("END");... не работает соотношение real к immaginary
+
+    list.push_back("DEFPEN");
+    list.push_back("15");
+    list.push_back("22");
+    list.push_back("1");
+    list.push_back("2");
+    list.push_back("3");
+    list.push_back("END");
+
     list.push_back("M");
     list.push_back("1");
-    list.push_back("M");
-    list.push_back("-2");
     list.push_back("MT");
     list.push_back("2.5");
     list.push_back("3.5");
+    list.push_back("SELPEN");
+    list.push_back("15");
     list.push_back("T");
     list.push_back("90");
+    list.push_back("TL");
+    list.push_back("TR");
+    list.push_back("TS");
+    list.push_back("TN");
+    list.push_back("TW");
+    list.push_back("TE");
+    list.push_back("PD");
+    list.push_back("PU");
+    list.push_back("DO");
+    list.push_back("3");
     list.push_back("M");
     list.push_back("2");
-    Command_Identifier* m = new Move_Id(&algo, &defineList, &factory);
-    Command_Identifier* mt = new Move_To_Id(&algo, &defineList, &factory);
-    Command_Identifier* t = new Turn_Id(&algo, &defineList, &factory);
-    Command_Identifier* tl = new Turn_Left_Id(&algo, &defineList, &factory);
+    list.push_back("DO");
+    list.push_back("5");
+    list.push_back("TR");
+    list.push_back("AGAIN");
+    list.push_back("AGAIN");
+    list.push_back("MT");
+    list.push_back("10");
+    list.push_back("10");
+
+
+    DS::list<Command_Identifier*> identifiers;
+    identifiers.push_back(new Move_Id           (&algo, &defineList, &factory));
+    identifiers.push_back(new Move_To_Id        (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_Id           (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_Left_Id      (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_Right_Id     (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_South_Id     (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_North_Id     (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_West_Id      (&algo, &defineList, &factory));
+    identifiers.push_back(new Turn_East_Id      (&algo, &defineList, &factory));
+    identifiers.push_back(new Pen_Down_Id       (&algo, &defineList, &factory));
+    identifiers.push_back(new Pen_Up_Id         (&algo, &defineList, &factory));
+    identifiers.push_back(new Do_Id             (&algo, &defineList, &factory));
+    identifiers.push_back(new Again_Id          (&algo, &defineList, &factory));
+    identifiers.push_back(new Pen_Selection_Id  (&algo, &defineList, &factory));
+    identifiers.push_back(new Pen_Definition_Id (&algo, &defineList, &factory));
+    identifiers.push_back(new Canvas_Definition_Id (&algo, &defineList, &factory));
+
     for (auto it = list.begin(); it != list.end();)
     {
         bool isCorrect = false;
-        if (isCorrect = m->pushCommand(it)) continue;
-        if (isCorrect = mt->pushCommand(it)) continue;
-        if (isCorrect = t->pushCommand(it)) continue;
-        if (isCorrect = tl->pushCommand(it)) continue;
+        for (auto&& id : identifiers)
+            if (isCorrect = id->pushCommand(it))
+                break;
+
         if (!isCorrect)
             throw std::runtime_error("ERROR: I dont know this command - " + *it);
     }

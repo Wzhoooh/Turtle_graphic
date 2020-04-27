@@ -1,5 +1,8 @@
+#include <sstream>
+#include <iostream>
 #include "define_list.hpp"
 #include "commands.hpp"
+#include "string.hpp"
 
 void Define_List::addPenDefinition(Command* penDefinition, int number)
 {
@@ -18,7 +21,11 @@ void Define_List::applyDefinition(int numberOfDefinition)
             return;
         }
 
-    throw std::runtime_error("invalid definition");
+    std::stringstream ss;
+    ss << numberOfDefinition;
+    DS::string s(ss.str().c_str());
+std::cout << "-----------------" << s << "\n";
+    throw std::runtime_error("ERROR: no pen with number " + s);
 }
 void Define_List::applyCanvasDefinition()
 {

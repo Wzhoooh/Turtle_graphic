@@ -28,7 +28,7 @@ private:
     Define_List* _defineList;
     point_D _pos;
     double _direction;
-    bool _penStatus;
+    bool _isPenDown;
     double _width;
     rgb _color;
 

@@ -7,8 +7,8 @@
 const double PI = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679;
 
 Turtle::Turtle(Canvas* canvas, Define_List* defineList): _canvas(canvas),
-    _defineList(defineList), _pos(0, 0), _leftDownCorner(0, 0), _rigtUpCorner(1, 1),
-    _direction(0), _width(1), _penStatus(false){}
+    _defineList(defineList),  _leftDownCorner(0, 0), _rigtUpCorner(1, 1),
+    _pos(0, 0), _direction(0), _isPenDown(false), _width(1), _color(0, 0, 0){}
 
 void Turtle::move(double distance)
 {
@@ -55,7 +55,7 @@ void Turtle::setDirection(double angle)
 }
 void Turtle::setPenStatus(bool newStatus)
 {
-    _penStatus = newStatus;
+    _isPenDown = newStatus;
 }
 void Turtle::setPenWidth(double width)
 {

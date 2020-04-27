@@ -15,7 +15,7 @@ class Command_Handler
 {
 public:
     Command_Handler(Composite* composite, Define_List* defineList, Command_Factory* factory);
-    void handleStr(const char* s);
+    void handle(DS::list<DS::string>&);
 
 private:
     void parse(const char* s);
@@ -24,8 +24,6 @@ private:
     Composite* _composite;
     Define_List* _defineList;
     Command_Factory* _factory;
-    DS::list<Command_Identifier*> _identifiers;
-    DS::list<DS::string> _words;
 };
 
 #endif // COMMAND_HANDLER_HPP_INCLUDED

@@ -113,34 +113,8 @@ int main()
     list.push_back("10");
 
 
-    DS::list<Command_Identifier*> identifiers;
-    identifiers.push_back(new Move_Id           (&algo, &defineList, &factory));
-    identifiers.push_back(new Move_To_Id        (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_Id           (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_Left_Id      (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_Right_Id     (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_South_Id     (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_North_Id     (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_West_Id      (&algo, &defineList, &factory));
-    identifiers.push_back(new Turn_East_Id      (&algo, &defineList, &factory));
-    identifiers.push_back(new Pen_Down_Id       (&algo, &defineList, &factory));
-    identifiers.push_back(new Pen_Up_Id         (&algo, &defineList, &factory));
-    identifiers.push_back(new Do_Id             (&algo, &defineList, &factory));
-    identifiers.push_back(new Again_Id          (&algo, &defineList, &factory));
-    identifiers.push_back(new Pen_Selection_Id  (&algo, &defineList, &factory));
-    identifiers.push_back(new Pen_Definition_Id (&algo, &defineList, &factory));
-    identifiers.push_back(new Canvas_Definition_Id (&algo, &defineList, &factory));
-
-    for (auto it = list.begin(); it != list.end();)
-    {
-        bool isCorrect = false;
-        for (auto&& id : identifiers)
-            if (isCorrect = id->pushCommand(it))
-                break;
-
-        if (!isCorrect)
-            throw std::runtime_error("ERROR: I dont know this command: " + *it);
-    }
+    Command_Handler c(&algo, &defineList, &factory);
+    c.handle(list);
 
     algo.execute();
 //

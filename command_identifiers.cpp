@@ -298,6 +298,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
 
             ++wordIt;
+            std::cout << "canavasSize[i]: " << canavasSize[i] << "\n";
         }
         if (wordIt.isEnd())
             throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
@@ -339,11 +340,12 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     point_LL canavasSizeStruct(canavasSize[0], canavasSize[1]);
     rgb colorStruct(color[0], color[1], color[2]);
-    point_D downLeftStruct(downLeft[0], downLeft[1]);
-    point_D upRightStruct(upRight[0], upRight[1]);
+    point_D leftDownStruct(downLeft[0], downLeft[1]);
+    point_D rightUpStruct(upRight[0], upRight[1]);
 
     _defineList->addCanvasDefinition(_factory->crCanvas_Definition(canavasSizeStruct,
-                                    colorStruct, downLeftStruct, upRightStruct));
+                                    colorStruct, leftDownStruct, rightUpStruct));
+    _defineList->applyCanvasDefinition();
     return true;
 }
 

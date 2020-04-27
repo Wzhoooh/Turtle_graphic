@@ -4,6 +4,14 @@
 #include "commands.hpp"
 #include "string.hpp"
 
+Define_List::~Define_List()
+{
+    for (auto&& i : _penDefinitions)
+        delete i.first;
+
+    delete _canvasDefinition;
+}
+
 void Define_List::addPenDefinition(Command* penDefinition, int number)
 {
     _penDefinitions.push_back(std::make_pair(penDefinition, number));
@@ -24,7 +32,6 @@ void Define_List::applyDefinition(int numberOfDefinition)
     std::stringstream ss;
     ss << numberOfDefinition;
     DS::string s(ss.str().c_str());
-std::cout << "-----------------" << s << "\n";
     throw std::runtime_error("ERROR: no pen with number " + s);
 }
 void Define_List::applyCanvasDefinition()

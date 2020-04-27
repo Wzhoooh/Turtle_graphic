@@ -21,7 +21,6 @@ public:
 private:
     Drawer& _drawer;
     Bit_Map* _bitMap;
-    point_LL _sizeBitMap;
     rgb _canvasColor;
 };
 

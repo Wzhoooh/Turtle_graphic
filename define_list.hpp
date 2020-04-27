@@ -11,6 +11,7 @@ class Define_List
 {
 public:
     Define_List() = default;
+    ~Define_List();
     void addPenDefinition(Command* penDefinition, int number);
     void addCanvasDefinition(Command* canvasDefinition);
     void applyDefinition(int numberOfDefinition);

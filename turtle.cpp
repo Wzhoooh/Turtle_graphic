@@ -22,11 +22,11 @@ std::cout << "new y : " << std::setprecision(20) << newY << "\n";
     double xRealInImmage = (double)(_canvas->getSizeBitMap().x) / (_rigtUpCorner.x - _leftDownCorner.x);
     double yRealInImmage = (double)(_canvas->getSizeBitMap().y) / (_rigtUpCorner.y - _leftDownCorner.y);
 
-    point_LL pointFrom = {(_pos.x - _leftDownCorner.x) * xRealInImmage, (_pos.y - _leftDownCorner.y) * yRealInImmage};
-    point_LL pointTo = {(newX - _leftDownCorner.x) * xRealInImmage,  (newY - _leftDownCorner.y) * yRealInImmage};
+    point_LL pointFrom((_pos.x - _leftDownCorner.x) * xRealInImmage, (_pos.y - _leftDownCorner.y) * yRealInImmage);
+    point_LL pointTo((newX - _leftDownCorner.x) * xRealInImmage, (newY - _leftDownCorner.y) * yRealInImmage);
 
-    unsigned newWith = unsigned((xRealInImmage + yRealInImmage) / 2 * _width);
-    _canvas->draw(pointFrom, pointTo, _color, newWith);
+    unsigned newWidth = unsigned((xRealInImmage + yRealInImmage) / 2 * _width);
+    _canvas->draw(pointFrom, pointTo, _color, newWidth);
 
     _pos.x = newX;
     _pos.y = newY;
@@ -37,10 +37,10 @@ void Turtle::moveTo(point_D newPoint)
     double yRealInImmage = ((double)(_canvas->getSizeBitMap().y)) / (_rigtUpCorner.y - _leftDownCorner.y);
 
     point_LL pointFrom = {(_pos.x - _leftDownCorner.x) * xRealInImmage, (_pos.y - _leftDownCorner.y) * yRealInImmage};
-    point_LL pointTo = {(newPoint.x - _leftDownCorner.x) * xRealInImmage,  (newPoint.y - _leftDownCorner.y) * yRealInImmage};
+    point_LL pointTo = {(newPoint.x - _leftDownCorner.x) * xRealInImmage, (newPoint.y - _leftDownCorner.y) * yRealInImmage};
 
-    unsigned newWith = unsigned((xRealInImmage + yRealInImmage) / 2 * _width);
-    _canvas->draw(pointFrom, pointTo, _color, newWith);
+    unsigned newWidth = unsigned((xRealInImmage + yRealInImmage) / 2 * _width);
+    _canvas->draw(pointFrom, pointTo, _color, newWidth);
 
     _pos.x = newPoint.x;
     _pos.y = newPoint.y;

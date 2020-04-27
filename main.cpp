@@ -53,23 +53,25 @@ int main()
     Command_Factory factory(&turtle, &canvas, &defineList);
     Composite algo(&factory);
     // ( size_of_canvas, canvas_color, left_down_point, right_up_point )
-    Command* def = factory.crCanvas_Definition({13, 13}, {4, 2, 1}, {0, 0}, {13, 13});
-
-    defineList.addCanvasDefinition(def);
-    defineList.applyCanvasDefinition();
+//    Command* def = factory.crCanvas_Definition({13, 13}, {4, 2, 1}, {0, 0}, {13, 13});
+//
+//    defineList.addCanvasDefinition(def);
+//    defineList.applyCanvasDefinition();
 
     DS::list<DS::string> list;
     list.push_back("CANVAS");
     list.push_back("5");
     list.push_back("5");
+
     list.push_back("10");
     list.push_back("11");
     list.push_back("12");
-    list.push_back("100");
-    list.push_back("100");
-    list.push_back("26");
-    list.push_back("26");
-    list.push_back("END");... не работает соотношение real к immaginary
+
+    list.push_back("3");
+    list.push_back("3");
+    list.push_back("8");
+    list.push_back("8");
+    list.push_back("END");//... не работает соотношение real к immaginary
 
     list.push_back("DEFPEN");
     list.push_back("15");
@@ -79,13 +81,14 @@ int main()
     list.push_back("3");
     list.push_back("END");
 
+    list.push_back("SELPEN");
+    list.push_back("15");
+
     list.push_back("M");
     list.push_back("1");
     list.push_back("MT");
     list.push_back("2.5");
     list.push_back("3.5");
-    list.push_back("SELPEN");
-    list.push_back("15");
     list.push_back("T");
     list.push_back("90");
     list.push_back("TL");
@@ -136,7 +139,7 @@ int main()
                 break;
 
         if (!isCorrect)
-            throw std::runtime_error("ERROR: I dont know this command - " + *it);
+            throw std::runtime_error("ERROR: I dont know this command: " + *it);
     }
 
     algo.execute();

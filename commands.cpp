@@ -86,5 +86,6 @@ void Canvas_Definition::execute()
     _canvas->createBitMap(_sizeBitMap);
     _canvas->setCanvasColor(_color);
     _turtle->setCanvasParameters(_p1, _p2);
+    _turtle->moveTo(_p1);
 }
 const char* Canvas_Definition::getName(){ return "Canvas_Definition"; }

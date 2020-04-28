@@ -13,8 +13,8 @@ class Command_Factory;
 class Command_Identifier
 {
 public:
-    Command_Identifier(Composite* composite, Define_List* defineList,
-        Command_Factory* factory): _composite(composite), _defineList(defineList),
+    Command_Identifier(Composite& composite, Define_List& defineList,
+        Command_Factory& factory): _composite(composite), _defineList(defineList),
         _factory(factory){}
 
     virtual bool pushCommand(DS::list<DS::string>::iterator& wordIt) // pushes command to composite or defineList from factory if command is correct
@@ -23,15 +23,15 @@ public:
     }
 
 protected:
-    Composite* _composite;
-    Define_List* _defineList;
-    Command_Factory* _factory;
+    Composite& _composite;
+    Define_List& _defineList;
+    Command_Factory& _factory;
 };
 
 class Move_Id: public Command_Identifier
 {
 public:
-    Move_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Move_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -39,7 +39,7 @@ public:
 class Move_To_Id: public Command_Identifier
 {
 public:
-    Move_To_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Move_To_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -47,7 +47,7 @@ public:
 class Turn_Id: public Command_Identifier
 {
 public:
-    Turn_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -55,7 +55,7 @@ public:
 class Turn_Left_Id: public Command_Identifier
 {
 public:
-    Turn_Left_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_Left_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -63,7 +63,7 @@ public:
 class Turn_Right_Id: public Command_Identifier
 {
 public:
-    Turn_Right_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_Right_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -71,7 +71,7 @@ public:
 class Turn_South_Id: public Command_Identifier
 {
 public:
-    Turn_South_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_South_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -79,7 +79,7 @@ public:
 class Turn_North_Id: public Command_Identifier
 {
 public:
-    Turn_North_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_North_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -87,7 +87,7 @@ public:
 class Turn_West_Id: public Command_Identifier
 {
 public:
-    Turn_West_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_West_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -95,7 +95,7 @@ public:
 class Turn_East_Id: public Command_Identifier
 {
 public:
-    Turn_East_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Turn_East_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -103,7 +103,7 @@ public:
 class Pen_Down_Id: public Command_Identifier
 {
 public:
-    Pen_Down_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Pen_Down_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -111,7 +111,7 @@ public:
 class Pen_Up_Id: public Command_Identifier
 {
 public:
-    Pen_Up_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Pen_Up_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -119,7 +119,7 @@ public:
 class Do_Id: public Command_Identifier
 {
 public:
-    Do_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Do_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -127,7 +127,7 @@ public:
 class Again_Id: public Command_Identifier
 {
 public:
-    Again_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Again_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -135,7 +135,7 @@ public:
 class Pen_Definition_Id: public Command_Identifier
 {
 public:
-    Pen_Definition_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Pen_Definition_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -143,7 +143,7 @@ public:
 class Pen_Selection_Id: public Command_Identifier
 {
 public:
-    Pen_Selection_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Pen_Selection_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
@@ -151,7 +151,7 @@ public:
 class Canvas_Definition_Id: public Command_Identifier
 {
 public:
-    Canvas_Definition_Id(Composite* composite, Define_List* defineList, Command_Factory* factory):
+    Canvas_Definition_Id(Composite& composite, Define_List& defineList, Command_Factory& factory):
         Command_Identifier(composite, defineList, factory){}
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };

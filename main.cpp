@@ -16,6 +16,8 @@
 #include "command_identifiers.hpp"
 #include "parser.hpp"
 
+#define p l.push_back
+
 int main()
 {
 //    DS::string str("ergsfb", 3);
@@ -26,18 +28,18 @@ int main()
 //    char* input;
 //    is >> input;
 //
-////    std::shared_ptr<Composite> commandTree = std::make_shared<Composite>(); // contains a tree of Commands
-//    std::shared_ptr<Define_List> defineList = std::make_shared<Define_List>(); // list of defines
+////    std::shared);tr<Composite> commandTree = std::make_shared<Composite>(); // contains a tree of Commands
+//    std::shared);tr<Define_List> defineList = std::make_shared<Define_List>(); // list of defines
 //
-//    std::shared_ptr<Canvas> canvas = std::make_shared<Canvas>();
-//    std::shared_ptr<Turtle> turtle = std::make_shared<Turtle>(canvas, defineList);
+//    std::shared);tr<Canvas> canvas = std::make_shared<Canvas>();
+//    std::shared);tr<Turtle> turtle = std::make_shared<Turtle>(canvas, defineList);
 //
-////    std::shared_ptr<Command_Factory> factory = std::make_shared<Command_Factory>(turtle); // Command Fabric: will be create commands
-////    std::shared_ptr<Command_Handler> handler = std::make_shared<Command_Handler>(commandTree, defineList, factory); // behaviour class, will be parse an input strings and push commands to the Composite and definitions to the defineList
+////    std::shared);tr<Command_Factory> factory = std::make_shared<Command_Factory>(turtle); // Command Fabric: will be create commands
+////    std::shared);tr<Command_Handler> handler = std::make_shared<Command_Handler>(commandTree, defineList, factory); // behaviour class, will be parse an input strings and push commands to the Composite and definitions to the defineList
 ////    Parser parser(input, handler);
 ////    parser.handle(); // commandTree has a tree of commands now
 ////
-////    commandTree->execute();
+////    commandTree->"execute();
 //
 //    std::ofstream os("pattern.bmp");
 ////    Uploader upl(c, os);
@@ -49,72 +51,60 @@ int main()
 
     Canvas canvas(std::move(Loger()));
     Define_List defineList;
-    Turtle turtle(&canvas, &defineList);
-    Command_Factory factory(&turtle, &canvas, &defineList);
-    Composite algo(&factory);
-    // ( size_of_canvas, canvas_color, left_down_point, right_up_point )
-//    Command* def = factory.crCanvas_Definition({13, 13}, {4, 2, 1}, {0, 0}, {13, 13});
-//
-//    defineList.addCanvasDefinition(def);
-//    defineList.applyCanvasDefinition();
+    Turtle turtle(canvas, defineList);
+    Command_Factory factory(turtle, canvas, defineList);
+    Composite algo(factory);
 
-    DS::list<DS::string> list;
-    list.push_back("CANVAS");
-    list.push_back("5");
-    list.push_back("5");
+    DS::list<DS::string> l;
+    p("CANVAS");
+        p("5");
+        p("5");
 
-    list.push_back("10");
-    list.push_back("11");
-    list.push_back("12");
+        p("10");
+        p("11");
+        p("12");
 
-    list.push_back("3");
-    list.push_back("3");
-    list.push_back("8");
-    list.push_back("8");
-    list.push_back("END");//... не работает соотношение real к immaginary
+        p("3");
+        p("3");
+        p("8");
+        p("8");
+    p("END");
 
-    list.push_back("DEFPEN");
-    list.push_back("15");
-    list.push_back("22");
-    list.push_back("1");
-    list.push_back("2");
-    list.push_back("3");
-    list.push_back("END");
+    p("DEFPEN"); p("15");
+        p("22");
+        p("1");
+        p("2");
+        p("3");
+    p("END");
 
-    list.push_back("SELPEN");
-    list.push_back("15");
+    p("M"); p("1");
+    p("MT"); p("2.5"); p("3.5");
+    p("T"); p("90");
+    p("TL");
+    p("TR");
+    p("TS");
+    p("TN");
+    p("TW");
+    p("M"); p("4");
+    p("TE");
+    p("PD");
+    p("PU");
 
-    list.push_back("M");
-    list.push_back("1");
-    list.push_back("MT");
-    list.push_back("2.5");
-    list.push_back("3.5");
-    list.push_back("T");
-    list.push_back("90");
-    list.push_back("TL");
-    list.push_back("TR");
-    list.push_back("TS");
-    list.push_back("TN");
-    list.push_back("TW");
-    list.push_back("TE");
-    list.push_back("PD");
-    list.push_back("PU");
-    list.push_back("DO");
-    list.push_back("3");
-    list.push_back("M");
-    list.push_back("2");
-    list.push_back("DO");
-    list.push_back("5");
-    list.push_back("TR");
-    list.push_back("AGAIN");
-    list.push_back("AGAIN");
-    list.push_back("MT");
-    list.push_back("10");
-    list.push_back("10");
+    p("SELPEN"); p("15");
+
+    p("DO"); p("3");
+        p("M"); p("2");
+        p("DO"); p("5");
+            p("TR");
+            p("M"); p("3");
+        p("AGAIN");
+    p("AGAIN");
+
+    p("MT"); p("10"); p("10");
 
 
-    Command_Handler c(&algo, &defineList, &factory);
-    c.handle(list);
+    Command_Handler c(algo, defineList, factory);
+    c.handle(l);
 
     algo.execute();
 //

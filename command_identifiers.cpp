@@ -24,7 +24,7 @@ bool Move_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crMove(param));
+    _composite.addCommand(_factory.crMove(param));
     return true;
 }
 
@@ -50,7 +50,7 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         ++wordIt;
     }
 
-    _composite->addCommand(_factory->crMove_To(point_D(param[0], param[1])));
+    _composite.addCommand(_factory.crMove_To(point_D(param[0], param[1])));
     return true;
 }
 
@@ -71,7 +71,7 @@ bool Turn_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn(param));
+    _composite.addCommand(_factory.crTurn(param));
     return true;
 }
 
@@ -82,7 +82,7 @@ bool Turn_Left_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn_Left());
+    _composite.addCommand(_factory.crTurn_Left());
     return true;
 }
 
@@ -93,7 +93,7 @@ bool Turn_Right_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn_Right());
+    _composite.addCommand(_factory.crTurn_Right());
     return true;
 }
 
@@ -104,7 +104,7 @@ bool Turn_South_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn_South());
+    _composite.addCommand(_factory.crTurn_South());
     return true;
 }
 
@@ -115,7 +115,7 @@ bool Turn_North_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn_North());
+    _composite.addCommand(_factory.crTurn_North());
     return true;
 }
 
@@ -126,7 +126,7 @@ bool Turn_West_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn_West());
+    _composite.addCommand(_factory.crTurn_West());
     return true;
 }
 
@@ -137,7 +137,7 @@ bool Turn_East_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crTurn_East());
+    _composite.addCommand(_factory.crTurn_East());
     return true;
 }
 
@@ -148,7 +148,7 @@ bool Pen_Down_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crPen_Down());
+    _composite.addCommand(_factory.crPen_Down());
     return true;
 }
 
@@ -159,7 +159,7 @@ bool Pen_Up_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crPen_Up());
+    _composite.addCommand(_factory.crPen_Up());
     return true;
 }
 
@@ -180,7 +180,7 @@ bool Do_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crDo(param));
+    _composite.addCommand(_factory.crDo(param));
     return true;
 }
 
@@ -191,7 +191,7 @@ bool Again_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->finishBlok();
+    _composite.finishBlok();
     return true;
 }
 
@@ -249,7 +249,7 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     ++wordIt;
 
     rgb colorRgb(color[0], color[1], color[2]);
-    _defineList->addPenDefinition(_factory->crPen_Definition(penWidth, colorRgb), penNumber);
+    _defineList.addPenDefinition(_factory.crPen_Definition(penWidth, colorRgb), penNumber);
     return true;
 }
 
@@ -269,7 +269,7 @@ bool Pen_Selection_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     ++wordIt;
 
-    _composite->addCommand(_factory->crPen_Selection(param));
+    _composite.addCommand(_factory.crPen_Selection(param));
     return true;
 }
 
@@ -343,9 +343,9 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     point_D leftDownStruct(downLeft[0], downLeft[1]);
     point_D rightUpStruct(upRight[0], upRight[1]);
 
-    _defineList->addCanvasDefinition(_factory->crCanvas_Definition(canavasSizeStruct,
+    _defineList.addCanvasDefinition(_factory.crCanvas_Definition(canavasSizeStruct,
                                     colorStruct, leftDownStruct, rightUpStruct));
-    _defineList->applyCanvasDefinition();
+    _defineList.applyCanvasDefinition();
     return true;
 }
 

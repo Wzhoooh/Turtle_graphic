@@ -10,7 +10,7 @@ class Define_List;
 class Turtle
 {
 public:
-    Turtle(Canvas* canvas, Define_List* defineList);
+    Turtle(Canvas& canvas, Define_List& defineList);
     void move(double distance);
     void moveTo(point_D newPoint);
     void changeDirection(double addAngle);
@@ -24,8 +24,8 @@ private:
     double anglesToRadians(double angle);
 
 private:
-    Canvas* _canvas;
-    Define_List* _defineList;
+    Canvas& _canvas;
+    Define_List& _defineList;
     point_D _pos;
     double _direction;
     bool _isPenDown;

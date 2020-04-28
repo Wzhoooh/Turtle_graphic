@@ -5,8 +5,8 @@
 #include "command_factory.hpp"
 #include "command_identifiers.hpp"
 
-Command_Handler::Command_Handler(Composite* composite, Define_List* defineList,
-    Command_Factory* factory): _composite(composite), _defineList(defineList),
+Command_Handler::Command_Handler(Composite& composite, Define_List& defineList,
+    Command_Factory& factory): _composite(composite), _defineList(defineList),
     _factory(factory){}
 
 void Command_Handler::handle(DS::list<DS::string>& list)

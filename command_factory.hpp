@@ -12,7 +12,7 @@ class Command;
 class Command_Factory
 {
 public:
-    Command_Factory(Turtle* turtle, Canvas* canvas, Define_List* defList);
+    Command_Factory(Turtle& turtle, Canvas& canvas, Define_List& defList);
     Command* crMove(double distance);
     Command* crMove_To(point_D newPoint);
     Command* crTurn(double angle);
@@ -31,9 +31,9 @@ public:
     Command* crCanvas_Definition(point_LL sizeBitMap, rgb color, point_D p1, point_D p2);
 
 private:
-    Turtle* _turtle;
-    Canvas* _canvas;
-    Define_List* _defList;
+    Turtle& _turtle;
+    Canvas& _canvas;
+    Define_List& _defList;
 };
 
 #endif // COMMAND_FACTORY_HPP_INCLUDED

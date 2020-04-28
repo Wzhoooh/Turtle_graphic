@@ -4,7 +4,7 @@
 #include "command_factory.hpp"
 #include "commands.hpp"
 
-Composite::Composite(Command_Factory* factory): _commands(factory->crDo(1))
+Composite::Composite(Command_Factory& factory): _commands(factory.crDo(1))
 {
     _commandsStack.push_back(_commands);
 }

@@ -3,7 +3,7 @@
 #include "turtle.hpp"
 #include "canvas.hpp"
 
-Command_Factory::Command_Factory(Turtle* turtle, Canvas* canvas, Define_List* defList):
+Command_Factory::Command_Factory(Turtle& turtle, Canvas& canvas, Define_List& defList):
     _turtle(turtle), _canvas(canvas), _defList(defList){}
 
 Command* Command_Factory::crMove(double distance)

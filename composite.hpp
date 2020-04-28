@@ -10,7 +10,7 @@ class Command_Factory;
 class Composite
 {
 public:
-    Composite(Command_Factory* factory);
+    Composite(Command_Factory& factory);
     void addCommand(Command* command);
     void finishBlok();
     void execute();

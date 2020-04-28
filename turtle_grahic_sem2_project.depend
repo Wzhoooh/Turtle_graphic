@@ -133,7 +133,7 @@
 	<memory>
 	"primitives.hpp"
 
-1588053479 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.cpp
+1588094721 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.cpp
 	<memory>
 	"command_handler.hpp"
 	"define_list.hpp"
@@ -163,13 +163,13 @@
 	<memory>
 	<utility>
 
-1588053350 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.hpp
+1588094721 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.hpp
 	<memory>
 	<exception>
 	"list.hpp"
 	"string.hpp"
 
-1588083673 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
+1588099758 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
 	<string.h>
 	<cstdlib>
 	<iostream>
@@ -220,7 +220,7 @@
 	"commands.hpp"
 	"string.hpp"
 
-1588084830 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1588099254 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
 	"list.hpp"
@@ -238,7 +238,7 @@
 1588083673 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.hpp
 	<memory>
 
-1588085606 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
+1588096380 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
 	"parser.hpp"
 	"list.hpp"
 	"string.hpp"
@@ -254,12 +254,12 @@
 
 1587997489 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
 
-1588085552 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
+1588097521 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
 	<iostream>
 	<string.h>
 	"string.hpp"
 
-1587989000 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
+1588097120 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
 	<iostream>
 
 1588083751 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\tests\list_tester.cpp

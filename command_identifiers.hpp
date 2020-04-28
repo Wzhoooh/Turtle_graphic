@@ -156,4 +156,12 @@ public:
     bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
 };
 
+class Comment: public Command_Identifier
+{
+public:
+    Comment(Composite& composite, Define_List& defineList, Command_Factory& factory):
+        Command_Identifier(composite, defineList, factory){}
+    bool pushCommand(DS::list<DS::string>::iterator& wordIt) override;
+};
+
 #endif // COMMANDS_IDENTIFICATORS_HPP_INCLUDED

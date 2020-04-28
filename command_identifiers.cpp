@@ -8,15 +8,28 @@
 #include "command_factory.hpp"
 #include "primitives.hpp"
 
+void increaseIt(DS::list<DS::string>::iterator& wordIt)
+{
+    auto copy = wordIt;
+    ++copy;
+    if (copy.isEnd())
+    {
+        char* index;
+        for (; index != '\0'; --wordIt)
+            std::strtod(wordIt->data(), &index);
+
+        throw std::runtime_error("ERROR: no enough arguments for command " + *wordIt);
+    }
+    else
+        ++wordIt;
+}
+
 bool Move_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
     if (*wordIt != "M")
         return false;
 
-    ++wordIt;
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
+    increaseIt(wordIt);
     char* index = nullptr;
     double param = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
@@ -33,22 +46,17 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     if (*wordIt != "MT")
         return false;
 
-    ++wordIt;
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
     char* index = nullptr;
     double param[2];
     for (size_t i = 0; i < 2; ++i)
     {
+        increaseIt(wordIt);
         param[i] = std::strtod(wordIt->data(), &index);
         if (*index != '\0')
             throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-        if (wordIt.isEnd())
-            throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
-        ++wordIt;
     }
+
+    ++wordIt;
 
     _composite.addCommand(_factory.crMove_To(point_D(param[0], param[1])));
     return true;
@@ -56,13 +64,10 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
 bool Turn_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 {
-    if (*wordIt != "T")
+    if (*wordIt != "TA")
         return false;
 
-    ++wordIt;
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
+    increaseIt(wordIt);
     char* index = nullptr;
     double param;
     param = std::strtod(wordIt->data(), &index);
@@ -168,11 +173,7 @@ bool Do_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     if (*wordIt != "DO")
         return false;
 
-        ++wordIt;
-
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
+    increaseIt(wordIt);
     char* index = nullptr;
     int param = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0' || param < 0)
@@ -205,44 +206,33 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     double penWidth = 1;
     char color[3] = { 0 };
 
-    ++wordIt;
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
     // this cycle is only to have one finish point
     for (int i = 0; i < 1; ++i)
     {
+        increaseIt(wordIt);
         if (*wordIt == "END") break;
         penNumber = std::strtoll(wordIt->data(), &index, 10);
         if (*index != '\0')
             throw std::runtime_error("ERROR: syntax error: " + *wordIt);
 
-        ++wordIt;
-        if (wordIt.isEnd())
-            throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
+        increaseIt(wordIt);
         if (*wordIt == "END") break;
         penWidth = std::strtod(wordIt->data(), &index);
         if (*index != '\0')
             throw std::runtime_error("ERROR: syntax error: " + *wordIt);
 
-        ++wordIt;
-        if (wordIt.isEnd())
-            throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
+        increaseIt(wordIt);
         if (*wordIt == "END") break;
         for (size_t i = 0; i < 3; ++i)
         {
+            increaseIt(wordIt);
             color[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-            ++wordIt;
         }
     }
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
 
+    increaseIt(wordIt);
     if (*wordIt != "END")
         throw std::runtime_error("ERROR: too many arguments for command " + *wordIt);
 
@@ -258,9 +248,7 @@ bool Pen_Selection_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     if (*wordIt != "SELPEN")
         return false;
 
-    ++wordIt;
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command M");
+    increaseIt(wordIt);
 
     char* index = nullptr;
     int param = std::strtoll(wordIt->data(), &index, 10);
@@ -284,54 +272,54 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     double downLeft[2] = { 0 };
     double upRight[2] = { 1, 1 };
 
-    ++wordIt;
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
-
     // this cycle is only to have one finish point
     for (int i = 0; i < 1; ++i)
     {
+        // set size of canvas(in pixels)
         for (size_t i = 0; i < 2; ++i)
         {
+            increaseIt(wordIt);
+
             canavasSize[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-            ++wordIt;
-            std::cout << "canavasSize[i]: " << canavasSize[i] << "\n";
         }
-        if (wordIt.isEnd())
-            throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
+        increaseIt(wordIt);
+
+        // set color(in rgb)
+        if (*wordIt != "RGB")
+            throw std::runtime_error("ERROR: no color specifier");
 
         for (size_t i = 0; i < 3; ++i)
         {
+            increaseIt(wordIt);
+
             color[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-            ++wordIt;
         }
 
+        // set view
         if (*wordIt == "END") break;
         for (size_t i = 0; i < 2; ++i)
         {
+            increaseIt(wordIt);
+
             downLeft[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-            ++wordIt;
         }
         for (size_t i = 0; i < 2; ++i)
         {
+            increaseIt(wordIt);
+
             upRight[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-            ++wordIt;
         }
     }
-    if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
+
+    increaseIt(wordIt);
 
     if (*wordIt != "END")
         throw std::runtime_error("ERROR: too many arguments for command " + *wordIt);
@@ -349,3 +337,18 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     return true;
 }
 
+bool Comment::pushCommand(DS::list<DS::string>::iterator& wordIt)
+{
+    if (*wordIt != "/*")
+        return false;
+
+    for (; !wordIt.isEnd() && *wordIt != "*/"; ++wordIt)
+        ;
+
+    if (wordIt.isEnd())
+        throw std::runtime_error("ERROR: no */");
+
+    ++wordIt;
+
+    return true;
+}

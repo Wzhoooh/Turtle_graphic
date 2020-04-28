@@ -10,7 +10,7 @@ namespace DS // DataStructures
     public:
         string();
         string(const char* s);
-        string(const char* s, size_t n);
+//        string(const char* s, size_t n);
         string(const string&);
         string(string&&);
         string& operator =(const string&);

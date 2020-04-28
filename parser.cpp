@@ -21,5 +21,10 @@ void Parser::handle()
             commandsList.push_back(std::move(word));
         }
     }
+    for (auto&& i : commandsList)
+        std::cout << i << "\n";
+
+    std::cout << "---------------\n";
+
     _handler.handle(commandsList);
 }

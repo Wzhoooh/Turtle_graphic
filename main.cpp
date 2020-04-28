@@ -52,7 +52,7 @@ int main()
     Command_Factory factory(turtle, canvas, defineList);
     Composite algo(factory);
 
-    const char* s = "   M 1 TR  M 1  CANVAS 5 5  10 11 12  -2 -2  3 3    END   T 90  M 1 MT 2.5 1.5";
+    const char* s = "  /* M 1 TR  M 1  */ CANVAS 5 5 RGB 10 11 12  -2 -2  3 3    END   TA 90 /* M 1 */ MT 2.5 1.5 M 2";
     Parser p(s, Command_Handler(algo, defineList, factory));
     p.handle();
     algo.execute();

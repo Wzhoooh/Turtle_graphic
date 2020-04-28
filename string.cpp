@@ -24,15 +24,15 @@ string::string(const char* s): _size(strlen(s)), _capacity(SIZE_NULL_CAPACITY)
     for (size_t i = 0; i < _size; ++i)
         _buffer[i] = s[i];
 }
-string::string(const char* s, size_t n): _size(n), _capacity(SIZE_NULL_CAPACITY)
-{
-    if (_size > SIZE_NULL_CAPACITY)
-        _capacity = getCapacity(_size);
-
-    _buffer = new char[_capacity];
-    for (size_t i = 0; i < _size; ++i)
-        _buffer[i] = s[i];
-}
+//string::string(const char* s, size_t n): _size(n), _capacity(SIZE_NULL_CAPACITY)
+//{
+//    if (_size > SIZE_NULL_CAPACITY)
+//        _capacity = getCapacity(_size);
+//
+//    _buffer = new char[_capacity];
+//    for (size_t i = 0; i < _size; ++i)
+//        _buffer[i] = s[i];
+//}
 string::string(const string& s): _size(s._size), _capacity(s._capacity)
 {
     _buffer = new char[_capacity];

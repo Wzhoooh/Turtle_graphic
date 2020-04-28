@@ -28,6 +28,7 @@ void Command_Handler::handle(DS::list<DS::string>& list)
     identifiers.push_back(std::make_shared<Pen_Selection_Id>(_composite, _defineList, _factory));
     identifiers.push_back(std::make_shared<Pen_Definition_Id>(_composite, _defineList, _factory));
     identifiers.push_back(std::make_shared<Canvas_Definition_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_shared<Comment>(_composite, _defineList, _factory));
 
     for (auto it = list.begin(); it != list.end();)
     {

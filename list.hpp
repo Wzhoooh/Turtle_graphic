@@ -1,6 +1,8 @@
 #ifndef LIST_HPP_INCLUDED
 #define LIST_HPP_INCLUDED
 
+#include <memory>
+
 namespace DS // DataStructures
 {
 

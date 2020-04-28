@@ -39,7 +39,7 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
     char* index = nullptr;
     double param[2];
-    for (size_t i = 0; i < 2; i++)
+    for (size_t i = 0; i < 2; ++i)
     {
         param[i] = std::strtod(wordIt->data(), &index);
         if (*index != '\0')
@@ -210,7 +210,7 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
 
     // this cycle is only to have one finish point
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 1; ++i)
     {
         if (*wordIt == "END") break;
         penNumber = std::strtoll(wordIt->data(), &index, 10);
@@ -231,7 +231,7 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
             throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
 
         if (*wordIt == "END") break;
-        for (size_t i = 0; i < 3; i++)
+        for (size_t i = 0; i < 3; ++i)
         {
             color[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
@@ -289,9 +289,9 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
 
     // this cycle is only to have one finish point
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 1; ++i)
     {
-        for (size_t i = 0; i < 2; i++)
+        for (size_t i = 0; i < 2; ++i)
         {
             canavasSize[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
@@ -303,7 +303,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         if (wordIt.isEnd())
             throw std::runtime_error("ERROR: not enough arguments for command " + *wordIt);
 
-        for (size_t i = 0; i < 3; i++)
+        for (size_t i = 0; i < 3; ++i)
         {
             color[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
@@ -313,7 +313,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         }
 
         if (*wordIt == "END") break;
-        for (size_t i = 0; i < 2; i++)
+        for (size_t i = 0; i < 2; ++i)
         {
             downLeft[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
@@ -321,7 +321,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             ++wordIt;
         }
-        for (size_t i = 0; i < 2; i++)
+        for (size_t i = 0; i < 2; ++i)
         {
             upRight[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')

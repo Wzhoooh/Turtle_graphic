@@ -55,6 +55,7 @@
 		<Unit filename="primitives.hpp" />
 		<Unit filename="string.cpp" />
 		<Unit filename="string.hpp" />
+		<Unit filename="tests/list_tester.cpp" />
 		<Unit filename="turtle.cpp" />
 		<Unit filename="turtle.hpp" />
 		<Extensions>

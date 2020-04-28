@@ -21,7 +21,7 @@ string::string(const char* s): _size(strlen(s)), _capacity(SIZE_NULL_CAPACITY)
         _capacity = getCapacity(_size);
 
     _buffer = new char[_capacity];
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         _buffer[i] = s[i];
 }
 string::string(const char* s, size_t n): _size(n), _capacity(SIZE_NULL_CAPACITY)
@@ -30,13 +30,13 @@ string::string(const char* s, size_t n): _size(n), _capacity(SIZE_NULL_CAPACITY)
         _capacity = getCapacity(_size);
 
     _buffer = new char[_capacity];
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         _buffer[i] = s[i];
 }
 string::string(const string& s): _size(s._size), _capacity(s._capacity)
 {
     _buffer = new char[_capacity];
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         _buffer[i] = s[i];
 }
 string::string(string&& s): _size(s._size), _capacity(s._capacity)
@@ -44,6 +44,7 @@ string::string(string&& s): _size(s._size), _capacity(s._capacity)
     _buffer = s._buffer;
     s._size = 0;
     s._capacity = 0;
+    s._buffer = nullptr;
 }
 string& string::operator =(const string& s)
 {
@@ -55,7 +56,7 @@ string& string::operator =(const string& s)
     }
 
     _size = s._size;
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         _buffer[i] = s[i];
 }
 string& string::operator =(string&& s)
@@ -67,6 +68,7 @@ string& string::operator =(string&& s)
 
     s._size = 0;
     s._capacity = 0;
+    s._buffer = nullptr;
 }
 string::~string()
 {
@@ -90,7 +92,7 @@ void string::clear() noexcept
 const char* string::c_str() const noexcept
 {
     char* str = new char[_size+1];
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         str[i] = _buffer[i];
 
     str[_size] = '\0';
@@ -105,7 +107,7 @@ const char* string::data() noexcept
         _capacity = getCapacity(_size);
         _buffer = new char[_capacity];
 
-        for (size_t i = 0; i < _size; i++)
+        for (size_t i = 0; i < _size; ++i)
             _buffer[i] = copy[i];
     }
     _buffer[_size] = '\0';
@@ -130,11 +132,11 @@ string& string::operator +=(const string& s)
         _capacity = getCapacity(_size + s.size());
         _buffer = new char[_capacity];
 
-        for (size_t i = 0; i < _size; i++)
+        for (size_t i = 0; i < _size; ++i)
             _buffer[i] = copy[i];
     }
 
-    for (size_t i = 0; i < s.size(); i++)
+    for (size_t i = 0; i < s.size(); ++i)
         _buffer[_size+i] = s[i];
 
     _size += s.size();
@@ -149,7 +151,7 @@ string& string::operator +=(char c)
         _capacity = getCapacity(_size + 1);
         _buffer = new char[_capacity];
 
-        for (size_t i = 0; i < _size; i++)
+        for (size_t i = 0; i < _size; ++i)
             _buffer[i] = copy[i];
     }
 
@@ -169,11 +171,11 @@ string& string::operator +=(const char* s)
         _capacity = getCapacity(_size + sizeS);
         _buffer = new char[_capacity];
 
-        for (size_t i = 0; i < _size; i++)
+        for (size_t i = 0; i < _size; ++i)
             _buffer[i] = copy[i];
     }
 
-    for (size_t i = 0; i < sizeS; i++)
+    for (size_t i = 0; i < sizeS; ++i)
         _buffer[_size+i] = s[i];
 
     _size += sizeS;
@@ -184,7 +186,7 @@ bool string::operator ==(const string& s) const
     if (_size != s.size())
         return false;
 
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         if (_buffer[i] != s[i])
             return false;
 
@@ -200,7 +202,7 @@ bool string::operator ==(const char* s) const
     if (_size != sizeS)
         return false;
 
-    for (size_t i = 0; i < _size; i++)
+    for (size_t i = 0; i < _size; ++i)
         if (_buffer[i] != s[i])
             return false;
 
@@ -221,7 +223,7 @@ string::operator const char*()
 
 std::ostream& operator <<(std::ostream& os, const string& str)
 {
-    for (size_t i = 0; i < str.size(); i++)
+    for (size_t i = 0; i < str.size(); ++i)
         os << str[i];
 
     return os;

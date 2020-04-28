@@ -11,7 +11,7 @@ DS::list<T, Allocator>::list(){}
 template<class T, class Allocator>
 DS::list<T, Allocator>::list(const list& source)
 {
-    for (typename DS::list<T>::iterator i = source.begin(); i != source.end(); i++)
+    for (typename DS::list<T>::iterator i = source.begin(); i != source.end(); ++i)
     {
         this->push_back(*i);
         this->_size++;
@@ -167,7 +167,7 @@ void DS::list<T, Allocator>::pop_front()
     else
     {
         Node<T>* deleteNode = _first;
-        _first->_next->_prev == nullptr;
+        _first->_next->_prev = nullptr;
         _first = _first->_next;
         std::allocator_traits<NodeAllocator>::destroy(_allocNode, deleteNode);
         std::allocator_traits<NodeAllocator>::deallocate(_allocNode, deleteNode, sizeof(Node<T>));

@@ -8,7 +8,7 @@ const double PI = 3.141592653589793238462643383279502884197169399375105820974944
 
 Turtle::Turtle(Canvas& canvas, Define_List& defineList): _canvas(canvas),
     _defineList(defineList),  _leftDownCorner(0, 0), _rigtUpCorner(1, 1),
-    _pos(0, 0), _direction(0), _isPenDown(false), _width(1), _color(0, 0, 0){}
+    _pos(0, 0), _direction(90), _isPenDown(false), _width(1), _color(0, 0, 0){}
 
 void Turtle::move(double distance)
 {

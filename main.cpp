@@ -1,8 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <memory>
-#include <cmath>
-#include <string>
 
 #include "list.hpp"
 #include "string.hpp"
@@ -16,7 +13,7 @@
 #include "command_identifiers.hpp"
 #include "parser.hpp"
 
-#define p l.push_back
+//#define p l.push_back
 
 int main()
 {
@@ -55,58 +52,67 @@ int main()
     Command_Factory factory(turtle, canvas, defineList);
     Composite algo(factory);
 
-    DS::list<DS::string> l;
-    p("CANVAS");
-        p("5");
-        p("5");
-
-        p("10");
-        p("11");
-        p("12");
-
-        p("3");
-        p("3");
-        p("8");
-        p("8");
-    p("END");
-
-    p("DEFPEN"); p("15");
-        p("22");
-        p("1");
-        p("2");
-        p("3");
-    p("END");
-
-    p("M"); p("1");
-    p("MT"); p("2.5"); p("3.5");
-    p("T"); p("90");
-    p("TL");
-    p("TR");
-    p("TS");
-    p("TN");
-    p("TW");
-    p("M"); p("4");
-    p("TE");
-    p("PD");
-    p("PU");
-
-    p("SELPEN"); p("15");
-
-    p("DO"); p("3");
-        p("M"); p("2");
-        p("DO"); p("5");
-            p("TR");
-            p("M"); p("3");
-        p("AGAIN");
-    p("AGAIN");
-
-    p("MT"); p("10"); p("10");
-
-
-    Command_Handler c(algo, defineList, factory);
-    c.handle(l);
-
+    const char* s = "   M 1 TR  M 1  CANVAS 5 5  10 11 12  -2 -2  3 3    END   T 90  M 1 MT 2.5 1.5";
+    Parser p(s, Command_Handler(algo, defineList, factory));
+    p.handle();
     algo.execute();
+//
+//    DS::list<DS::string> l;
+//    p("CANVAS");
+//        p("5");
+//        p("5");
+//
+//        p("10");
+//        p("11");
+//        p("12");
+//
+//        p("-2");
+//        p("-2");
+//        p("3");
+//        p("3");
+//    p("END");
+//
+//    p("DEFPEN"); p("15");
+//        p("22");
+//        p("1");
+//        p("2");
+//        p("3");
+//    p("END");
+//
+//    p("M"); p("1");
+//    p("TR");
+//    p("M"); p("1");
+//    p("T"); p("90");
+//    p("M"); p("1");
+//    p("MT"); p("2.5"); p("1.5");
+////    p("T"); p("90");
+////    p("TL");
+////    p("TR");
+////    p("TS");
+////    p("TN");
+////    p("TW");
+////    p("M"); p("4");
+////    p("TE");
+////    p("PD");
+////    p("PU");
+////
+////    p("SELPEN"); p("15");
+////
+////    p("DO"); p("3");
+////        p("M"); p("2");
+////        p("DO"); p("5");
+////            p("TR");
+////            p("M"); p("3");
+////        p("AGAIN");
+////    p("AGAIN");
+////
+////    p("MT"); p("10"); p("10");
+//
+//
+//    Command_Handler c(algo, defineList, factory);
+//    c.handle(l);
+//
+//    algo.execute();
 //
 //    defineList.addPenDefinition(factory.crPen_Definition(3, {0, 2, 6}), 2);
 //    defineList.addPenDefinition(factory.crPen_Definition(4, {1, 3, 5}), 5);

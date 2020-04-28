@@ -13,15 +13,15 @@ void Move_To::execute(){ _turtle.moveTo(_newPoint); }
 const char* Move_To::getName(){ return "Move_To"; }
 
 Turn::Turn(Turtle& turtle, double angle): _turtle(turtle), _angle(angle){}
-void Turn::execute(){ _turtle.changeDirection(_angle); }
+void Turn::execute(){ _turtle.changeDirection(-_angle); }
 const char* Turn::getName(){ return "Turn"; }
 
 Turn_Left::Turn_Left(Turtle& turtle): _turtle(turtle){}
-void Turn_Left::execute(){ _turtle.changeDirection(-90); }
+void Turn_Left::execute(){ _turtle.changeDirection(90); }
 const char* Turn_Left::getName(){ return "Turn_Left"; }
 
 Turn_Right::Turn_Right(Turtle& turtle): _turtle(turtle){}
-void Turn_Right::execute(){ _turtle.changeDirection(90); }
+void Turn_Right::execute(){ _turtle.changeDirection(-90); }
 const char* Turn_Right::getName(){ return "Turn_Right"; }
 
 Turn_South::Turn_South(Turtle& turtle): _turtle(turtle){}
@@ -51,7 +51,7 @@ const char* Pen_Up::getName(){ return "Pen_Up"; }
 Do::Do(Turtle& turtle, unsigned int numReplays): _turtle(turtle), _numReplays(numReplays){}
 void Do::execute()
 {
-    for (size_t i = 0; i < _numReplays; i++)
+    for (size_t i = 0; i < _numReplays; ++i)
         for (auto&& i : _commands)
             i->execute();
 }
@@ -76,10 +76,10 @@ void Pen_Selection::execute()
 const char* Pen_Selection::getName(){ return "Pen_Selection"; }
 
 Canvas_Definition::Canvas_Definition(Canvas& canvas, Turtle& turtle, point_LL sizeBitMap,
-    rgb color): _canvas(canvas), _turtle(turtle), _sizeBitMap(sizeBitMap),
+    rgb color): _turtle(turtle), _canvas(canvas), _sizeBitMap(sizeBitMap),
     _color(color), _p1({0, 0}), _p2({1, 1}){}
 Canvas_Definition::Canvas_Definition(Canvas& canvas, Turtle& turtle, point_LL sizeBitMap,
-    rgb color, point_D p1, point_D p2): _canvas(canvas), _turtle(turtle),
+    rgb color, point_D p1, point_D p2): _turtle(turtle), _canvas(canvas),
     _sizeBitMap(sizeBitMap), _color(color), _p1(p1), _p2(p2){}
 void Canvas_Definition::execute()
 {

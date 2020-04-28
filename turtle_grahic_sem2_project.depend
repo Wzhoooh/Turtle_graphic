@@ -117,7 +117,7 @@
 	<exception>
 	"canvas.hpp"
 
-1588052695 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
+1588083354 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
 	<memory>
 	"primitives.hpp"
 
@@ -147,7 +147,8 @@
 	"string.hpp"
 	"primitives.hpp"
 
-1587924029 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list.hpp
+1588082219 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list.hpp
+	<memory>
 	"node_impl.hpp"
 	"iterator_impl.hpp"
 	"list_impl.hpp"
@@ -157,7 +158,7 @@
 
 1587924042 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\iterator_impl.hpp
 
-1587838366 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list_impl.hpp
+1588083802 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\list_impl.hpp
 	<stdio.h>
 	<memory>
 	<utility>
@@ -168,7 +169,7 @@
 	"list.hpp"
 	"string.hpp"
 
-1588053282 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
+1588083673 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
 	<string.h>
 	<cstdlib>
 	<iostream>
@@ -179,7 +180,7 @@
 	"command_factory.hpp"
 	"primitives.hpp"
 
-1588053048 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
+1588083920 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
 	<iostream>
 	"commands.hpp"
 	"turtle.hpp"
@@ -219,12 +220,9 @@
 	"commands.hpp"
 	"string.hpp"
 
-1588013782 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1588084830 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
-	<memory>
-	<cmath>
-	<string>
 	"list.hpp"
 	"string.hpp"
 	"commands.hpp"
@@ -237,12 +235,17 @@
 	"command_identifiers.hpp"
 	"parser.hpp"
 
-1587886119 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.hpp
+1588083673 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.hpp
 	<memory>
 
-1585661123 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
+1588085606 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
+	"parser.hpp"
+	"list.hpp"
+	"string.hpp"
+	"command_handler.hpp"
+	<iostream>
 
-1588053608 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
+1588082835 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
 	<cmath>
 	<iostream>
 	<iomanip>
@@ -251,11 +254,17 @@
 
 1587997489 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
 
-1587989017 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
+1588085552 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
 	<iostream>
 	<string.h>
 	"string.hpp"
 
 1587989000 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.hpp
 	<iostream>
+
+1588083751 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\tests\list_tester.cpp
+	<iostream>
+	<string>
+	<malloc.h>
+	"../list.hpp"
 

@@ -53,24 +53,28 @@ int main()
     Command_Factory factory(turtle, canvas, defineList);
     Composite composite(factory);
 
-    const char* s = "DEFPEN 33 SIZE 2 RGB 1 2 3 END SELPEN 33 CANVAS 10 10 RGB 10 11 12 VIEW 0 0 10 10 END   MT 10 8";
+    const char* s = "DEFPEN 33 SIZE 10 RGB 193 0 32 END SELPEN 33 CANVAS 2960 1080 RGB 204 195 31 VIEW 0 0 1000 1000 END   PD TA 45 M 500 DO 4 TL M 200 AGAIN";
     Parser p(s, Command_Handler(composite, defineList, factory));
+std::cout << "---1---\n";
     p.handle();
+std::cout << "---2---\n";
     composite.execute();
-
-    const rgb* buf = canvas.getBuffer();
-    for (int y = canvas.getSizeBitMap().y-1; y >= 0 ; y--)
-    {
-        for (size_t x = 0; x < canvas.getSizeBitMap().x; x++)
-        {
-            std::stringstream ss;
-            ss << "(" << (int)buf[x + y * canvas.getSizeBitMap().x].red << ", " << (int)buf[x + y * canvas.getSizeBitMap().x].green << ", " << (int)buf[x + y * canvas.getSizeBitMap().x].blue << ")";
-            std::cout.width(13);
-            std::cout.flags(std::ios::left);
-            std::cout << ss.str();
-        }
-        std::cout << "\n";
-    }
+std::cout << "---3---\n";
+    canvas.uploadToBmp("patterns/1");
+//
+//    const rgb* buf = canvas.getBuffer();
+//    for (int y = canvas.getSizeBitMap().y-1; y >= 0 ; y--)
+//    {
+//        for (size_t x = 0; x < canvas.getSizeBitMap().x; x++)
+//        {
+//            std::stringstream ss;
+//            ss << "(" << (int)buf[x + y * canvas.getSizeBitMap().x].red << ", " << (int)buf[x + y * canvas.getSizeBitMap().x].green << ", " << (int)buf[x + y * canvas.getSizeBitMap().x].blue << ")";
+//            std::cout.width(13);
+//            std::cout.flags(std::ios::left);
+//            std::cout << ss.str();
+//        }
+//        std::cout << "\n";
+//    }
 
 //
 //    DS::list<DS::string> l;

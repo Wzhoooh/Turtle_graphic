@@ -10,9 +10,9 @@ struct rgb
     rgb& operator =(rgb&&) = default;
     rgb(char red, char green, char blue): red(red), green(green), blue(blue){}
 
-    char red;
-    char green;
     char blue;
+    char green;
+    char red;
 };
 
 struct point_D

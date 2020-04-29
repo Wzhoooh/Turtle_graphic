@@ -26,7 +26,8 @@ std::cout << "new y : " << std::setprecision(20) << newY << "\n";
     point_LL pointTo((newX - _leftDownCorner.x) * xRealInImmage, (newY - _leftDownCorner.y) * yRealInImmage);
 
     unsigned newWidth = unsigned((xRealInImmage + yRealInImmage) / 2 * _width);
-    _canvas.drawLine(pointFrom, pointTo, _color, newWidth);
+    if (_isPenDown)
+        _canvas.drawLine(pointFrom, pointTo, _color, newWidth);
 
     _pos.x = newX;
     _pos.y = newY;
@@ -40,7 +41,8 @@ void Turtle::moveTo(point_D newPoint)
     point_LL pointTo = {(newPoint.x - _leftDownCorner.x) * xRealInImmage, (newPoint.y - _leftDownCorner.y) * yRealInImmage};
 
     unsigned newWidth = unsigned((xRealInImmage + yRealInImmage) / 2 * _width);
-    _canvas.drawLine(pointFrom, pointTo, _color, newWidth);
+    if (_isPenDown)
+        _canvas.drawLine(pointFrom, pointTo, _color, newWidth);
 
     _pos.x = newPoint.x;
     _pos.y = newPoint.y;

@@ -112,12 +112,12 @@
 
 1584881429 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\parser.cpp
 
-1588150190 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
+1588168326 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
 	<iostream>
 	<exception>
 	"canvas.hpp"
 
-1588150346 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
+1588168265 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
 	<memory>
 	"primitives.hpp"
 
@@ -219,9 +219,10 @@
 	"commands.hpp"
 	"string.hpp"
 
-1588150703 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1588168375 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
+	<sstream>
 	"list.hpp"
 	"string.hpp"
 	"commands.hpp"
@@ -244,14 +245,14 @@
 	"command_handler.hpp"
 	<iostream>
 
-1588147068 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
+1588153477 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
 	<cmath>
 	<iostream>
 	<iomanip>
 	"turtle.hpp"
 	"canvas.hpp"
 
-1587997489 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
+1588164482 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\primitives.hpp
 
 1588097521 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\string.cpp
 	<iostream>
@@ -266,4 +267,9 @@
 	<string>
 	<malloc.h>
 	"../list.hpp"
+
+1588162526 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\file_uploading.cpp
+	<string.h>
+	"canvas.hpp"
+	"string.hpp"
 

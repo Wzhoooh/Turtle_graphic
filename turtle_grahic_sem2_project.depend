@@ -112,12 +112,12 @@
 
 1584881429 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\parser.cpp
 
-1587998255 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
+1588150190 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
 	<iostream>
 	<exception>
 	"canvas.hpp"
 
-1588083354 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
+1588150346 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.hpp
 	<memory>
 	"primitives.hpp"
 
@@ -169,8 +169,7 @@
 	"list.hpp"
 	"string.hpp"
 
-1588099758 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
-	<string.h>
+1588141791 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
 	<cstdlib>
 	<iostream>
 	<exception>
@@ -180,7 +179,7 @@
 	"command_factory.hpp"
 	"primitives.hpp"
 
-1588083920 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
+1588144187 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
 	<iostream>
 	"commands.hpp"
 	"turtle.hpp"
@@ -220,7 +219,7 @@
 	"commands.hpp"
 	"string.hpp"
 
-1588099254 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1588150703 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<fstream>
 	"list.hpp"
@@ -238,14 +237,14 @@
 1588083673 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.hpp
 	<memory>
 
-1588096380 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
+1588146080 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.cpp
 	"parser.hpp"
 	"list.hpp"
 	"string.hpp"
 	"command_handler.hpp"
 	<iostream>
 
-1588082835 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
+1588147068 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\turtle.cpp
 	<cmath>
 	<iostream>
 	<iomanip>

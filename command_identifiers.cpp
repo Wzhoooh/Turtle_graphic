@@ -1,4 +1,3 @@
-#include <string.h>
 #include <cstdlib>
 #include <iostream>
 #include <exception>
@@ -18,7 +17,7 @@ void increaseIt(DS::list<DS::string>::iterator& wordIt)
         for (; index != '\0'; --wordIt)
             std::strtod(wordIt->data(), &index);
 
-        throw std::runtime_error("ERROR: no enough arguments for command " + *wordIt);
+        throw std::runtime_error("ERROR: no enough arguments for last command " + *wordIt);
     }
     else
         ++wordIt;
@@ -206,35 +205,40 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     double penWidth = 1;
     char color[3] = { 0 };
 
-    // this cycle is only to have one finish point
-    for (int i = 0; i < 1; ++i)
+    increaseIt(wordIt);
+    // number of pen
+    penNumber = std::strtoll(wordIt->data(), &index, 10);
+    if (*index != '\0')
+        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+
+    increaseIt(wordIt);
+    // width of pen
+    if (*wordIt != "SIZE")
+        throw std::runtime_error("ERROR: no pen size");
+
+    increaseIt(wordIt);
+    penWidth = std::strtod(wordIt->data(), &index);
+    if (*index != '\0')
+        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+
+    increaseIt(wordIt);
+
+    // pen color
+    if (*wordIt != "RGB")
+        throw std::runtime_error("ERROR: no pen color specifier");
+
+    for (size_t i = 0; i < 3; ++i)
     {
         increaseIt(wordIt);
-        if (*wordIt == "END") break;
-        penNumber = std::strtoll(wordIt->data(), &index, 10);
+        color[i] = std::strtoll(wordIt->data(), &index, 10);
         if (*index != '\0')
             throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-        increaseIt(wordIt);
-        if (*wordIt == "END") break;
-        penWidth = std::strtod(wordIt->data(), &index);
-        if (*index != '\0')
-            throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-
-        increaseIt(wordIt);
-        if (*wordIt == "END") break;
-        for (size_t i = 0; i < 3; ++i)
-        {
-            increaseIt(wordIt);
-            color[i] = std::strtoll(wordIt->data(), &index, 10);
-            if (*index != '\0')
-                throw std::runtime_error("ERROR: syntax error: " + *wordIt);
-        }
     }
 
     increaseIt(wordIt);
+
     if (*wordIt != "END")
-        throw std::runtime_error("ERROR: too many arguments for command " + *wordIt);
+        throw std::runtime_error("ERROR: too many arguments for pen definition");
 
     ++wordIt;
 
@@ -288,7 +292,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
         // set color(in rgb)
         if (*wordIt != "RGB")
-            throw std::runtime_error("ERROR: no color specifier");
+            throw std::runtime_error("ERROR: no canvas color specifier");
 
         for (size_t i = 0; i < 3; ++i)
         {
@@ -298,9 +302,13 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
         }
+        increaseIt(wordIt);
 
         // set view
         if (*wordIt == "END") break;
+        if (*wordIt != "VIEW")
+            throw std::runtime_error("ERROR: no canvas view");
+
         for (size_t i = 0; i < 2; ++i)
         {
             increaseIt(wordIt);
@@ -317,12 +325,11 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
             if (*index != '\0')
                 throw std::runtime_error("ERROR: syntax error: " + *wordIt);
         }
+        increaseIt(wordIt);
     }
 
-    increaseIt(wordIt);
-
     if (*wordIt != "END")
-        throw std::runtime_error("ERROR: too many arguments for command " + *wordIt);
+        throw std::runtime_error("ERROR: too many arguments for canvas definition");
 
     ++wordIt;
 

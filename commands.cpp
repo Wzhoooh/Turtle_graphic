@@ -83,8 +83,7 @@ Canvas_Definition::Canvas_Definition(Canvas& canvas, Turtle& turtle, point_LL si
     _sizeBitMap(sizeBitMap), _color(color), _p1(p1), _p2(p2){}
 void Canvas_Definition::execute()
 {
-    _canvas.createBitMap(_sizeBitMap);
-    _canvas.setCanvasColor(_color);
+    _canvas.createBitMap(_sizeBitMap, _color);
     _turtle.setCanvasParameters(_p1, _p2);
     _turtle.moveTo(_p1);
 }

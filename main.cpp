@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include "list.hpp"
 #include "string.hpp"
@@ -46,16 +47,31 @@ int main()
 
 
 
-    Canvas canvas(std::move(Loger()));
+    Canvas canvas(std::move(Round_Pen_Drawer()));
     Define_List defineList;
     Turtle turtle(canvas, defineList);
     Command_Factory factory(turtle, canvas, defineList);
-    Composite algo(factory);
+    Composite composite(factory);
 
-    const char* s = "  /* M 1 TR  M 1  */ CANVAS 5 5 RGB 10 11 12  -2 -2  3 3    END   TA 90 /* M 1 */ MT 2.5 1.5 M 2";
-    Parser p(s, Command_Handler(algo, defineList, factory));
+    const char* s = "DEFPEN 33 SIZE 2 RGB 1 2 3 END SELPEN 33 CANVAS 10 10 RGB 10 11 12 VIEW 0 0 10 10 END   MT 10 8";
+    Parser p(s, Command_Handler(composite, defineList, factory));
     p.handle();
-    algo.execute();
+    composite.execute();
+
+    const rgb* buf = canvas.getBuffer();
+    for (int y = canvas.getSizeBitMap().y-1; y >= 0 ; y--)
+    {
+        for (size_t x = 0; x < canvas.getSizeBitMap().x; x++)
+        {
+            std::stringstream ss;
+            ss << "(" << (int)buf[x + y * canvas.getSizeBitMap().x].red << ", " << (int)buf[x + y * canvas.getSizeBitMap().x].green << ", " << (int)buf[x + y * canvas.getSizeBitMap().x].blue << ")";
+            std::cout.width(13);
+            std::cout.flags(std::ios::left);
+            std::cout << ss.str();
+        }
+        std::cout << "\n";
+    }
+
 //
 //    DS::list<DS::string> l;
 //    p("CANVAS");

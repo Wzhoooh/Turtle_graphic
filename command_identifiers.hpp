@@ -19,7 +19,7 @@ public:
 
     virtual bool pushCommand(DS::list<DS::string>::iterator& wordIt) // pushes command to composite or defineList from factory if command is correct
     {
-        throw std::runtime_error("ERROR: using of Command_Identifier");
+        throw std::runtime_error("using of Command_Identifier");
     }
 
 protected:

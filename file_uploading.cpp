@@ -53,7 +53,7 @@ void Bit_Map::uploadToBmp(const char* fileName)
 
     FILE* file = fopen(fileName, "wb");
     if (NULL == file)
-        throw std::runtime_error("ERROR: can't open file " + DS::string(fileName));
+        throw std::runtime_error("can't open file " + DS::string(fileName));
 
     static_assert(sizeof(rgb) == BYTESPERPIXEL, "Only three bytes per pixel possible");
 
@@ -85,13 +85,13 @@ void Bit_Map::uploadToBmp(const char* fileName)
 
     if ((1 != fwrite(&header1, sizeof(header1), 1, file)) ||
         (1 != fwrite(&header2, sizeof(header2), 1, file)))
-        throw std::runtime_error("ERROR: can't write file header");
+        throw std::runtime_error("can't write file header");
 
     for (unsigned int i = 0; i < _size.y; i++)
     {
         if ((1 != fwrite(_buffer+_size.x*i, rowSize, 1, file)) ||
             (paddingSize != fwrite(zeroPadding, 1, paddingSize, file)))
-            throw std::runtime_error("ERROR: can't write file data");
+            throw std::runtime_error("can't write file data");
     }
 
     fclose(file);

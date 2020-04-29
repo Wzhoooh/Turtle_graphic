@@ -4,20 +4,21 @@
 #include "command_handler.hpp"
 #include <iostream>
 
-Parser::Parser(const char* input, Command_Handler&& handler): _buffer(input),
+Parser::Parser(DS::string&& input, Command_Handler&& handler): s(input),
         _handler(handler){}
 
 void Parser::handle()
 {
+std::cout << s << "\n";
     DS::list<DS::string> commandsList;
-    for (size_t i = 0; _buffer[i];)
+    for (size_t i = 0; i < s.size();)
     {
-        for (; _buffer[i] == ' ' && _buffer[i]; ++i)
+        for (; s[i] == ' ' && i < s.size(); ++i)
             continue;
 
         DS::string word;
-        for (; _buffer[i] != ' ' && _buffer[i]; ++i)
-            word += _buffer[i];
+        for (; s[i] != ' ' && i < s.size(); ++i)
+            word += s[i];
 
         if (word.size() != 0)
             commandsList.push_back(std::move(word));

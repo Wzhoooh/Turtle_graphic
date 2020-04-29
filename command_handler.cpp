@@ -1,3 +1,4 @@
+#include <iostream>
 #include <memory>
 #include "command_handler.hpp"
 #include "define_list.hpp"
@@ -36,8 +37,8 @@ void Command_Handler::handle(DS::list<DS::string>& list)
         for (auto&& id : identifiers)
             if (isCorrect = id->pushCommand(it))
                 break;
-
+std::cout << "//////////////////\n";
         if (!isCorrect)
-            throw std::runtime_error("ERROR: unknown command: " + *it);
+            throw std::runtime_error("unknown command: " + *it);
     }
 }

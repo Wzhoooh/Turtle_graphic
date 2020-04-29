@@ -2,17 +2,18 @@
 #define PARSER_HPP_INCLUDED
 
 #include <memory>
+#include "string.hpp"
 
 class Command_Handler;
 
 class Parser
 {
 public:
-    Parser(const char* input, Command_Handler&& handler);
+    Parser(DS::string&&, Command_Handler&& handler);
     void handle();
 
 private:
-    const char* _buffer;
+    DS::string s;
     Command_Handler& _handler;
 };
 

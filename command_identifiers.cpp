@@ -17,7 +17,7 @@ void increaseIt(DS::list<DS::string>::iterator& wordIt)
         for (; index != '\0'; --wordIt)
             std::strtod(wordIt->data(), &index);
 
-        throw std::runtime_error("ERROR: no enough arguments for last command " + *wordIt);
+        throw std::runtime_error("no enough arguments for last command " + *wordIt);
     }
     else
         ++wordIt;
@@ -32,7 +32,7 @@ bool Move_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     double param = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
-        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+        throw std::runtime_error("syntax " + *wordIt);
 
     ++wordIt;
 
@@ -52,7 +52,7 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         increaseIt(wordIt);
         param[i] = std::strtod(wordIt->data(), &index);
         if (*index != '\0')
-            throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+            throw std::runtime_error("syntax " + *wordIt);
     }
 
     ++wordIt;
@@ -71,7 +71,7 @@ bool Turn_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     double param;
     param = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
-        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+        throw std::runtime_error("syntax " + *wordIt);
 
     ++wordIt;
 
@@ -176,7 +176,7 @@ bool Do_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     int param = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0' || param < 0)
-        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+        throw std::runtime_error("syntax " + *wordIt);
 
     ++wordIt;
 
@@ -209,36 +209,36 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     // number of pen
     penNumber = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0')
-        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+        throw std::runtime_error("syntax " + *wordIt);
 
     increaseIt(wordIt);
     // width of pen
     if (*wordIt != "SIZE")
-        throw std::runtime_error("ERROR: no pen size");
+        throw std::runtime_error("no pen size");
 
     increaseIt(wordIt);
     penWidth = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
-        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+        throw std::runtime_error("syntax " + *wordIt);
 
     increaseIt(wordIt);
 
     // pen color
     if (*wordIt != "RGB")
-        throw std::runtime_error("ERROR: no pen color specifier");
+        throw std::runtime_error("no pen color specifier");
 
     for (size_t i = 0; i < 3; ++i)
     {
         increaseIt(wordIt);
         color[i] = std::strtoll(wordIt->data(), &index, 10);
         if (*index != '\0')
-            throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+            throw std::runtime_error("syntax " + *wordIt);
     }
 
     increaseIt(wordIt);
 
     if (*wordIt != "END")
-        throw std::runtime_error("ERROR: too many arguments for pen definition");
+        throw std::runtime_error("too many arguments for pen definition");
 
     ++wordIt;
 
@@ -257,7 +257,7 @@ bool Pen_Selection_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     int param = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0')
-        throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+        throw std::runtime_error("syntax " + *wordIt);
 
     ++wordIt;
 
@@ -286,13 +286,13 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             canavasSize[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
-                throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+                throw std::runtime_error("syntax " + *wordIt);
         }
         increaseIt(wordIt);
 
         // set color(in rgb)
         if (*wordIt != "RGB")
-            throw std::runtime_error("ERROR: no canvas color specifier");
+            throw std::runtime_error("no canvas color specifier");
 
         for (size_t i = 0; i < 3; ++i)
         {
@@ -300,14 +300,14 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             color[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
-                throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+                throw std::runtime_error("syntax " + *wordIt);
         }
         increaseIt(wordIt);
 
         // set view
         if (*wordIt == "END") break;
         if (*wordIt != "VIEW")
-            throw std::runtime_error("ERROR: no canvas view");
+            throw std::runtime_error("no canvas view");
 
         for (size_t i = 0; i < 2; ++i)
         {
@@ -315,7 +315,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             downLeft[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
-                throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+                throw std::runtime_error("syntax " + *wordIt);
         }
         for (size_t i = 0; i < 2; ++i)
         {
@@ -323,13 +323,16 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             upRight[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
-                throw std::runtime_error("ERROR: syntax error: " + *wordIt);
+                throw std::runtime_error("syntax " + *wordIt);
         }
         increaseIt(wordIt);
     }
 
     if (*wordIt != "END")
-        throw std::runtime_error("ERROR: too many arguments for canvas definition");
+    {
+        std::cout << (int)(*wordIt)[wordIt->size()-1] << "\n";
+        throw std::runtime_error("too many arguments for canvas definition");
+    }
 
     ++wordIt;
 
@@ -353,7 +356,7 @@ bool Comment::pushCommand(DS::list<DS::string>::iterator& wordIt)
         ;
 
     if (wordIt.isEnd())
-        throw std::runtime_error("ERROR: no */");
+        throw std::runtime_error("no */");
 
     ++wordIt;
 

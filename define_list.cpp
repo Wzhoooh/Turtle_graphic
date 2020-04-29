@@ -32,7 +32,7 @@ void Define_List::applyDefinition(int numberOfDefinition)
     std::stringstream ss;
     ss << numberOfDefinition;
     DS::string s(ss.str().c_str());
-    throw std::runtime_error("ERROR: no pen with number " + s);
+    throw std::runtime_error("no pen with number " + s);
 }
 void Define_List::applyCanvasDefinition()
 {

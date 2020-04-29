@@ -1,5 +1,4 @@
 #include <string.h>
-#include <iostream>
 #include "composite.hpp"
 #include "command_factory.hpp"
 #include "commands.hpp"
@@ -11,7 +10,6 @@ Composite::Composite(Command_Factory& factory): _commands(factory.crDo(1))
 
 void Composite::addCommand(Command* command)
 {
-std::cout << "Composite add: " << command->getName() << "\n";
     if (!strcmp(command->getName(), "Do")) // add cycle
     {
         (*_commandsStack.back())->addCommand(command);

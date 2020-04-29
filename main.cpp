@@ -1,5 +1,4 @@
 #include <iostream>
-#include "list.hpp"
 #include "string.hpp"
 #include "commands.hpp"
 #include "canvas.hpp"
@@ -13,12 +12,17 @@
 #include "text_file_reader.hpp"
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    Text_File_Reader fr("1.txt");
+    Text_File_Reader fr(argv[1]);
     Canvas canvas(std::move(Round_Pen_Drawer()));
     Define_List defineList;
     Turtle turtle(canvas, defineList);
+
+    defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(0, 0, 0)), 0);
+    defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(255, 255, 255)), 1);
+    defineList.applyDefinition(0);
+
     Command_Factory factory(turtle, canvas, defineList);
     Composite composite(factory);
 //std::cout << fr.read() << "\n";
@@ -28,6 +32,6 @@ int main()
     Parser p(fr.read(), Command_Handler(composite, defineList, factory));
     p.handle();
     composite.execute();
-    canvas.uploadToBmp("patterns/1");
+    canvas.uploadToBmp(argv[1]);
 
 }

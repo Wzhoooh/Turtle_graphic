@@ -2,14 +2,12 @@
 #include "list.hpp"
 #include "string.hpp"
 #include "command_handler.hpp"
-#include <iostream>
 
 Parser::Parser(DS::string&& input, Command_Handler&& handler): s(input),
         _handler(handler){}
 
 void Parser::handle()
 {
-std::cout << s << "\n";
     DS::list<DS::string> commandsList;
     for (size_t i = 0; i < s.size();)
     {
@@ -24,10 +22,5 @@ std::cout << s << "\n";
             commandsList.push_back(std::move(word));
 
     }
-    for (auto&& i : commandsList)
-        std::cout << i << "\n";
-
-    std::cout << "---------------\n";
-
     _handler.handle(commandsList);
 }

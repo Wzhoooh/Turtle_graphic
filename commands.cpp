@@ -1,4 +1,3 @@
-#include <iostream>
 #include "commands.hpp"
 #include "turtle.hpp"
 #include "define_list.hpp"
@@ -85,6 +84,8 @@ void Canvas_Definition::execute()
 {
     _canvas.createBitMap(_sizeBitMap, _color);
     _turtle.setCanvasParameters(_p1, _p2);
+    _turtle.setPenStatus(false);
     _turtle.moveTo(point_D((_p1.x+_p2.x)/2, (_p1.y+_p2.y)/2));
+    _turtle.setPenStatus(true);
 }
 const char* Canvas_Definition::getName(){ return "Canvas_Definition"; }

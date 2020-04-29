@@ -1,5 +1,4 @@
 #include <sstream>
-#include <iostream>
 #include "define_list.hpp"
 #include "commands.hpp"
 #include "string.hpp"
@@ -14,6 +13,12 @@ Define_List::~Define_List()
 
 void Define_List::addPenDefinition(Command* penDefinition, int number)
 {
+    for (auto&& i : _penDefinitions)
+        if (number == i.second)
+        {
+            i.first = penDefinition;
+            return;
+        }
     _penDefinitions.push_back(std::make_pair(penDefinition, number));
 }
 void Define_List::addCanvasDefinition(Command* canvasDefinition)

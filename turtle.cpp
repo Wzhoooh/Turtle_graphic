@@ -1,5 +1,4 @@
 #include <cmath>
-#include <iostream>
 #include <iomanip>
 #include "turtle.hpp"
 #include "canvas.hpp"
@@ -15,9 +14,9 @@ void Turtle::move(double distance)
     double newX = _pos.x + distance * std::cos(anglesToRadians(_direction));
     double newY = _pos.y + distance * std::sin(anglesToRadians(_direction));
 
-std::cout << "\ndirection: " << _direction << "\n";
-std::cout << "new x : " << std::setprecision(20) << newX << "\n";
-std::cout << "new y : " << std::setprecision(20) << newY << "\n";
+//std::cout << "\ndirection: " << _direction << "\n";
+//std::cout << "new x : " << std::setprecision(20) << newX << "\n";
+//std::cout << "new y : " << std::setprecision(20) << newY << "\n";
 
     double xRealInImmage = (double)(_canvas.getSizeBitMap().x) / (_rigtUpCorner.x - _leftDownCorner.x);
     double yRealInImmage = (double)(_canvas.getSizeBitMap().y) / (_rigtUpCorner.y - _leftDownCorner.y);

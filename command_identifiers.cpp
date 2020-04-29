@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <iostream>
 #include <exception>
 #include "command_identifiers.hpp"
 #include "composite.hpp"
@@ -329,10 +328,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     }
 
     if (*wordIt != "END")
-    {
-        std::cout << (int)(*wordIt)[wordIt->size()-1] << "\n";
         throw std::runtime_error("too many arguments for canvas definition");
-    }
 
     ++wordIt;
 

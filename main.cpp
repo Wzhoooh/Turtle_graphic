@@ -14,24 +14,32 @@
 
 int main(int argc, char* argv[])
 {
-    Text_File_Reader fr(argv[1]);
-    Canvas canvas(std::move(Round_Pen_Drawer()));
-    Define_List defineList;
-    Turtle turtle(canvas, defineList);
+    try
+    {
+        if (argc != 2)
+            throw std::runtime_error("file is opened not from console");
 
-    defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(0, 0, 0)), 0);
-    defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(255, 255, 255)), 1);
-    defineList.applyDefinition(0);
+        Text_File_Reader fr(argv[1]);
+        Canvas canvas(std::move(Round_Pen_Drawer()));
+        Define_List defineList;
+        Turtle turtle(canvas, defineList);
 
-    Command_Factory factory(turtle, canvas, defineList);
-    Composite composite(factory);
-//std::cout << fr.read() << "\n";
+        defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(0, 0, 0)), 0);
+        defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(255, 255, 255)), 1);
+        defineList.applyDefinition(0);
 
-    //const char* s = "DEFPEN 33 SIZE 10 RGB 193 0 32 END SELPEN 33 CANVAS 2960 1080 RGB 204 195 31 VIEW 0 0 1000 1000 END TA 45 M 500 PD DO 4 TL M 200 AGAIN";
+        Command_Factory factory(turtle, canvas, defineList);
+        Composite composite(factory);
 
-    Parser p(fr.read(), Command_Handler(composite, defineList, factory));
-    p.handle();
-    composite.execute();
-    canvas.uploadToBmp(argv[1]);
+        Parser p(fr.read(), Command_Handler(composite, defineList, factory));
+        p.handle();
+        composite.execute();
+        canvas.uploadToBmp(argv[1]);
+    }
+    catch(std::exception& e)
+    {
+        std::cout << "FATAL ERROR: " << e.what() << "\n";
+        system("pause");
+    }
 
 }

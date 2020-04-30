@@ -10,7 +10,7 @@ class Command;
 class Define_List
 {
 public:
-    Define_List() = default;
+    Define_List();
     ~Define_List();
     void addPenDefinition(Command* penDefinition, int number);
     void addCanvasDefinition(Command* canvasDefinition);

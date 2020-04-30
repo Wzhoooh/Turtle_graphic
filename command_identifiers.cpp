@@ -31,7 +31,7 @@ bool Move_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     double param = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
-        throw std::runtime_error("syntax " + *wordIt);
+        throw std::runtime_error("syntax error: " + *wordIt);
 
     ++wordIt;
 
@@ -51,7 +51,7 @@ bool Move_To_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         increaseIt(wordIt);
         param[i] = std::strtod(wordIt->data(), &index);
         if (*index != '\0')
-            throw std::runtime_error("syntax " + *wordIt);
+            throw std::runtime_error("syntax error: " + *wordIt);
     }
 
     ++wordIt;
@@ -70,7 +70,7 @@ bool Turn_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     double param;
     param = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
-        throw std::runtime_error("syntax " + *wordIt);
+        throw std::runtime_error("syntax error: " + *wordIt);
 
     ++wordIt;
 
@@ -175,7 +175,7 @@ bool Do_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     int param = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0' || param < 0)
-        throw std::runtime_error("syntax " + *wordIt);
+        throw std::runtime_error("syntax error: " + *wordIt);
 
     ++wordIt;
 
@@ -208,7 +208,7 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     // number of pen
     penNumber = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0')
-        throw std::runtime_error("syntax " + *wordIt);
+        throw std::runtime_error("syntax error: " + *wordIt);
 
     increaseIt(wordIt);
     // width of pen
@@ -218,7 +218,9 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     increaseIt(wordIt);
     penWidth = std::strtod(wordIt->data(), &index);
     if (*index != '\0')
-        throw std::runtime_error("syntax " + *wordIt);
+        throw std::runtime_error("syntax error: " + *wordIt);
+    if (penWidth < 0)
+        throw std::runtime_error("invalid pen width");
 
     increaseIt(wordIt);
 
@@ -231,7 +233,7 @@ bool Pen_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         increaseIt(wordIt);
         color[i] = std::strtoll(wordIt->data(), &index, 10);
         if (*index != '\0')
-            throw std::runtime_error("syntax " + *wordIt);
+            throw std::runtime_error("syntax error: " + *wordIt);
     }
 
     increaseIt(wordIt);
@@ -256,7 +258,7 @@ bool Pen_Selection_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     int param = std::strtoll(wordIt->data(), &index, 10);
     if (*index != '\0')
-        throw std::runtime_error("syntax " + *wordIt);
+        throw std::runtime_error("syntax error: " + *wordIt);
 
     ++wordIt;
 
@@ -285,7 +287,11 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             canavasSize[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
-                throw std::runtime_error("syntax " + *wordIt);
+                throw std::runtime_error("syntax error: " + *wordIt);
+            if(canavasSize[i] <= 0)
+            {
+                throw std::runtime_error("invalid canvas size: " + *wordIt);
+            }
         }
         increaseIt(wordIt);
 
@@ -299,7 +305,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             color[i] = std::strtoll(wordIt->data(), &index, 10);
             if (*index != '\0')
-                throw std::runtime_error("syntax " + *wordIt);
+                throw std::runtime_error("syntax error: " + *wordIt);
         }
         increaseIt(wordIt);
 
@@ -314,7 +320,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             downLeft[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
-                throw std::runtime_error("syntax " + *wordIt);
+                throw std::runtime_error("syntax error: " + *wordIt);
         }
         for (size_t i = 0; i < 2; ++i)
         {
@@ -322,7 +328,7 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
 
             upRight[i] = std::strtod(wordIt->data(), &index);
             if (*index != '\0')
-                throw std::runtime_error("syntax " + *wordIt);
+                throw std::runtime_error("syntax error: " + *wordIt);
         }
         increaseIt(wordIt);
     }

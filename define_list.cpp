@@ -3,6 +3,7 @@
 #include "commands.hpp"
 #include "string.hpp"
 
+Define_List::Define_List(): _canvasDefinition(nullptr){}
 Define_List::~Define_List()
 {
     for (auto&& i : _penDefinitions)

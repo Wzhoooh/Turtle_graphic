@@ -18,7 +18,7 @@ inline void Bit_Map::drawPoint(point_LL point, rgb color)
         _buffer[point.x + point.y * _size.x] = color;
 }
 
-Canvas::Canvas(Drawer&& drawer): _drawer(drawer){}
+Canvas::Canvas(Drawer&& drawer): _drawer(drawer), _bitMap(nullptr){}
 void Canvas::drawLine(point_LL point1, point_LL point2, rgb color, unsigned width)
 {
     _drawer.drawLine(*_bitMap, point1, point2, color, width);

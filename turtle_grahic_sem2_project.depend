@@ -112,7 +112,7 @@
 
 1584881429 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\parser.cpp
 
-1588176436 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
+1588243391 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
 	<iostream>
 	<exception>
 	"canvas.hpp"
@@ -169,7 +169,7 @@
 	"list.hpp"
 	"string.hpp"
 
-1588176455 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
+1588243545 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_identifiers.cpp
 	<cstdlib>
 	<exception>
 	"command_identifiers.hpp"
@@ -194,7 +194,7 @@
 	<memory>
 	"primitives.hpp"
 
-1587993155 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.hpp
+1588243391 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.hpp
 	<memory>
 	<utility>
 	"list.hpp"
@@ -209,14 +209,15 @@
 	<memory>
 	"list.hpp"
 
-1588176425 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.cpp
+1588243391 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\define_list.cpp
 	<sstream>
 	"define_list.hpp"
 	"commands.hpp"
 	"string.hpp"
 
-1588176425 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1588243818 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
+	<conio.h>
 	"string.hpp"
 	"commands.hpp"
 	"canvas.hpp"

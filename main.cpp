@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 #include "string.hpp"
 #include "commands.hpp"
 #include "canvas.hpp"
@@ -16,8 +17,10 @@ int main(int argc, char* argv[])
 {
     try
     {
-        if (argc != 2)
-            throw std::runtime_error("file is opened not from console");
+        if (argc < 2)
+            throw std::runtime_error("this utility needs console parameters");
+        if (argc > 3)
+            throw std::runtime_error("too many console parameters");
 
         Text_File_Reader fr(argv[1]);
         Canvas canvas(std::move(Round_Pen_Drawer()));
@@ -34,12 +37,17 @@ int main(int argc, char* argv[])
         Parser p(fr.read(), Command_Handler(composite, defineList, factory));
         p.handle();
         composite.execute();
-        canvas.uploadToBmp(argv[1]);
+        if (argc == 2)
+            canvas.uploadToBmp(argv[1]);
+        else if (argc == 3)
+            canvas.uploadToBmp(argv[2]);
     }
     catch(std::exception& e)
     {
         std::cout << "FATAL ERROR: " << e.what() << "\n";
-        system("pause");
+        std::cout << "Press any key to continue...";
+        char a;
+        a = getch();
     }
 
 }

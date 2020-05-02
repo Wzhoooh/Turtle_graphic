@@ -12,6 +12,19 @@
 #include "parser.hpp"
 #include "text_file_reader.hpp"
 
+#include "malloc.h"
+
+size_t GetHeapSize(void)
+{
+    struct _heapinfo hi = { 0 };
+    size_t total = 0;
+    while (_heapwalk(&hi) == _HEAPOK)
+    {
+        if (hi._useflag != _FREEENTRY)
+            total += hi._size;
+    }
+    return total;
+}
 
 int main(int argc, char* argv[])
 {
@@ -46,8 +59,7 @@ int main(int argc, char* argv[])
     {
         std::cout << "FATAL ERROR: " << e.what() << "\n";
         std::cout << "Press any key to continue...";
-        char a;
-        a = getch();
+        getch();
+        std::cout << "\n";
     }
-
 }

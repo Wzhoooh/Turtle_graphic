@@ -8,6 +8,11 @@ Composite::Composite(Command_Factory& factory): _commands(factory.crDo(1))
     _commandsStack.push_back(_commands);
 }
 
+Composite::~Composite()
+{
+    delete _commands;
+}
+
 void Composite::addCommand(Command* command)
 {
     if (!strcmp(command->getName(), "Do")) // add cycle

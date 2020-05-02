@@ -54,6 +54,11 @@ void Do::execute()
         for (auto&& i : _commands)
             i->execute();
 }
+Do::~Do()
+{
+    for (auto&& i : _commands)
+        delete i;
+}
 const char* Do::getName(){ return "Do"; }
 void Do::addCommand(Command* newCommand){ _commands.push_back(newCommand); }
 

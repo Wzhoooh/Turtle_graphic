@@ -19,6 +19,7 @@ public:
     {
         throw std::runtime_error("not \"Do\" command");
     }
+    virtual ~Command(){}
 };
 
 class Move: public Command
@@ -149,6 +150,7 @@ class Do: public Command
 {
 public:
     Do(Turtle& turtle, unsigned int numReplays);
+    ~Do() override;
     void execute();
     const char* getName();
     void addCommand(Command* newCommand) override;

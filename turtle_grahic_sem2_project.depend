@@ -112,7 +112,7 @@
 
 1584881429 source:c:\users\alex\desktop\vuz\prog\2й семестр\turtle_grahic_sem2_project\parser.cpp
 
-1588243391 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
+1588271716 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\canvas.cpp
 	<iostream>
 	<exception>
 	"canvas.hpp"
@@ -178,13 +178,13 @@
 	"command_factory.hpp"
 	"primitives.hpp"
 
-1588176425 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
+1588269383 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.cpp
 	"commands.hpp"
 	"turtle.hpp"
 	"define_list.hpp"
 	"canvas.hpp"
 
-1588052927 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.hpp
+1588268930 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\commands.hpp
 	<exception>
 	<memory>
 	"list.hpp"
@@ -199,13 +199,13 @@
 	<utility>
 	"list.hpp"
 
-1588176462 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
+1588269015 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.cpp
 	<string.h>
 	"composite.hpp"
 	"command_factory.hpp"
 	"commands.hpp"
 
-1588053384 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.hpp
+1588269015 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\composite.hpp
 	<memory>
 	"list.hpp"
 
@@ -215,7 +215,7 @@
 	"commands.hpp"
 	"string.hpp"
 
-1588243818 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1588272251 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<conio.h>
 	"string.hpp"
@@ -229,6 +229,7 @@
 	"command_identifiers.hpp"
 	"parser.hpp"
 	"text_file_reader.hpp"
+	"malloc.h"
 
 1588171695 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\parser.hpp
 	<memory>
@@ -261,12 +262,12 @@
 	<malloc.h>
 	"../list.hpp"
 
-1588169369 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\file_uploading.cpp
+1588271642 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\file_uploading.cpp
 	<string.h>
 	"canvas.hpp"
 	"string.hpp"
 
-1588172591 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\text_file_reader.cpp
+1588270149 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\text_file_reader.cpp
 	"text_file_reader.hpp"
 
 1588170634 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\text_file_reader.hpp

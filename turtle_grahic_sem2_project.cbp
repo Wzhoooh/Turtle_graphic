@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="bin/Debug/debug.txt bin/Debug/debug.bmp" />
+				<Option parameters="bin/Release/debug.txt " />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -21,8 +21,9 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="bin/Release/debug.txt " />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-O1" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -57,7 +58,6 @@
 		<Unit filename="primitives.hpp" />
 		<Unit filename="string.cpp" />
 		<Unit filename="string.hpp" />
-		<Unit filename="tests/list_tester.cpp" />
 		<Unit filename="text_file_reader.cpp" />
 		<Unit filename="text_file_reader.hpp" />
 		<Unit filename="turtle.cpp" />

@@ -32,12 +32,12 @@ DS::string Text_File_Reader::read()
     fileLen = fread(buf, 1, bufLen, file);
 
     if (ferror(file) || !feof(file))
-        throw std::runtime_error("Can't read file");
+        throw std::runtime_error("can't read file");
 
     // remove '\0'  and '\n'
     for (long i = 0; i < fileLen; ++i)
     {
-        if (buf[i] == '\0' || buf[i] == 13 || buf[i] == '\n' || buf[i] == 9 || buf[i] == '\t')
+        if (buf[i] == '\0' || buf[i] == '\r' || buf[i] == '\n' || buf[i] == '\t')
             buf[i] = ' ';
     }
 

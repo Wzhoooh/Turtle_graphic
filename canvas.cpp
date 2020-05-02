@@ -25,10 +25,16 @@ void Canvas::drawLine(point_LL point1, point_LL point2, rgb color, unsigned widt
 }
 void Canvas::createBitMap(point_LL sizeBitMap, rgb canvasColor)
 {
+    if (_bitMap)
+        throw std::runtime_error("multiple definition of canvas");
+
     _bitMap = new Bit_Map(sizeBitMap, canvasColor);
 }
 void Canvas::uploadToBmp(const char* fileName)
 {
+    if (!_bitMap)
+        throw std::runtime_error("need to create bitmap");
+
     _bitMap->uploadToBmp(fileName);
 }
 Canvas::~Canvas()

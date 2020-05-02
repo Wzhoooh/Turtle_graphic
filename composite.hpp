@@ -11,6 +11,7 @@ class Composite
 {
 public:
     Composite(Command_Factory& factory);
+    ~Composite();
     void addCommand(Command* command);
     void finishBlok();
     void execute();

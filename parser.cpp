@@ -22,5 +22,8 @@ void Parser::handle()
             commandsList.push_back(std::move(word));
 
     }
+    for (auto&& i : commandsList)
+        i.changeToUpperCase();
+
     _handler.handle(commandsList);
 }

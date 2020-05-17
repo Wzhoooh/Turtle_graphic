@@ -274,8 +274,8 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
     char* index = nullptr;
     long long canavasSize[2] = { 0 };
     char color[3] = { 0 };
-    double downLeft[2] = { 0 };
-    double upRight[2] = { 1, 1 };
+    double downLeft[2] = { 0. };
+    double upRight[2];
 
     // this cycle is only to have one finish point
     for (int i = 0; i < 1; ++i)
@@ -310,7 +310,12 @@ bool Canvas_Definition_Id::pushCommand(DS::list<DS::string>::iterator& wordIt)
         increaseIt(wordIt);
 
         // set view
-        if (*wordIt == "END") break;
+        if (*wordIt == "END")
+        {
+            upRight[0] = canavasSize[0] - 1;
+            upRight[1] = canavasSize[1] - 1;
+            break;
+        }
         if (*wordIt != "VIEW")
             throw std::runtime_error("no canvas view");
 

@@ -17,6 +17,7 @@ namespace DS // DataStructures
         string& operator =(string&&);
         ~string();
 
+        void changeToUpperCase() noexcept;
         size_t size() const noexcept;
         size_t capacity() const noexcept;
         void clear() noexcept;

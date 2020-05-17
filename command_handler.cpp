@@ -11,24 +11,24 @@ Command_Handler::Command_Handler(Composite& composite, Define_List& defineList,
 
 void Command_Handler::handle(DS::list<DS::string>& list)
 {
-    DS::list<std::shared_ptr<Command_Identifier>> identifiers;
-    identifiers.push_back(std::make_shared<Move_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Move_To_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_Left_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_Right_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_South_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_North_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_West_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Turn_East_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Pen_Down_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Pen_Up_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Do_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Again_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Pen_Selection_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Pen_Definition_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Canvas_Definition_Id>(_composite, _defineList, _factory));
-    identifiers.push_back(std::make_shared<Comment>(_composite, _defineList, _factory));
+    DS::list<std::unique_ptr<Command_Identifier>> identifiers;
+    identifiers.push_back(std::make_unique<Move_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Move_To_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_Left_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_Right_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_South_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_North_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_West_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Turn_East_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Pen_Down_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Pen_Up_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Do_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Again_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Pen_Selection_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Pen_Definition_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Canvas_Definition_Id>(_composite, _defineList, _factory));
+    identifiers.push_back(std::make_unique<Comment>(_composite, _defineList, _factory));
 
     for (auto it = list.begin(); it != list.end();)
     {

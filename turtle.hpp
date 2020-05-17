@@ -22,6 +22,7 @@ public:
 
 private:
     double anglesToRadians(double angle);
+    void crawlToNewPoint(point_D newPoint);
 
 private:
     Canvas& _canvas;

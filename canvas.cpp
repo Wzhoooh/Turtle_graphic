@@ -157,3 +157,11 @@ void Round_Pen_Drawer::drawCircle(Bit_Map& bitMap, point_LL center, rgb color, u
     }
 }
 
+
+void Log_Round_Pen_Drawer::drawLine(Bit_Map& bitMap, point_LL point1, point_LL point2,
+              rgb color, unsigned width) const
+{
+    _drawer.drawLine(bitMap, point1, point2, color, width);
+    _logger.drawLine(bitMap, point1, point2, color, width);
+}
+

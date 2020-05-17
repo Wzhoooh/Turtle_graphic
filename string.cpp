@@ -74,6 +74,13 @@ string::~string()
     delete [] _buffer;
 }
 
+void string::changeToUpperCase() noexcept
+{
+    for (size_t i = 0; i < _size; i++)
+        if (_buffer[i] >= 'a' && _buffer[i] <= 'z')
+            _buffer[i] = _buffer[i] - 'a' + 'A';
+}
+
 size_t string::size() const noexcept
 {
     return _size;

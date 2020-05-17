@@ -77,8 +77,8 @@ public:
               rgb color, unsigned width) const override;
 
 private:
-    Round_Pen_Drawer drawer;
-    Logger logger;
+    Round_Pen_Drawer _drawer;
+    Logger _logger;
 };
 
 #endif // CANVAS_HPP_INCLUDED

@@ -133,7 +133,7 @@
 	<memory>
 	"primitives.hpp"
 
-1589730233 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.cpp
+1589874398 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.cpp
 	<memory>
 	"command_handler.hpp"
 	"define_list.hpp"
@@ -141,7 +141,7 @@
 	"command_factory.hpp"
 	"command_identifiers.hpp"
 
-1588053479 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.hpp
+1589996016 c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\command_handler.hpp
 	<memory>
 	"list.hpp"
 	"string.hpp"
@@ -215,7 +215,7 @@
 	"commands.hpp"
 	"string.hpp"
 
-1589732938 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
+1589741229 source:c:\users\galina\desktop\programming\c++\0-educational_projects\turtle_graphic\main.cpp
 	<iostream>
 	<conio.h>
 	"string.hpp"

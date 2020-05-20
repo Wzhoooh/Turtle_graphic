@@ -18,9 +18,6 @@ public:
     void handle(DS::list<DS::string>&);
 
 private:
-    void parse(const char* s);
-
-private:
     Composite& _composite;
     Define_List& _defineList;
     Command_Factory& _factory;

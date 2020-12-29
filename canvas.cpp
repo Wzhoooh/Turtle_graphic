@@ -12,7 +12,7 @@ Bit_Map::~Bit_Map()
 {
     delete [] _buffer;
 }
-inline void Bit_Map::drawPoint(point_LL point, rgb color)
+void Bit_Map::drawPoint(point_LL point, rgb color)
 {
     if (point.x >= 0 && point.x < _size.x && point.y >= 0 && point.y < _size.y)
         _buffer[point.x + point.y * _size.x] = color;
@@ -21,7 +21,17 @@ inline void Bit_Map::drawPoint(point_LL point, rgb color)
 Canvas::Canvas(Drawer&& drawer): _drawer(drawer), _bitMap(nullptr){}
 void Canvas::drawLine(point_LL point1, point_LL point2, rgb color, unsigned width)
 {
+    if (_bitMap == nullptr)
+        throw std::runtime_error("canvas not defined");
+
     _drawer.drawLine(*_bitMap, point1, point2, color, width);
+}
+point_LL Canvas::getSizeBitMap() const
+{
+    if (_bitMap == nullptr)
+        throw std::runtime_error("canvas not defined");
+
+    return _bitMap->getSize();
 }
 void Canvas::createBitMap(point_LL sizeBitMap, rgb canvasColor)
 {
@@ -32,8 +42,8 @@ void Canvas::createBitMap(point_LL sizeBitMap, rgb canvasColor)
 }
 void Canvas::uploadToBmp(const char* fileName)
 {
-    if (!_bitMap)
-        throw std::runtime_error("need to create bitmap");
+    if (_bitMap == nullptr)
+        throw std::runtime_error("canvas not defined");
 
     _bitMap->uploadToBmp(fileName);
 }

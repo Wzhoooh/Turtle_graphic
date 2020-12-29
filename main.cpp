@@ -41,7 +41,6 @@ int main(int argc, char* argv[])
         Turtle turtle(canvas, defineList);
 
         defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(0, 0, 0)), 0);
-        defineList.addPenDefinition(new Pen_Definition(turtle, 1, rgb(255, 255, 255)), 1);
         defineList.applyDefinition(0);
 
         Command_Factory factory(turtle, canvas, defineList);

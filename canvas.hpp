@@ -12,7 +12,7 @@ class Bit_Map
 public:
     Bit_Map(point_LL size, rgb canvasColor);
     ~Bit_Map();
-    inline void drawPoint(point_LL point, rgb color);
+    void drawPoint(point_LL point, rgb color);
     inline point_LL getSize() const { return _size; }
     void uploadToBmp(const char* fileName);
 
@@ -26,7 +26,7 @@ class Canvas // all coordinates in pixels
 public:
     Canvas(Drawer&& drawer);
     void drawLine(point_LL point1, point_LL point2, rgb color, unsigned width); // all coordinates in pixels
-    inline point_LL getSizeBitMap() const { return _bitMap->getSize(); }
+    point_LL getSizeBitMap() const;
     void createBitMap(point_LL sizeBitMap, rgb canvasColor);
     void uploadToBmp(const char* fileName);
 

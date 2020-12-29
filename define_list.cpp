@@ -16,10 +16,8 @@ void Define_List::addPenDefinition(Command* penDefinition, int number)
 {
     for (auto&& i : _penDefinitions)
         if (number == i.second)
-        {
-            i.first = penDefinition;
-            return;
-        }
+            throw std::runtime_error("pen already has been defined");
+
     _penDefinitions.push_back(std::make_pair(penDefinition, number));
 }
 void Define_List::addCanvasDefinition(Command* canvasDefinition)

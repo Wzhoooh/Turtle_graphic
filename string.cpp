@@ -57,6 +57,8 @@ string& string::operator =(const string& s)
     _size = s._size;
     for (size_t i = 0; i < _size; ++i)
         _buffer[i] = s[i];
+
+    return *this;
 }
 string& string::operator =(string&& s)
 {
@@ -68,6 +70,7 @@ string& string::operator =(string&& s)
     s._size = 0;
     s._capacity = 0;
     s._buffer = nullptr;
+    return *this;
 }
 string::~string()
 {
